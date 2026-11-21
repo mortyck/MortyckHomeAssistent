@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
   "projectRootRel": ".",
-  "generatedAt": "2026-11-21T22:27:33.031Z",
+  "generatedAt": "2026-11-21T22:28:36.966Z",
   "totalFiles": 49,
   "files": {
     "backend/src/adapters/BaseDeviceAdapter.ts": {
@@ -5601,8 +5601,8 @@
       "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
       "lineCount": 35,
       "symbols": [],
-      "hash": "b6e8a2f30c3f47e3893f50c526ad8cd3",
-      "sizeBytes": 983
+      "hash": "63a64622d0e5381cbef8769ee11c6a37",
+      "sizeBytes": 982
     },
     "backend/data/settings.json": {
       "relPath": "backend/data/settings.json",

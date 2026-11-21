@@ -22,7 +22,7 @@
       "streamName": "wansview-mwps4f18",
       "onvifPort": 80
     },
-    "lastSeen": 1795298046333,
+    "lastSeen": 1795300117011,
     "online": true
   },
   {
@@ -48,7 +48,7 @@
       "streamName": "camhi-mwptt2lv"
     },
     "id": "camhi-mwptt2lv",
-    "lastSeen": 1795298046337,
+    "lastSeen": 1795300117014,
     "online": true
   },
   {
@@ -77,7 +77,7 @@
       "entityId": "1800420411702000132815"
     },
     "id": "bridge-mwpuy4r4",
-    "lastSeen": 1795298046341,
+    "lastSeen": 1795300117017,
     "online": true
   }
 ]
