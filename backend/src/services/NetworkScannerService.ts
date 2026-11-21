@@ -151,7 +151,8 @@ export class NetworkScannerService {
     try {
       const { stdout } = await execAsync('arp -a');
       const lines = stdout.split('\n');
-      const arpRegex = /([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\s+([0-9a-fA-F[:-]{17})/i;
+      // Supports Windows ("192.168.1.1 00-11-22-33-44-55") and Linux ("? (192.168.1.1) at 00:11:22:33:44:55")
+      const arpRegex = /(?:^|[(\s])([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})[)\s]+(?:at\s+)?([0-9a-fA-F[:-]{11,17})/i;
       for (const line of lines) {
         const match = line.match(arpRegex);
         if (match) {

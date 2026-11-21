@@ -17,6 +17,29 @@ const ROOT_ENV_PATH = fs.existsSync(path.join(process.cwd(), '.env'))
 
 dotenv.config({ path: ROOT_ENV_PATH, override: true });
 
+// Cross-Platform Engine Configuration (Windows & Linux)
+export const IS_WINDOWS = process.platform === 'win32';
+export const GO2RTC_BINARY_NAME = IS_WINDOWS ? 'go2rtc.exe' : 'go2rtc';
+export const GO2RTC_DEFAULT_PATH = IS_WINDOWS ? path.join('docker', 'go2rtc.exe') : './go2rtc';
+
+export function resolvePythonCommand(rootDir?: string): string {
+  const baseDir =
+    rootDir ||
+    (fs.existsSync(path.join(process.cwd(), 'docker'))
+      ? process.cwd()
+      : path.resolve(process.cwd(), '..'));
+  if (IS_WINDOWS) {
+    const venv = path.join(baseDir, 'venv', 'Scripts', 'python.exe');
+    return fs.existsSync(venv) ? venv : 'python';
+  } else {
+    const venv = path.join(baseDir, 'venv', 'bin', 'python');
+    if (fs.existsSync(venv)) return venv;
+    const venv3 = path.join(baseDir, 'venv', 'bin', 'python3');
+    if (fs.existsSync(venv3)) return venv3;
+    return 'python3';
+  }
+}
+
 const PORT = parseInt(process.env.PORT || '4000', 10);
 const app = express();
 const server = http.createServer(app);
@@ -105,6 +128,32 @@ app.use('/api', createApiRouter(broadcast));
 app.get('/health', (_req, res) => {
   res.json({ status: 'healthy', service: 'MortyckHomeAssistent Backend', uptime: process.uptime() });
 });
+
+// Serve compiled frontend production build if present (enables single-process full app serving on Linux)
+const candidateDistDirs = [
+  path.resolve(process.cwd(), 'frontend', 'dist'),
+  path.resolve(process.cwd(), '..', 'frontend', 'dist'),
+  path.resolve(__dirname, '..', '..', 'frontend', 'dist'),
+  path.resolve(__dirname, '..', 'frontend', 'dist')
+];
+const FRONTEND_DIST_DIR = candidateDistDirs.find((dir) => fs.existsSync(path.join(dir, 'index.html')));
+
+if (FRONTEND_DIST_DIR) {
+  console.log(`[Static] Serving frontend single-page dashboard from ${FRONTEND_DIST_DIR}`);
+  app.use(express.static(FRONTEND_DIST_DIR));
+  app.get('*', (req, res, next) => {
+    if (
+      req.path.startsWith('/api') ||
+      req.path.startsWith('/novnc') ||
+      req.path.startsWith('/ws') ||
+      req.path.startsWith('/websockify') ||
+      req.path.startsWith('/health')
+    ) {
+      return next();
+    }
+    res.sendFile(path.join(FRONTEND_DIST_DIR, 'index.html'));
+  });
+}
 
 // Forward DeviceManager internal events to WebSocket clients
 const deviceManager = DeviceManager.getInstance();

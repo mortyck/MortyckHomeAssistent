@@ -17,6 +17,7 @@ const CHANGELOG_PATH = path.join(ROOT_DIR, 'CHANGELOG_AI.md');
 const DEVICES_PATH = path.join(ROOT_DIR, 'backend', 'data', 'devices.json');
 
 const { rollbackLastChange, recordChangeAndCommit, getGitStatus } = require('./marvin_git_tracker');
+const { IS_WINDOWS, GO2RTC_BINARY_NAME, getPythonExecutable, getGo2RtcBinary } = require('./platform_detect');
 
 const TOOLS = [
   {

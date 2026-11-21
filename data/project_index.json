@@ -2,8 +2,8 @@
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
   "projectRootRel": ".",
-  "generatedAt": "2026-11-21T22:28:36.966Z",
-  "totalFiles": 49,
+  "generatedAt": "2026-11-21T22:51:09.455Z",
+  "totalFiles": 51,
   "files": {
     "backend/src/adapters/BaseDeviceAdapter.ts": {
       "relPath": "backend/src/adapters/BaseDeviceAdapter.ts",
@@ -468,7 +468,7 @@
     "backend/src/index.ts": {
       "relPath": "backend/src/index.ts",
       "summary": "Punctul de pornire al serverului backend: Express API, WebSocket broadcast, noVNC proxy și inițializare noduri",
-      "lineCount": 139,
+      "lineCount": 188,
       "symbols": [
         {
           "kind": "const",
@@ -477,97 +477,147 @@
         },
         {
           "kind": "const",
-          "name": "PORT",
-          "line": 20
-        },
-        {
-          "kind": "const",
-          "name": "app",
+          "name": "IS_WINDOWS",
           "line": 21
         },
         {
           "kind": "const",
-          "name": "server",
+          "name": "GO2RTC_BINARY_NAME",
           "line": 22
         },
         {
           "kind": "const",
-          "name": "vncProxy",
+          "name": "GO2RTC_DEFAULT_PATH",
           "line": 23
         },
         {
-          "kind": "const",
-          "name": "BACKEND_ROOT",
+          "kind": "function",
+          "name": "resolvePythonCommand",
           "line": 25
         },
         {
           "kind": "const",
-          "name": "NOVNC_PUBLIC_DIR",
-          "line": 29
+          "name": "baseDir",
+          "line": 26
         },
         {
           "kind": "const",
-          "name": "NOVNC_MODULE_DIR",
-          "line": 30
+          "name": "venv",
+          "line": 32
         },
         {
           "kind": "const",
-          "name": "wss",
+          "name": "venv",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "venv3",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "PORT",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "app",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "server",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "vncProxy",
           "line": 46
         },
         {
           "kind": "const",
+          "name": "BACKEND_ROOT",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "NOVNC_PUBLIC_DIR",
+          "line": 52
+        },
+        {
+          "kind": "const",
+          "name": "NOVNC_MODULE_DIR",
+          "line": 53
+        },
+        {
+          "kind": "const",
+          "name": "wss",
+          "line": 69
+        },
+        {
+          "kind": "const",
           "name": "wsClients",
-          "line": 47
+          "line": 70
         },
         {
           "kind": "const",
           "name": "rawUrl",
-          "line": 50
-        },
-        {
-          "kind": "const",
-          "name": "pathname",
-          "line": 51
-        },
-        {
-          "kind": "function",
-          "name": "broadcast",
           "line": 73
         },
         {
           "kind": "const",
-          "name": "payload",
+          "name": "pathname",
           "line": 74
+        },
+        {
+          "kind": "function",
+          "name": "broadcast",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 97
         },
         {
           "kind": "const",
           "name": "parsed",
-          "line": 88
+          "line": 111
+        },
+        {
+          "kind": "const",
+          "name": "candidateDistDirs",
+          "line": 133
+        },
+        {
+          "kind": "const",
+          "name": "FRONTEND_DIST_DIR",
+          "line": 139
         },
         {
           "kind": "const",
           "name": "deviceManager",
-          "line": 110
+          "line": 159
         },
         {
           "kind": "const",
           "name": "media",
-          "line": 125
+          "line": 174
         },
         {
           "kind": "const",
           "name": "go2rtcOk",
-          "line": 126
+          "line": 175
         },
         {
           "kind": "const",
           "name": "bridgeOk",
-          "line": 129
+          "line": 178
         }
       ],
-      "hash": "fd8667b8d40ae51ce333f1aa510d8544",
-      "sizeBytes": 4762
+      "hash": "b0dc6d63bb27c42948a98d70b4dd52f6",
+      "sizeBytes": 6624
     },
     "backend/src/routes/api.ts": {
       "relPath": "backend/src/routes/api.ts",
@@ -2582,7 +2632,7 @@
     "backend/src/services/MediaService.ts": {
       "relPath": "backend/src/services/MediaService.ts",
       "summary": "Integrare cu motorul media go2rtc: înregistrare fluxuri RTSP și mapare WebRTC",
-      "lineCount": 358,
+      "lineCount": 392,
       "symbols": [
         {
           "kind": "interface",
@@ -2596,182 +2646,222 @@
         },
         {
           "kind": "const",
-          "name": "candidateDirs",
+          "name": "isWin",
           "line": 44
         },
         {
           "kind": "const",
+          "name": "binaryName",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "candidateDirs",
+          "line": 47
+        },
+        {
+          "kind": "const",
           "name": "exeCandidate",
-          "line": 56
+          "line": 58
         },
         {
           "kind": "const",
           "name": "configCandidate",
-          "line": 59
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "localRel",
+          "line": 76
         },
         {
           "kind": "const",
           "name": "health",
-          "line": 74
+          "line": 90
         },
         {
           "kind": "const",
           "name": "args",
-          "line": 97
+          "line": 113
         },
         {
           "kind": "const",
           "name": "child",
-          "line": 100
+          "line": 116
         },
         {
           "kind": "const",
           "name": "recheck",
-          "line": 110
+          "line": 126
         },
         {
           "kind": "const",
           "name": "socket",
-          "line": 135
+          "line": 151
         },
         {
           "kind": "const",
           "name": "isRunning",
-          "line": 157
+          "line": 173
         },
         {
           "kind": "const",
           "name": "candidateScripts",
-          "line": 170
+          "line": 186
+        },
+        {
+          "kind": "const",
+          "name": "isWin",
+          "line": 207
+        },
+        {
+          "kind": "const",
+          "name": "rootDir",
+          "line": 208
+        },
+        {
+          "kind": "const",
+          "name": "venvWin",
+          "line": 212
+        },
+        {
+          "kind": "const",
+          "name": "venvLinux",
+          "line": 215
+        },
+        {
+          "kind": "const",
+          "name": "venvLinux3",
+          "line": 219
         },
         {
           "kind": "const",
           "name": "child",
-          "line": 194
+          "line": 228
         },
         {
           "kind": "const",
           "name": "ok",
-          "line": 204
+          "line": 238
         },
         {
           "kind": "const",
           "name": "controller",
-          "line": 222
+          "line": 256
         },
         {
           "kind": "const",
           "name": "timeoutId",
-          "line": 223
+          "line": 257
         },
         {
           "kind": "const",
           "name": "res",
-          "line": 224
+          "line": 258
         },
         {
           "kind": "const",
           "name": "streams",
-          "line": 229
+          "line": 263
         },
         {
           "kind": "const",
           "name": "normalizedName",
-          "line": 250
+          "line": 284
         },
         {
           "kind": "const",
           "name": "params",
-          "line": 260
+          "line": 294
         },
         {
           "kind": "const",
           "name": "url",
-          "line": 264
+          "line": 298
         },
         {
           "kind": "const",
           "name": "res",
-          "line": 265
+          "line": 299
         },
         {
           "kind": "const",
           "name": "aliasParams",
-          "line": 270
+          "line": 304
         },
         {
           "kind": "const",
           "name": "aliasUrl",
-          "line": 274
+          "line": 308
         },
         {
           "kind": "const",
           "name": "masked",
-          "line": 279
+          "line": 313
         },
         {
           "kind": "const",
           "name": "text",
-          "line": 283
+          "line": 317
         },
         {
           "kind": "const",
           "name": "params",
-          "line": 300
+          "line": 334
         },
         {
           "kind": "const",
           "name": "putUrl",
-          "line": 301
-        },
-        {
-          "kind": "const",
-          "name": "normalizedName",
-          "line": 311
-        },
-        {
-          "kind": "const",
-          "name": "params",
-          "line": 314
-        },
-        {
-          "kind": "const",
-          "name": "url",
-          "line": 315
-        },
-        {
-          "kind": "const",
-          "name": "res",
-          "line": 316
-        },
-        {
-          "kind": "const",
-          "name": "res",
-          "line": 328
-        },
-        {
-          "kind": "const",
-          "name": "fallback",
           "line": 335
         },
         {
           "kind": "const",
-          "name": "params",
-          "line": 346
+          "name": "normalizedName",
+          "line": 345
         },
         {
           "kind": "const",
           "name": "params",
-          "line": 354
+          "line": 348
+        },
+        {
+          "kind": "const",
+          "name": "url",
+          "line": 349
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 350
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 362
+        },
+        {
+          "kind": "const",
+          "name": "fallback",
+          "line": 369
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 380
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 388
         }
       ],
-      "hash": "0190e779b7394696dca8ce7240bc41ae",
-      "sizeBytes": 11558
+      "hash": "36a996c2eff05f91c1b510e5497e5386",
+      "sizeBytes": 12614
     },
     "backend/src/services/NetworkScannerService.ts": {
       "relPath": "backend/src/services/NetworkScannerService.ts",
       "summary": "Modul backend/src/services/NetworkScannerService.ts: definește execAsync, NetworkScannerService, prefix",
-      "lineCount": 211,
+      "lineCount": 212,
       "symbols": [
         {
           "kind": "const",
@@ -2871,26 +2961,26 @@
         {
           "kind": "const",
           "name": "arpRegex",
-          "line": 154
+          "line": 155
         },
         {
           "kind": "const",
           "name": "match",
-          "line": 156
+          "line": 157
         },
         {
           "kind": "const",
           "name": "ip",
-          "line": 158
+          "line": 159
         },
         {
           "kind": "const",
           "name": "mac",
-          "line": 159
+          "line": 160
         }
       ],
-      "hash": "943025ce1107f2fef738d744b4ab00c9",
-      "sizeBytes": 6232
+      "hash": "88c54008dd4f6b33bc731eb04b9332d1",
+      "sizeBytes": 6370
     },
     "backend/src/services/VncProxyService.ts": {
       "relPath": "backend/src/services/VncProxyService.ts",
@@ -4891,7 +4981,7 @@
     "scripts/code_indexer.js": {
       "relPath": "scripts/code_indexer.js",
       "summary": "Indexator structural local pentru M.A.R.V.I.N.: generează data/project_index.json și sincronizează FTS5",
-      "lineCount": 311,
+      "lineCount": 313,
       "symbols": [
         {
           "kind": "const",
@@ -4911,286 +5001,286 @@
         {
           "kind": "const",
           "name": "ROOT_DIR",
-          "line": 13
-        },
-        {
-          "kind": "const",
-          "name": "DATA_DIR",
           "line": 14
         },
         {
           "kind": "const",
-          "name": "INDEX_JSON_PATH",
+          "name": "DATA_DIR",
           "line": 15
         },
         {
           "kind": "const",
-          "name": "MARVIN_DB_PATH",
+          "name": "INDEX_JSON_PATH",
           "line": 16
         },
         {
           "kind": "const",
-          "name": "LEGACY_DB_PATH",
+          "name": "MARVIN_DB_PATH",
           "line": 17
         },
         {
           "kind": "const",
+          "name": "LEGACY_DB_PATH",
+          "line": 18
+        },
+        {
+          "kind": "const",
           "name": "IGNORED_DIRS",
-          "line": 19
+          "line": 20
         },
         {
           "kind": "const",
           "name": "IGNORED_FILES",
-          "line": 29
+          "line": 30
         },
         {
           "kind": "const",
           "name": "INDEXED_EXTENSIONS",
-          "line": 35
+          "line": 36
         },
         {
           "kind": "const",
           "name": "FILE_SUMMARIES",
-          "line": 39
+          "line": 40
         },
         {
           "kind": "function",
           "name": "ensureDir",
-          "line": 65
+          "line": 67
         },
         {
           "kind": "function",
           "name": "computeMd5",
-          "line": 71
+          "line": 73
         },
         {
           "kind": "function",
           "name": "extractSymbols",
-          "line": 75
-        },
-        {
-          "kind": "const",
-          "name": "symbols",
-          "line": 76
-        },
-        {
-          "kind": "const",
-          "name": "lines",
           "line": 77
         },
         {
           "kind": "const",
-          "name": "symbolRegex",
-          "line": 80
+          "name": "symbols",
+          "line": 78
         },
         {
           "kind": "const",
-          "name": "match",
+          "name": "lines",
+          "line": 79
+        },
+        {
+          "kind": "const",
+          "name": "symbolRegex",
           "line": 82
         },
         {
           "kind": "const",
+          "name": "match",
+          "line": 84
+        },
+        {
+          "kind": "const",
           "name": "pyRegex",
-          "line": 92
+          "line": 94
         },
         {
           "kind": "const",
           "name": "match",
-          "line": 94
+          "line": 96
         },
         {
           "kind": "function",
           "name": "deriveSummary",
-          "line": 108
+          "line": 110
         },
         {
           "kind": "const",
           "name": "base",
-          "line": 113
+          "line": 115
         },
         {
           "kind": "const",
           "name": "ext",
-          "line": 114
+          "line": 116
         },
         {
           "kind": "const",
           "name": "topSymbols",
-          "line": 125
+          "line": 127
         },
         {
           "kind": "const",
           "name": "lines",
-          "line": 129
+          "line": 131
         },
         {
           "kind": "function",
           "name": "scanProjectFiles",
-          "line": 133
+          "line": 135
         },
         {
           "kind": "const",
           "name": "result",
-          "line": 134
+          "line": 136
         },
         {
           "kind": "function",
           "name": "walk",
-          "line": 136
-        },
-        {
-          "kind": "const",
-          "name": "entries",
           "line": 138
         },
         {
           "kind": "const",
+          "name": "entries",
+          "line": 140
+        },
+        {
+          "kind": "const",
           "name": "name",
-          "line": 141
+          "line": 143
         },
         {
           "kind": "const",
           "name": "fullPath",
-          "line": 146
+          "line": 148
         },
         {
           "kind": "const",
           "name": "ext",
-          "line": 151
-        },
-        {
-          "kind": "const",
-          "name": "relPath",
           "line": 153
         },
         {
           "kind": "const",
+          "name": "relPath",
+          "line": 155
+        },
+        {
+          "kind": "const",
           "name": "rootFiles",
-          "line": 167
+          "line": 169
         },
         {
           "kind": "const",
           "name": "fp",
-          "line": 169
+          "line": 171
         },
         {
           "kind": "function",
           "name": "updateSqliteFts",
-          "line": 178
+          "line": 180
         },
         {
           "kind": "const",
           "name": "dbTargets",
-          "line": 191
+          "line": 193
         },
         {
           "kind": "const",
           "name": "db",
-          "line": 195
+          "line": 197
         },
         {
           "kind": "const",
           "name": "selectStmt",
-          "line": 207
+          "line": 209
         },
         {
           "kind": "const",
           "name": "existing",
-          "line": 208
+          "line": 210
         },
         {
           "kind": "const",
           "name": "insertStmt",
-          "line": 213
+          "line": 215
         },
         {
           "kind": "const",
           "name": "deleteStmt",
-          "line": 217
-        },
-        {
-          "kind": "const",
-          "name": "tx",
           "line": 219
         },
         {
           "kind": "const",
+          "name": "tx",
+          "line": 221
+        },
+        {
+          "kind": "const",
           "name": "symbolNames",
-          "line": 223
+          "line": 225
         },
         {
           "kind": "function",
           "name": "runCodeIndexer",
-          "line": 236
+          "line": 238
         },
         {
           "kind": "const",
           "name": "scanned",
-          "line": 239
+          "line": 241
         },
         {
           "kind": "const",
           "name": "filesIndex",
-          "line": 240
+          "line": 242
         },
         {
           "kind": "const",
           "name": "content",
-          "line": 244
-        },
-        {
-          "kind": "const",
-          "name": "lines",
-          "line": 245
-        },
-        {
-          "kind": "const",
-          "name": "hash",
           "line": 246
         },
         {
           "kind": "const",
-          "name": "symbols",
+          "name": "lines",
           "line": 247
         },
         {
           "kind": "const",
-          "name": "summary",
+          "name": "hash",
           "line": 248
         },
         {
           "kind": "const",
+          "name": "symbols",
+          "line": 249
+        },
+        {
+          "kind": "const",
+          "name": "summary",
+          "line": 250
+        },
+        {
+          "kind": "const",
           "name": "projectIndex",
-          "line": 263
+          "line": 265
         },
         {
           "kind": "const",
           "name": "isWatch",
-          "line": 279
+          "line": 281
         },
         {
           "kind": "const",
           "name": "index",
-          "line": 280
+          "line": 282
         },
         {
           "kind": "const",
           "name": "watchDirs",
-          "line": 285
+          "line": 287
         },
         {
           "kind": "const",
           "name": "reindexed",
-          "line": 297
+          "line": 299
         }
       ],
-      "hash": "d3fcae59dac0ec2e6a9a7d0d0fa8e90e",
-      "sizeBytes": 12005
+      "hash": "84c7cc3765e4fba5e4a2bbe541fb5f91",
+      "sizeBytes": 12269
     },
     "scripts/marvin_git_tracker.js": {
       "relPath": "scripts/marvin_git_tracker.js",
       "summary": "Modul scripts/marvin_git_tracker.js: definește fs, path, ROOT_DIR",
-      "lineCount": 183,
+      "lineCount": 184,
       "symbols": [
         {
           "kind": "const",
@@ -5205,151 +5295,151 @@
         {
           "kind": "const",
           "name": "ROOT_DIR",
-          "line": 11
+          "line": 12
         },
         {
           "kind": "const",
           "name": "CHANGELOG_PATH",
-          "line": 12
+          "line": 13
         },
         {
           "kind": "function",
           "name": "getFormattedTimestamp",
-          "line": 14
-        },
-        {
-          "kind": "const",
-          "name": "now",
           "line": 15
         },
         {
           "kind": "const",
-          "name": "pad",
+          "name": "now",
           "line": 16
         },
         {
           "kind": "const",
-          "name": "y",
+          "name": "pad",
           "line": 17
         },
         {
           "kind": "const",
-          "name": "m",
+          "name": "y",
           "line": 18
         },
         {
           "kind": "const",
-          "name": "d",
+          "name": "m",
           "line": 19
         },
         {
           "kind": "const",
-          "name": "h",
+          "name": "d",
           "line": 20
         },
         {
           "kind": "const",
-          "name": "min",
+          "name": "h",
           "line": 21
         },
         {
           "kind": "const",
-          "name": "s",
+          "name": "min",
           "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "s",
+          "line": 23
         },
         {
           "kind": "function",
           "name": "ensureChangelogHeader",
-          "line": 26
+          "line": 27
         },
         {
           "kind": "const",
           "name": "header",
-          "line": 28
+          "line": 29
         },
         {
           "kind": "function",
           "name": "recordChangeAndCommit",
-          "line": 40
+          "line": 41
         },
         {
           "kind": "const",
           "name": "timestamp",
-          "line": 43
-        },
-        {
-          "kind": "const",
-          "name": "lineInfo",
           "line": 44
         },
         {
           "kind": "const",
-          "name": "cleanSummary",
+          "name": "lineInfo",
           "line": 45
         },
         {
           "kind": "const",
-          "name": "cleanReason",
+          "name": "cleanSummary",
           "line": 46
         },
         {
           "kind": "const",
+          "name": "cleanReason",
+          "line": 47
+        },
+        {
+          "kind": "const",
           "name": "entry",
-          "line": 48
+          "line": 49
         },
         {
           "kind": "const",
           "name": "commitMsg",
-          "line": 66
+          "line": 67
         },
         {
           "kind": "const",
           "name": "remotes",
-          "line": 75
+          "line": 76
         },
         {
           "kind": "function",
           "name": "rollbackLastChange",
-          "line": 96
-        },
-        {
-          "kind": "const",
-          "name": "timestamp",
           "line": 97
         },
         {
           "kind": "const",
+          "name": "timestamp",
+          "line": 98
+        },
+        {
+          "kind": "const",
           "name": "logOut",
-          "line": 101
+          "line": 102
         },
         {
           "kind": "const",
           "name": "entry",
-          "line": 108
+          "line": 109
         },
         {
           "kind": "function",
           "name": "getGitStatus",
-          "line": 138
+          "line": 139
         },
         {
           "kind": "const",
           "name": "remoteOut",
-          "line": 151
+          "line": 152
         },
         {
           "kind": "const",
           "name": "statusOut",
-          "line": 158
+          "line": 159
         }
       ],
-      "hash": "e9d25d5584f93cc92624cdd7322e4465",
-      "sizeBytes": 5641
+      "hash": "eebd46843ffc821f29856c5a291afe11",
+      "sizeBytes": 5752
     },
     "scripts/mcp_mortyck_server.js": {
       "relPath": "scripts/mcp_mortyck_server.js",
       "summary": "Server MCP (Model Context Protocol) pentru integrarea nativă Antigravity cu MortyckHomeAssistent",
-      "lineCount": 298,
+      "lineCount": 299,
       "symbols": [
         {
           "kind": "const",
@@ -5399,141 +5489,220 @@
         {
           "kind": "const",
           "name": "TOOLS",
-          "line": 21
+          "line": 22
         },
         {
           "kind": "function",
           "name": "handleGetProjectIndex",
-          "line": 96
+          "line": 97
         },
         {
           "kind": "const",
           "name": "raw",
-          "line": 108
-        },
-        {
-          "kind": "const",
-          "name": "ext",
           "line": 109
         },
         {
           "kind": "const",
+          "name": "ext",
+          "line": 110
+        },
+        {
+          "kind": "const",
           "name": "filteredFiles",
-          "line": 112
+          "line": 113
         },
         {
           "kind": "const",
           "name": "compactFiles",
-          "line": 126
+          "line": 127
         },
         {
           "kind": "function",
           "name": "handleReadCodeSnippet",
-          "line": 143
+          "line": 144
         },
         {
           "kind": "const",
           "name": "fullPath",
-          "line": 145
+          "line": 146
         },
         {
           "kind": "const",
           "name": "content",
-          "line": 154
-        },
-        {
-          "kind": "const",
-          "name": "allLines",
           "line": 155
         },
         {
           "kind": "const",
-          "name": "start",
+          "name": "allLines",
           "line": 156
         },
         {
           "kind": "const",
-          "name": "end",
+          "name": "start",
           "line": 157
         },
         {
           "kind": "const",
+          "name": "end",
+          "line": 158
+        },
+        {
+          "kind": "const",
           "name": "snippetLines",
-          "line": 159
+          "line": 160
         },
         {
           "kind": "function",
           "name": "handleGetDevicesSummary",
-          "line": 170
+          "line": 171
         },
         {
           "kind": "const",
           "name": "raw",
-          "line": 175
+          "line": 176
         },
         {
           "kind": "const",
           "name": "summary",
-          "line": 176
+          "line": 177
         },
         {
           "kind": "function",
           "name": "handleGetRecentChangelog",
-          "line": 191
-        },
-        {
-          "kind": "const",
-          "name": "limit",
           "line": 192
         },
         {
           "kind": "const",
-          "name": "gitStatus",
+          "name": "limit",
           "line": 193
         },
         {
           "kind": "const",
+          "name": "gitStatus",
+          "line": 194
+        },
+        {
+          "kind": "const",
           "name": "entries",
-          "line": 200
+          "line": 201
         },
         {
           "kind": "const",
           "name": "recentEntries",
-          "line": 201
+          "line": 202
         },
         {
           "kind": "function",
           "name": "handleGetMarvinTasks",
-          "line": 209
+          "line": 210
         },
         {
           "kind": "function",
           "name": "sendResponse",
-          "line": 220
-        },
-        {
-          "kind": "const",
-          "name": "res",
           "line": 221
         },
         {
           "kind": "const",
+          "name": "res",
+          "line": 222
+        },
+        {
+          "kind": "const",
           "name": "rl",
-          "line": 230
+          "line": 231
         },
         {
           "kind": "const",
           "name": "trimmed",
-          "line": 237
+          "line": 238
         },
         {
           "kind": "const",
           "name": "msg",
-          "line": 241
+          "line": 242
         }
       ],
-      "hash": "fee17eb90d8be13f1e345c1f102edfcf",
-      "sizeBytes": 8256
+      "hash": "ae81d8534dd4d02bd702054f9b6720f7",
+      "sizeBytes": 8367
+    },
+    "scripts/platform_detect.js": {
+      "relPath": "scripts/platform_detect.js",
+      "summary": "Motor centralizat de detecție multi-platformă (Windows & Linux) pentru căi relative, go2rtc și interpretor Python",
+      "lineCount": 70,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fs",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "IS_WINDOWS",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "GO2RTC_BINARY_NAME",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "GO2RTC_RELATIVE_PATH",
+          "line": 12
+        },
+        {
+          "kind": "function",
+          "name": "getPythonExecutable",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "winVenv",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "linuxVenv",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "linuxVenv3",
+          "line": 27
+        },
+        {
+          "kind": "function",
+          "name": "getGo2RtcBinary",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "binaryName",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "candidateDirs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "p",
+          "line": 48
+        }
+      ],
+      "hash": "93a9b51335b0d7848c5b95646166f78a",
+      "sizeBytes": 2091
     },
     "docker/blurams-rtsp/bridge.py": {
       "relPath": "docker/blurams-rtsp/bridge.py",
@@ -5593,7 +5762,7 @@
       "summary": "Registrul stării dispozitivelor IoT și camerelor IP salvate în baza de date locală",
       "lineCount": 83,
       "symbols": [],
-      "hash": "fa80c42cdae7526406fa58e3746d8ed5",
+      "hash": "cc1802702a405375df78540c5c17eeaf",
       "sizeBytes": 2200
     },
     "backend/data/pcs.json": {
@@ -5601,8 +5770,8 @@
       "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
       "lineCount": 35,
       "symbols": [],
-      "hash": "63a64622d0e5381cbef8769ee11c6a37",
-      "sizeBytes": 982
+      "hash": "1a160a0bd46af51b36b57284677be658",
+      "sizeBytes": 983
     },
     "backend/data/settings.json": {
       "relPath": "backend/data/settings.json",
@@ -5611,6 +5780,14 @@
       "symbols": [],
       "hash": "33727ba985e169dca5633d5be8a250fc",
       "sizeBytes": 138
+    },
+    "package.json": {
+      "relPath": "package.json",
+      "summary": "Manifest dependențe și scripturi npm ale proiectului",
+      "lineCount": 15,
+      "symbols": [],
+      "hash": "08dca47de1b16051062710d856db63f4",
+      "sizeBytes": 548
     },
     "START_ALL.bat": {
       "relPath": "START_ALL.bat",
@@ -5631,10 +5808,10 @@
     "CHANGELOG_AI.md": {
       "relPath": "CHANGELOG_AI.md",
       "summary": "Jurnal permanent al tuturor modificărilor de cod operate de M.A.R.V.I.N. și Antigravity",
-      "lineCount": 20,
+      "lineCount": 32,
       "symbols": [],
-      "hash": "e89b0b2afdddd05c040b791f555707f0",
-      "sizeBytes": 1479
+      "hash": "3b6d81f2542e3f162c1f323bf7ad58b9",
+      "sizeBytes": 2524
     },
     "README.md": {
       "relPath": "README.md",

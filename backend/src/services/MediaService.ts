@@ -38,29 +38,45 @@ export class MediaService {
   }
 
   /**
-   * Locate the bundled go2rtc binary and config file in the project
+   * Locate the bundled go2rtc binary and config file in the project (Windows & Linux)
    */
   private findBinaryAndConfig(): { exePath: string | null; configPath: string | null } {
+    const isWin = process.platform === 'win32';
+    const binaryName = isWin ? 'go2rtc.exe' : 'go2rtc';
+
     const candidateDirs = [
       path.resolve(process.cwd(), 'docker'),
       path.resolve(process.cwd(), '..', 'docker'),
       path.resolve(__dirname, '..', '..', 'docker'),
-      path.resolve(__dirname, '..', '..', '..', 'docker'),
-      'D:\\MortyckHome\\docker'
+      path.resolve(__dirname, '..', '..', '..', 'docker')
     ];
 
     let exePath: string | null = null;
     let configPath: string | null = null;
 
     for (const dir of candidateDirs) {
-      const exeCandidate = path.join(dir, process.platform === 'win32' ? 'go2rtc.exe' : 'go2rtc');
+      const exeCandidate = path.join(dir, binaryName);
       if (fs.existsSync(exeCandidate)) {
         exePath = exeCandidate;
+        if (!isWin) {
+          try {
+            fs.chmodSync(exeCandidate, 0o755);
+          } catch {}
+        }
         const configCandidate = path.join(dir, 'go2rtc.yaml');
         if (fs.existsSync(configCandidate)) {
           configPath = configCandidate;
         }
         break;
+      }
+    }
+
+    // Fallback on Linux if in PATH or local directory
+    if (!exePath && !isWin) {
+      const localRel = path.resolve(process.cwd(), 'docker', 'go2rtc');
+      if (fs.existsSync(localRel)) {
+        exePath = localRel;
+        try { fs.chmodSync(localRel, 0o755); } catch {}
       }
     }
 
@@ -171,8 +187,7 @@ export class MediaService {
       path.resolve(process.cwd(), 'scripts', 'blurams_bridge.py'),
       path.resolve(process.cwd(), '..', 'scripts', 'blurams_bridge.py'),
       path.resolve(__dirname, '..', '..', 'scripts', 'blurams_bridge.py'),
-      path.resolve(__dirname, '..', '..', '..', 'scripts', 'blurams_bridge.py'),
-      'D:\\MortyckHome\\scripts\\blurams_bridge.py'
+      path.resolve(__dirname, '..', '..', '..', 'scripts', 'blurams_bridge.py')
     ];
 
     let scriptPath: string | null = null;
@@ -189,13 +204,32 @@ export class MediaService {
       return false;
     }
 
+    const isWin = process.platform === 'win32';
+    const rootDir = path.dirname(path.dirname(scriptPath));
+    let pythonCmd = isWin ? 'python' : 'python3';
+
+    if (isWin) {
+      const venvWin = path.join(rootDir, 'venv', 'Scripts', 'python.exe');
+      if (fs.existsSync(venvWin)) pythonCmd = venvWin;
+    } else {
+      const venvLinux = path.join(rootDir, 'venv', 'bin', 'python');
+      if (fs.existsSync(venvLinux)) {
+        pythonCmd = venvLinux;
+      } else {
+        const venvLinux3 = path.join(rootDir, 'venv', 'bin', 'python3');
+        if (fs.existsSync(venvLinux3)) {
+          pythonCmd = venvLinux3;
+        }
+      }
+    }
+
     try {
-      console.log(`[MediaService] Launching Blurams bridge: python ${scriptPath}`);
-      const child = spawn('python', [scriptPath], {
+      console.log(`[MediaService] Launching Blurams bridge (${isWin ? 'Windows' : 'Linux'}): ${pythonCmd} ${scriptPath}`);
+      const child = spawn(pythonCmd, [scriptPath], {
         detached: true,
         stdio: 'ignore',
         windowsHide: true,
-        cwd: path.dirname(path.dirname(scriptPath))
+        cwd: rootDir
       });
       child.unref();
 

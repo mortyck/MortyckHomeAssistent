@@ -17,3 +17,15 @@ Fiecare intrare este asociată cu un commit Git local (`git commit -m "MARVIN: <
   - `data/marvin_tasks.json` (Nou: coadă de sarcini asincronă cu urmărire live)
   - `.gitignore` (Nou: reguli de excludere chei sensibile, baze de date binare și fișiere temporare)
 - **Motiv:** Implementarea sistemului de memorie permanentă, urmărire Git/GitHub, conversia numelui asistentului în M.A.R.V.I.N. și operare 100% portabilă cu căi relative.
+
+### [2026-11-22 00:50:00] - MARVIN: Cross-platform Linux support
+- **Actor:** M.A.R.V.I.N. // CORE & Antigravity
+- **Fișiere afectate:**
+  - `backend/src/index.ts` (Adăugare detecție OS Windows/Linux, rezoluție binar go2rtc/python și servire directă frontend single-page dashboard pe port 4000)
+  - `backend/src/services/MediaService.ts` (Eliminare căi hardcodate, suport cross-platform Windows go2rtc.exe vs Linux ./go2rtc, venv/bin/python vs python3)
+  - `backend/src/services/NetworkScannerService.ts` (Suport parsare tabelă ARP atât pe Windows cât și pe Linux)
+  - `scripts/platform_detect.js` (Nou: modul centralizat de detecție runtime și rezoluție căi binare)
+  - `ecosystem.config.js` (Configurație PM2 multi-platformă adaptivă)
+  - `package.json` (Nou: scripturi root build & start pentru întregul proiect)
+  - `start_all.sh` & `stop_all.sh` (Nou: scripturi bash native pentru pornire și oprire curată pe Linux)
+- **Motiv:** Asigurarea funcționării native 100% cross-platform atât pe Windows cât și pe Linux.

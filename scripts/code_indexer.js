@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { IS_WINDOWS, GO2RTC_BINARY_NAME, getPythonExecutable, getGo2RtcBinary } = require('./platform_detect');
 
 // Resolve project root strictly relative to this script
 const ROOT_DIR = path.resolve(__dirname, '..');
@@ -58,6 +59,7 @@ const FILE_SUMMARIES = {
   'backend/src/services/MediaService.ts': 'Integrare cu motorul media go2rtc: înregistrare fluxuri RTSP și mapare WebRTC',
   'scripts/blurams_bridge.py': 'Punte RTSP H.264 și captură instantanee Blurams Cloud pentru camera Garage Workshop 2 (port 8556)',
   'scripts/code_indexer.js': 'Indexator structural local pentru M.A.R.V.I.N.: generează data/project_index.json și sincronizează FTS5',
+  'scripts/platform_detect.js': 'Motor centralizat de detecție multi-platformă (Windows & Linux) pentru căi relative, go2rtc și interpretor Python',
   'scripts/mcp_mortyck_server.js': 'Server MCP (Model Context Protocol) pentru integrarea nativă Antigravity cu MortyckHomeAssistent',
   'docker/go2rtc.yaml': 'Configurația motorului de streaming go2rtc: mapări fluxuri RTSP/WebRTC pentru Wansview, CamHi și Blurams'
 };

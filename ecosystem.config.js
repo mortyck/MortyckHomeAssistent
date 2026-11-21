@@ -15,11 +15,16 @@ const path = require('path');
  *      pm2-startup install
  */
 
+const { IS_WINDOWS, getPythonExecutable, getGo2RtcBinary } = require('./scripts/platform_detect');
+
+const go2rtcScript = getGo2RtcBinary(__dirname);
+const pythonScript = getPythonExecutable(__dirname);
+
 module.exports = {
   apps: [
     {
       name: 'mortyck-go2rtc',
-      script: path.resolve(__dirname, 'docker', 'go2rtc.exe'),
+      script: go2rtcScript,
       args: ['-config', path.resolve(__dirname, 'docker', 'go2rtc.yaml')],
       cwd: path.resolve(__dirname, 'docker'),
       instances: 1,
@@ -30,7 +35,7 @@ module.exports = {
     },
     {
       name: 'mortyck-blurams-bridge',
-      script: 'python',
+      script: pythonScript,
       args: [path.resolve(__dirname, 'scripts', 'blurams_bridge.py')],
       cwd: path.resolve(__dirname),
       instances: 1,

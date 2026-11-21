@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const { exec, execSync } = require('child_process');
+const { IS_WINDOWS, GO2RTC_BINARY_NAME, getPythonExecutable, getGo2RtcBinary } = require('./platform_detect');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const CHANGELOG_PATH = path.join(ROOT_DIR, 'CHANGELOG_AI.md');
