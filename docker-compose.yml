@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  go2rtc:
+    image: alexxit/go2rtc:latest
+    container_name: mortyckhomeassistent-go2rtc
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./docker/go2rtc.yaml:/config/go2rtc.yaml:ro
+    environment:
+      - TZ=UTC
+
+  blurams-rtsp:
+    build:
+      context: ./docker/blurams-rtsp
+      dockerfile: Dockerfile
+    container_name: mortyckhomeassistent-blurams-rtsp
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - BLURAMS_EMAIL=${BLURAMS_EMAIL:-user@example.com}
+      - BLURAMS_PASSWORD=${BLURAMS_PASSWORD:-password}
+      - BLURAMS_DEVICE_ID=1800420411702000132815
+      - BLURAMS_CAMERA_IP=192.168.8.161
+      - RTSP_PORT=8556
+      - STREAM_NAME=blurams_garage
+      - GO2RTC_API=http://127.0.0.1:1984
+    depends_on:
+      - go2rtc
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/backend.Dockerfile
+    container_name: mortyckhomeassistent-backend
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PORT=4000
+      - GO2RTC_API_URL=http://127.0.0.1:1984
+      - DATA_DIR=/app/data
+      - NODE_ENV=production
+    volumes:
+      - mortyckhomeassistent-data:/app/data
+    depends_on:
+      - go2rtc
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/frontend.Dockerfile
+    container_name: mortyckhomeassistent-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mortyckhomeassistent-data:

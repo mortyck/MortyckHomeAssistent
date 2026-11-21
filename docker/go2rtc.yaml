@@ -1,0 +1,33 @@
+# go2rtc configuration for MortyckHomeAssistent
+api:
+  listen: ":1984"
+  origin: "*"
+
+rtsp:
+  listen: ":8554"
+
+webrtc:
+  listen: ":8555"
+  candidates:
+    - stun:stun.l.google.com:19302
+
+streams:
+  blurams_garage:
+    - ffmpeg:rtsp://127.0.0.1:8556/blurams_garage#video=h264
+  camhi-mwptt2lv:
+    - rtsp://admin:admin@192.168.8.162:554/11
+  cam_wansview-mwps4f18:
+    - rtsp://MortyckGarage:Mortyck19944991!@192.168.8.163:554/live/ch0
+  cam_camhi-mwptt2lv:
+    - rtsp://admin:admin@192.168.8.162:554/11
+  cam_blurams_garage:
+    - ffmpeg:rtsp://127.0.0.1:8556/blurams_garage#video=h264
+  wansview-mwpw9e56:
+    - rtsp://admin:Mortyck19944991@192.168.1.87:554/11
+  cam_wansview-mwpw9e56:
+    - rtsp://admin:Mortyck19944991@192.168.1.87:554/11
+  wansview-mwps4f18:
+    - rtsp://MortyckGarage:Mortyck19944991!@192.168.8.163:554/live/ch0
+
+log:
+  level: info

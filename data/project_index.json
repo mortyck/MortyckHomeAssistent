@@ -1,0 +1,5648 @@
+{
+  "version": "1.0.0",
+  "assistant": "M.A.R.V.I.N.",
+  "projectRootRel": ".",
+  "generatedAt": "2026-11-21T22:27:33.031Z",
+  "totalFiles": 49,
+  "files": {
+    "backend/src/adapters/BaseDeviceAdapter.ts": {
+      "relPath": "backend/src/adapters/BaseDeviceAdapter.ts",
+      "summary": "Modul backend/src/adapters/BaseDeviceAdapter.ts: definește AdapterEvents, backoff",
+      "lineCount": 72,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AdapterEvents",
+          "line": 4
+        },
+        {
+          "kind": "const",
+          "name": "backoff",
+          "line": 51
+        }
+      ],
+      "hash": "9001ca45f2d5d0f6387ecdd812af0615",
+      "sizeBytes": 2013
+    },
+    "backend/src/adapters/GenericBridgeAdapter.ts": {
+      "relPath": "backend/src/adapters/GenericBridgeAdapter.ts",
+      "summary": "Modul backend/src/adapters/GenericBridgeAdapter.ts: definește GenericBridgeAdapter, rawUrl, effectiveSource",
+      "lineCount": 120,
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GenericBridgeAdapter",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "rawUrl",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "effectiveSource",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "endpoint",
+          "line": 54
+        },
+        {
+          "kind": "const",
+          "name": "token",
+          "line": 55
+        },
+        {
+          "kind": "const",
+          "name": "headers",
+          "line": 58
+        },
+        {
+          "kind": "const",
+          "name": "controller",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "timeoutId",
+          "line": 62
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 63
+        },
+        {
+          "kind": "const",
+          "name": "data",
+          "line": 67
+        },
+        {
+          "kind": "const",
+          "name": "isMotion",
+          "line": 69
+        }
+      ],
+      "hash": "36d8d373f8e9b798b214d1e1587d72bb",
+      "sizeBytes": 4268
+    },
+    "backend/src/adapters/OnvifCameraAdapter.ts": {
+      "relPath": "backend/src/adapters/OnvifCameraAdapter.ts",
+      "summary": "Modul backend/src/adapters/OnvifCameraAdapter.ts: definește OnvifCameraAdapter, rtspUrl, brand",
+      "lineCount": 210,
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OnvifCameraAdapter",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "rtspUrl",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "brand",
+          "line": 76
+        },
+        {
+          "kind": "const",
+          "name": "actionMap",
+          "line": 95
+        },
+        {
+          "kind": "const",
+          "name": "action",
+          "line": 105
+        },
+        {
+          "kind": "const",
+          "name": "speed",
+          "line": 106
+        },
+        {
+          "kind": "const",
+          "name": "creds",
+          "line": 107
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 108
+        },
+        {
+          "kind": "const",
+          "name": "url",
+          "line": 112
+        },
+        {
+          "kind": "const",
+          "name": "controller",
+          "line": 115
+        },
+        {
+          "kind": "const",
+          "name": "timeoutId",
+          "line": 116
+        },
+        {
+          "kind": "const",
+          "name": "headers",
+          "line": 117
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 120
+        },
+        {
+          "kind": "const",
+          "name": "onvifPort",
+          "line": 131
+        },
+        {
+          "kind": "const",
+          "name": "serviceUrl",
+          "line": 132
+        },
+        {
+          "kind": "const",
+          "name": "speed",
+          "line": 137
+        },
+        {
+          "kind": "const",
+          "name": "soapBody",
+          "line": 149
+        },
+        {
+          "kind": "const",
+          "name": "controller",
+          "line": 174
+        },
+        {
+          "kind": "const",
+          "name": "timeoutId",
+          "line": 175
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 176
+        },
+        {
+          "kind": "const",
+          "name": "creds",
+          "line": 190
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 198
+        },
+        {
+          "kind": "const",
+          "name": "defaultPath",
+          "line": 199
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 200
+        }
+      ],
+      "hash": "b312cae2d82d5d002d72eb0f93567240",
+      "sizeBytes": 7233
+    },
+    "backend/src/adapters/TuyaLocalAdapter.ts": {
+      "relPath": "backend/src/adapters/TuyaLocalAdapter.ts",
+      "summary": "Modul backend/src/adapters/TuyaLocalAdapter.ts: definește TuyaLocalAdapter, options, connectPromise",
+      "lineCount": 182,
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TuyaLocalAdapter",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "options",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "connectPromise",
+          "line": 70
+        },
+        {
+          "kind": "const",
+          "name": "timeoutPromise",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "dps",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "updates",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 105
+        },
+        {
+          "kind": "const",
+          "name": "dpsPayload",
+          "line": 137
+        },
+        {
+          "kind": "const",
+          "name": "p",
+          "line": 140
+        },
+        {
+          "kind": "const",
+          "name": "b",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "ct",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "ratio",
+          "line": 156
+        }
+      ],
+      "hash": "ff8a7dea56e5c6b71718d3c3bfd09ddd",
+      "sizeBytes": 6144
+    },
+    "backend/src/db/Database.ts": {
+      "relPath": "backend/src/db/Database.ts",
+      "summary": "Modul backend/src/db/Database.ts: definește DATA_DIR, DEVICES_FILE, AUTOMATIONS_FILE",
+      "lineCount": 314,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DATA_DIR",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "DEVICES_FILE",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "AUTOMATIONS_FILE",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "PCS_FILE",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "SETTINGS_FILE",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "INITIAL_DEVICES",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "INITIAL_PCS",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "INITIAL_AUTOMATIONS",
+          "line": 52
+        },
+        {
+          "kind": "function",
+          "name": "normalizeStreamId",
+          "line": 54
+        },
+        {
+          "kind": "class",
+          "name": "Database",
+          "line": 58
+        },
+        {
+          "kind": "const",
+          "name": "streamId",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "creds",
+          "line": 99
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 100
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 103
+        },
+        {
+          "kind": "const",
+          "name": "defaultPath",
+          "line": 104
+        },
+        {
+          "kind": "const",
+          "name": "rtspPath",
+          "line": 105
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 118
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 119
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 129
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 130
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 138
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 139
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 162
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 171
+        },
+        {
+          "kind": "const",
+          "name": "list",
+          "line": 180
+        },
+        {
+          "kind": "const",
+          "name": "normalized",
+          "line": 205
+        },
+        {
+          "kind": "const",
+          "name": "dev",
+          "line": 212
+        },
+        {
+          "kind": "const",
+          "name": "dev",
+          "line": 221
+        },
+        {
+          "kind": "const",
+          "name": "deleted",
+          "line": 230
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 251
+        },
+        {
+          "kind": "const",
+          "name": "deleted",
+          "line": 261
+        },
+        {
+          "kind": "const",
+          "name": "deleted",
+          "line": 282
+        }
+      ],
+      "hash": "7b00503301dcf706a7496e34246f0bdc",
+      "sizeBytes": 9528
+    },
+    "backend/src/index.ts": {
+      "relPath": "backend/src/index.ts",
+      "summary": "Punctul de pornire al serverului backend: Express API, WebSocket broadcast, noVNC proxy și inițializare noduri",
+      "lineCount": 139,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROOT_ENV_PATH",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "PORT",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "app",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "server",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "vncProxy",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "BACKEND_ROOT",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "NOVNC_PUBLIC_DIR",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "NOVNC_MODULE_DIR",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "wss",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "wsClients",
+          "line": 47
+        },
+        {
+          "kind": "const",
+          "name": "rawUrl",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "pathname",
+          "line": 51
+        },
+        {
+          "kind": "function",
+          "name": "broadcast",
+          "line": 73
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "parsed",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "deviceManager",
+          "line": 110
+        },
+        {
+          "kind": "const",
+          "name": "media",
+          "line": 125
+        },
+        {
+          "kind": "const",
+          "name": "go2rtcOk",
+          "line": 126
+        },
+        {
+          "kind": "const",
+          "name": "bridgeOk",
+          "line": 129
+        }
+      ],
+      "hash": "fd8667b8d40ae51ce333f1aa510d8544",
+      "sizeBytes": 4762
+    },
+    "backend/src/routes/api.ts": {
+      "relPath": "backend/src/routes/api.ts",
+      "summary": "Definițiile rutelor REST API: /devices, /pcs, /cameras, /ai/command, /marvin/task, /marvin/rollback",
+      "lineCount": 769,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "ENV_FILE_PATH",
+          "line": 17
+        },
+        {
+          "kind": "function",
+          "name": "createApiRouter",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "router",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "db",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "deviceManager",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "scanner",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "mediaService",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "wolService",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "jarvisAi",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "vncProxy",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "isOnline",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "latencyMs",
+          "line": 49
+        },
+        {
+          "kind": "function",
+          "name": "fetchBluramsBridgeStatus",
+          "line": 68
+        },
+        {
+          "kind": "const",
+          "name": "controller",
+          "line": 70
+        },
+        {
+          "kind": "const",
+          "name": "t",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 72
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "onlineCount",
+          "line": 85
+        },
+        {
+          "kind": "const",
+          "name": "garageDevicesOnline",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "tailscaleConnected",
+          "line": 93
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 118
+        },
+        {
+          "kind": "const",
+          "name": "dev",
+          "line": 119
+        },
+        {
+          "kind": "function",
+          "name": "prepareAndRegisterCameraStream",
+          "line": 124
+        },
+        {
+          "kind": "const",
+          "name": "streamId",
+          "line": 126
+        },
+        {
+          "kind": "const",
+          "name": "rawUrl",
+          "line": 128
+        },
+        {
+          "kind": "const",
+          "name": "effectiveUrl",
+          "line": 129
+        },
+        {
+          "kind": "const",
+          "name": "creds",
+          "line": 149
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 150
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 153
+        },
+        {
+          "kind": "const",
+          "name": "defaultPath",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "rtspPath",
+          "line": 155
+        },
+        {
+          "kind": "const",
+          "name": "fullRtspUrl",
+          "line": 156
+        },
+        {
+          "kind": "const",
+          "name": "streamId",
+          "line": 158
+        },
+        {
+          "kind": "const",
+          "name": "body",
+          "line": 178
+        },
+        {
+          "kind": "const",
+          "name": "pcId",
+          "line": 181
+        },
+        {
+          "kind": "const",
+          "name": "vncPort",
+          "line": 182
+        },
+        {
+          "kind": "const",
+          "name": "location",
+          "line": 183
+        },
+        {
+          "kind": "const",
+          "name": "pcPayload",
+          "line": 184
+        },
+        {
+          "kind": "const",
+          "name": "savedPc",
+          "line": 199
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 204
+        },
+        {
+          "kind": "const",
+          "name": "device",
+          "line": 219
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 229
+        },
+        {
+          "kind": "const",
+          "name": "existing",
+          "line": 230
+        },
+        {
+          "kind": "const",
+          "name": "updated",
+          "line": 233
+        },
+        {
+          "kind": "const",
+          "name": "result",
+          "line": 244
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 253
+        },
+        {
+          "kind": "const",
+          "name": "success",
+          "line": 254
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 261
+        },
+        {
+          "kind": "const",
+          "name": "command",
+          "line": 262
+        },
+        {
+          "kind": "const",
+          "name": "success",
+          "line": 263
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 269
+        },
+        {
+          "kind": "const",
+          "name": "ptzCmd",
+          "line": 270
+        },
+        {
+          "kind": "const",
+          "name": "success",
+          "line": 271
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 276
+        },
+        {
+          "kind": "const",
+          "name": "detected",
+          "line": 277
+        },
+        {
+          "kind": "const",
+          "name": "testResult",
+          "line": 283
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 294
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 310
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 319
+        },
+        {
+          "kind": "const",
+          "name": "existing",
+          "line": 320
+        },
+        {
+          "kind": "const",
+          "name": "updated",
+          "line": 322
+        },
+        {
+          "kind": "const",
+          "name": "saved",
+          "line": 323
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 329
+        },
+        {
+          "kind": "const",
+          "name": "deleted",
+          "line": 330
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 337
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 338
+        },
+        {
+          "kind": "const",
+          "name": "broadcastIp",
+          "line": 342
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 351
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 352
+        },
+        {
+          "kind": "const",
+          "name": "success",
+          "line": 359
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 367
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 368
+        },
+        {
+          "kind": "const",
+          "name": "isOnline",
+          "line": 375
+        },
+        {
+          "kind": "const",
+          "name": "latencyMs",
+          "line": 376
+        },
+        {
+          "kind": "const",
+          "name": "updated",
+          "line": 378
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 384
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 385
+        },
+        {
+          "kind": "const",
+          "name": "vncPort",
+          "line": 388
+        },
+        {
+          "kind": "const",
+          "name": "isOnline",
+          "line": 393
+        },
+        {
+          "kind": "const",
+          "name": "latencyMs",
+          "line": 394
+        },
+        {
+          "kind": "const",
+          "name": "viewerParams",
+          "line": 398
+        },
+        {
+          "kind": "const",
+          "name": "subnetPrefix",
+          "line": 425
+        },
+        {
+          "kind": "const",
+          "name": "streams",
+          "line": 450
+        },
+        {
+          "kind": "const",
+          "name": "registered",
+          "line": 462
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 467
+        },
+        {
+          "kind": "const",
+          "name": "sdpOffer",
+          "line": 470
+        },
+        {
+          "kind": "const",
+          "name": "go2rtcUrl",
+          "line": 471
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 472
+        },
+        {
+          "kind": "const",
+          "name": "upstreamRes",
+          "line": 473
+        },
+        {
+          "kind": "const",
+          "name": "text",
+          "line": 480
+        },
+        {
+          "kind": "const",
+          "name": "answerSdp",
+          "line": 484
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 493
+        },
+        {
+          "kind": "const",
+          "name": "go2rtcUrl",
+          "line": 495
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 496
+        },
+        {
+          "kind": "const",
+          "name": "upstreamRes",
+          "line": 497
+        },
+        {
+          "kind": "const",
+          "name": "buffer",
+          "line": 501
+        },
+        {
+          "kind": "const",
+          "name": "status",
+          "line": 511
+        },
+        {
+          "kind": "const",
+          "name": "r",
+          "line": 518
+        },
+        {
+          "kind": "const",
+          "name": "data",
+          "line": 519
+        },
+        {
+          "kind": "const",
+          "name": "envVars",
+          "line": 528
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 531
+        },
+        {
+          "kind": "const",
+          "name": "trimmed",
+          "line": 533
+        },
+        {
+          "kind": "const",
+          "name": "idx",
+          "line": 535
+        },
+        {
+          "kind": "const",
+          "name": "k",
+          "line": 536
+        },
+        {
+          "kind": "const",
+          "name": "v",
+          "line": 537
+        },
+        {
+          "kind": "const",
+          "name": "bluramsStatus",
+          "line": 543
+        },
+        {
+          "kind": "const",
+          "name": "aiStatus",
+          "line": 544
+        },
+        {
+          "kind": "const",
+          "name": "key",
+          "line": 588
+        },
+        {
+          "kind": "const",
+          "name": "val",
+          "line": 589
+        },
+        {
+          "kind": "const",
+          "name": "lineRegex",
+          "line": 592
+        },
+        {
+          "kind": "const",
+          "name": "bluramsStatus",
+          "line": 609
+        },
+        {
+          "kind": "const",
+          "name": "aiStatus",
+          "line": 610
+        },
+        {
+          "kind": "const",
+          "name": "status",
+          "line": 619
+        },
+        {
+          "kind": "const",
+          "name": "history",
+          "line": 624
+        },
+        {
+          "kind": "const",
+          "name": "telemetry",
+          "line": 625
+        },
+        {
+          "kind": "const",
+          "name": "count",
+          "line": 630
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 640
+        },
+        {
+          "kind": "const",
+          "name": "result",
+          "line": 641
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 650
+        },
+        {
+          "kind": "const",
+          "name": "status",
+          "line": 651
+        },
+        {
+          "kind": "const",
+          "name": "changelogPath",
+          "line": 660
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 664
+        },
+        {
+          "kind": "const",
+          "name": "tasksPath",
+          "line": 673
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 677
+        },
+        {
+          "kind": "const",
+          "name": "tasksPath",
+          "line": 686
+        },
+        {
+          "kind": "const",
+          "name": "response",
+          "line": 700
+        },
+        {
+          "kind": "const",
+          "name": "rule",
+          "line": 713
+        },
+        {
+          "kind": "const",
+          "name": "saved",
+          "line": 715
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 721
+        },
+        {
+          "kind": "const",
+          "name": "deleted",
+          "line": 722
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 729
+        },
+        {
+          "kind": "const",
+          "name": "rule",
+          "line": 730
+        },
+        {
+          "kind": "const",
+          "name": "rooms",
+          "line": 746
+        },
+        {
+          "kind": "const",
+          "name": "id",
+          "line": 752
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 753
+        }
+      ],
+      "hash": "0af03306a5d253db51b8855ef46fa4bf",
+      "sizeBytes": 29620
+    },
+    "backend/src/services/AutomationEngine.ts": {
+      "relPath": "backend/src/services/AutomationEngine.ts",
+      "summary": "Modul backend/src/services/AutomationEngine.ts: definește AutomationEngine, rules, rules",
+      "lineCount": 86,
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AutomationEngine",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "rules",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "rules",
+          "line": 47
+        },
+        {
+          "kind": "const",
+          "name": "prop",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "val",
+          "line": 52
+        },
+        {
+          "kind": "const",
+          "name": "operator",
+          "line": 54
+        }
+      ],
+      "hash": "7b5ac050165190afe36aaca3b7705cb9",
+      "sizeBytes": 3251
+    },
+    "backend/src/services/DeviceManager.ts": {
+      "relPath": "backend/src/services/DeviceManager.ts",
+      "summary": "Manager gestiune stare dispozitive inteligente Tuya și camere IP",
+      "lineCount": 263,
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeviceManager",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "dev",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "adapter",
+          "line": 90
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "media",
+          "line": 97
+        },
+        {
+          "kind": "const",
+          "name": "adapter",
+          "line": 105
+        },
+        {
+          "kind": "const",
+          "name": "success",
+          "line": 110
+        },
+        {
+          "kind": "const",
+          "name": "adapter",
+          "line": 119
+        },
+        {
+          "kind": "const",
+          "name": "adapter",
+          "line": 128
+        },
+        {
+          "kind": "const",
+          "name": "socket",
+          "line": 138
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 167
+        },
+        {
+          "kind": "const",
+          "name": "isOpen",
+          "line": 168
+        },
+        {
+          "kind": "const",
+          "name": "hasKeys",
+          "line": 176
+        },
+        {
+          "kind": "const",
+          "name": "rtspPort",
+          "line": 187
+        },
+        {
+          "kind": "const",
+          "name": "onvifPort",
+          "line": 188
+        },
+        {
+          "kind": "const",
+          "name": "username",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "password",
+          "line": 196
+        },
+        {
+          "kind": "const",
+          "name": "rtspPath",
+          "line": 197
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 198
+        },
+        {
+          "kind": "const",
+          "name": "rtspUrl",
+          "line": 199
+        },
+        {
+          "kind": "const",
+          "name": "safeRtspUrl",
+          "line": 200
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 211
+        },
+        {
+          "kind": "const",
+          "name": "mediaService",
+          "line": 214
+        },
+        {
+          "kind": "const",
+          "name": "go2rtcOk",
+          "line": 217
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 227
+        },
+        {
+          "kind": "const",
+          "name": "defaultRaw",
+          "line": 229
+        },
+        {
+          "kind": "const",
+          "name": "rawUrl",
+          "line": 230
+        },
+        {
+          "kind": "const",
+          "name": "rtspUrl",
+          "line": 231
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 234
+        },
+        {
+          "kind": "const",
+          "name": "host",
+          "line": 235
+        },
+        {
+          "kind": "const",
+          "name": "isOpen",
+          "line": 236
+        },
+        {
+          "kind": "const",
+          "name": "mediaService",
+          "line": 237
+        },
+        {
+          "kind": "const",
+          "name": "go2rtcOk",
+          "line": 240
+        },
+        {
+          "kind": "const",
+          "name": "port",
+          "line": 249
+        },
+        {
+          "kind": "const",
+          "name": "isOpen",
+          "line": 250
+        }
+      ],
+      "hash": "7e4fc4559ec43815e9a2da24e0d8db86",
+      "sizeBytes": 10159
+    },
+    "backend/src/services/JarvisAiService.ts": {
+      "relPath": "backend/src/services/JarvisAiService.ts",
+      "summary": "Motorul central M.A.R.V.I.N. AI: rutare rapidă 0-token, interacțiune Gemini Flash-Lite și execuție unelte",
+      "lineCount": 1495,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "BACKUP_DIR",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "ENV_PATH",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "ALLOWED_CONFIG_FILES",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "BLOCKED_PATH_SEGMENTS",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "GEMINI_TOOLS",
+          "line": 37
+        },
+        {
+          "kind": "class",
+          "name": "JarvisAiService",
+          "line": 190
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 225
+        },
+        {
+          "kind": "const",
+          "name": "trimmed",
+          "line": 227
+        },
+        {
+          "kind": "const",
+          "name": "idx",
+          "line": 229
+        },
+        {
+          "kind": "const",
+          "name": "k",
+          "line": 230
+        },
+        {
+          "kind": "const",
+          "name": "v",
+          "line": 231
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 240
+        },
+        {
+          "kind": "const",
+          "name": "rawMsg",
+          "line": 248
+        },
+        {
+          "kind": "const",
+          "name": "jsonStart",
+          "line": 250
+        },
+        {
+          "kind": "const",
+          "name": "parsed",
+          "line": 252
+        },
+        {
+          "kind": "const",
+          "name": "code",
+          "line": 254
+        },
+        {
+          "kind": "const",
+          "name": "cleaned",
+          "line": 268
+        },
+        {
+          "kind": "const",
+          "name": "fullPath",
+          "line": 272
+        },
+        {
+          "kind": "const",
+          "name": "normalizedRoot",
+          "line": 276
+        },
+        {
+          "kind": "const",
+          "name": "relPath",
+          "line": 281
+        },
+        {
+          "kind": "const",
+          "name": "segments",
+          "line": 282
+        },
+        {
+          "kind": "const",
+          "name": "step",
+          "line": 299
+        },
+        {
+          "kind": "const",
+          "name": "traceLine",
+          "line": 312
+        },
+        {
+          "kind": "const",
+          "name": "baseName",
+          "line": 324
+        },
+        {
+          "kind": "const",
+          "name": "stamp",
+          "line": 325
+        },
+        {
+          "kind": "const",
+          "name": "backupName",
+          "line": 326
+        },
+        {
+          "kind": "const",
+          "name": "backupPath",
+          "line": 327
+        },
+        {
+          "kind": "const",
+          "name": "stat",
+          "line": 343
+        },
+        {
+          "kind": "const",
+          "name": "devEntries",
+          "line": 354
+        },
+        {
+          "kind": "const",
+          "name": "st",
+          "line": 355
+        },
+        {
+          "kind": "const",
+          "name": "pcEntries",
+          "line": 358
+        },
+        {
+          "kind": "const",
+          "name": "geminiConfigured",
+          "line": 366
+        },
+        {
+          "kind": "const",
+          "name": "geminiModel",
+          "line": 367
+        },
+        {
+          "kind": "const",
+          "name": "telemetry",
+          "line": 368
+        },
+        {
+          "kind": "const",
+          "name": "activeProvider",
+          "line": 370
+        },
+        {
+          "kind": "const",
+          "name": "msg",
+          "line": 387
+        },
+        {
+          "kind": "const",
+          "name": "toolResults",
+          "line": 388
+        },
+        {
+          "kind": "const",
+          "name": "executionLog",
+          "line": 389
+        },
+        {
+          "kind": "const",
+          "name": "cachedMatch",
+          "line": 394
+        },
+        {
+          "kind": "const",
+          "name": "execOut",
+          "line": 402
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 408
+        },
+        {
+          "kind": "const",
+          "name": "tokenUsage",
+          "line": 409
+        },
+        {
+          "kind": "const",
+          "name": "providerLabel",
+          "line": 421
+        },
+        {
+          "kind": "const",
+          "name": "fastPathResult",
+          "line": 435
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 452
+        },
+        {
+          "kind": "const",
+          "name": "tokenUsage",
+          "line": 453
+        },
+        {
+          "kind": "const",
+          "name": "providerLabel",
+          "line": 465
+        },
+        {
+          "kind": "const",
+          "name": "ragHit",
+          "line": 492
+        },
+        {
+          "kind": "const",
+          "name": "geminiKey",
+          "line": 506
+        },
+        {
+          "kind": "const",
+          "name": "geminiResult",
+          "line": 509
+        },
+        {
+          "kind": "const",
+          "name": "cleanGoogleErr",
+          "line": 527
+        },
+        {
+          "kind": "const",
+          "name": "errReply",
+          "line": 530
+        },
+        {
+          "kind": "const",
+          "name": "noKeyReply",
+          "line": 540
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 557
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 558
+        },
+        {
+          "kind": "const",
+          "name": "camCount",
+          "line": 601
+        },
+        {
+          "kind": "const",
+          "name": "iotCount",
+          "line": 602
+        },
+        {
+          "kind": "const",
+          "name": "onlinePcs",
+          "line": 603
+        },
+        {
+          "kind": "const",
+          "name": "fileKey",
+          "line": 640
+        },
+        {
+          "kind": "const",
+          "name": "fullPath",
+          "line": 641
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 643
+        },
+        {
+          "kind": "const",
+          "name": "modelName",
+          "line": 666
+        },
+        {
+          "kind": "const",
+          "name": "ai",
+          "line": 667
+        },
+        {
+          "kind": "const",
+          "name": "oneLineDevices",
+          "line": 668
+        },
+        {
+          "kind": "const",
+          "name": "promptParts",
+          "line": 670
+        },
+        {
+          "kind": "const",
+          "name": "hasBluramsCreds",
+          "line": 677
+        },
+        {
+          "kind": "const",
+          "name": "hasDirectUrl",
+          "line": 678
+        },
+        {
+          "kind": "const",
+          "name": "systemInstruction",
+          "line": 697
+        },
+        {
+          "kind": "const",
+          "name": "msg",
+          "line": 733
+        },
+        {
+          "kind": "const",
+          "name": "usage",
+          "line": 752
+        },
+        {
+          "kind": "const",
+          "name": "fnCalls",
+          "line": 760
+        },
+        {
+          "kind": "const",
+          "name": "toolOutputsForNextTurn",
+          "line": 765
+        },
+        {
+          "kind": "const",
+          "name": "args",
+          "line": 769
+        },
+        {
+          "kind": "const",
+          "name": "fnName",
+          "line": 770
+        },
+        {
+          "kind": "const",
+          "name": "toolOutput",
+          "line": 771
+        },
+        {
+          "kind": "const",
+          "name": "totalTokens",
+          "line": 797
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 799
+        },
+        {
+          "kind": "const",
+          "name": "estimatedCostUsd",
+          "line": 800
+        },
+        {
+          "kind": "const",
+          "name": "textReply",
+          "line": 802
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 835
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 836
+        },
+        {
+          "kind": "const",
+          "name": "dirArg",
+          "line": 841
+        },
+        {
+          "kind": "const",
+          "name": "entries",
+          "line": 846
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 872
+        },
+        {
+          "kind": "const",
+          "name": "allLines",
+          "line": 877
+        },
+        {
+          "kind": "const",
+          "name": "startLine",
+          "line": 878
+        },
+        {
+          "kind": "const",
+          "name": "endLine",
+          "line": 879
+        },
+        {
+          "kind": "const",
+          "name": "numberedSlice",
+          "line": 883
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 909
+        },
+        {
+          "kind": "const",
+          "name": "targetContent",
+          "line": 910
+        },
+        {
+          "kind": "const",
+          "name": "replacementContent",
+          "line": 911
+        },
+        {
+          "kind": "const",
+          "name": "original",
+          "line": 917
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 940
+        },
+        {
+          "kind": "const",
+          "name": "prefixLines",
+          "line": 948
+        },
+        {
+          "kind": "const",
+          "name": "replacedLineCount",
+          "line": 949
+        },
+        {
+          "kind": "const",
+          "name": "startLine",
+          "line": 950
+        },
+        {
+          "kind": "const",
+          "name": "endLine",
+          "line": 951
+        },
+        {
+          "kind": "const",
+          "name": "updatedContent",
+          "line": 953
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 962
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 1001
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 1002
+        },
+        {
+          "kind": "const",
+          "name": "dir",
+          "line": 1005
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1010
+        },
+        {
+          "kind": "const",
+          "name": "lineCount",
+          "line": 1019
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 1023
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 1062
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1067
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 1078
+        },
+        {
+          "kind": "const",
+          "name": "targetService",
+          "line": 1107
+        },
+        {
+          "kind": "const",
+          "name": "indexedCount",
+          "line": 1109
+        },
+        {
+          "kind": "const",
+          "name": "rawId",
+          "line": 1137
+        },
+        {
+          "kind": "const",
+          "name": "power",
+          "line": 1138
+        },
+        {
+          "kind": "const",
+          "name": "brightness",
+          "line": 1139
+        },
+        {
+          "kind": "const",
+          "name": "cmdPayload",
+          "line": 1140
+        },
+        {
+          "kind": "const",
+          "name": "targets",
+          "line": 1143
+        },
+        {
+          "kind": "const",
+          "name": "effectiveTargets",
+          "line": 1153
+        },
+        {
+          "kind": "const",
+          "name": "rawId",
+          "line": 1174
+        },
+        {
+          "kind": "const",
+          "name": "target",
+          "line": 1175
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1179
+        },
+        {
+          "kind": "const",
+          "name": "rawPc",
+          "line": 1201
+        },
+        {
+          "kind": "const",
+          "name": "targetPc",
+          "line": 1202
+        },
+        {
+          "kind": "const",
+          "name": "bcast",
+          "line": 1210
+        },
+        {
+          "kind": "const",
+          "name": "file",
+          "line": 1231
+        },
+        {
+          "kind": "const",
+          "name": "key",
+          "line": 1232
+        },
+        {
+          "kind": "const",
+          "name": "value",
+          "line": 1233
+        },
+        {
+          "kind": "const",
+          "name": "envPath",
+          "line": 1237
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1238
+        },
+        {
+          "kind": "const",
+          "name": "lineRegex",
+          "line": 1246
+        },
+        {
+          "kind": "const",
+          "name": "settingsPath",
+          "line": 1273
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1274
+        },
+        {
+          "kind": "const",
+          "name": "lower",
+          "line": 1310
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 1321
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 1322
+        },
+        {
+          "kind": "const",
+          "name": "camCount",
+          "line": 1325
+        },
+        {
+          "kind": "const",
+          "name": "iotCount",
+          "line": 1326
+        },
+        {
+          "kind": "const",
+          "name": "onlinePcs",
+          "line": 1327
+        },
+        {
+          "kind": "const",
+          "name": "envAssignMatch",
+          "line": 1340
+        },
+        {
+          "kind": "const",
+          "name": "envKey",
+          "line": 1344
+        },
+        {
+          "kind": "const",
+          "name": "envVal",
+          "line": 1345
+        },
+        {
+          "kind": "const",
+          "name": "backupName",
+          "line": 1346
+        },
+        {
+          "kind": "const",
+          "name": "lineRegex",
+          "line": 1355
+        },
+        {
+          "kind": "const",
+          "name": "targetPc",
+          "line": 1388
+        },
+        {
+          "kind": "const",
+          "name": "bcast",
+          "line": 1398
+        },
+        {
+          "kind": "const",
+          "name": "toggleMatch",
+          "line": 1420
+        },
+        {
+          "kind": "const",
+          "name": "verb",
+          "line": 1422
+        },
+        {
+          "kind": "const",
+          "name": "targetStr",
+          "line": 1423
+        },
+        {
+          "kind": "const",
+          "name": "desiredPower",
+          "line": 1424
+        },
+        {
+          "kind": "const",
+          "name": "iotDevs",
+          "line": 1425
+        },
+        {
+          "kind": "const",
+          "name": "matchedDevs",
+          "line": 1426
+        },
+        {
+          "kind": "const",
+          "name": "targets",
+          "line": 1433
+        },
+        {
+          "kind": "const",
+          "name": "names",
+          "line": 1455
+        },
+        {
+          "kind": "const",
+          "name": "delMatch",
+          "line": 1462
+        },
+        {
+          "kind": "const",
+          "name": "targetName",
+          "line": 1464
+        },
+        {
+          "kind": "const",
+          "name": "targetDev",
+          "line": 1465
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1469
+        }
+      ],
+      "hash": "6fa157499f4193c1b53ab0053a9ed006",
+      "sizeBytes": 52653
+    },
+    "backend/src/services/JarvisMemoryEngine.ts": {
+      "relPath": "backend/src/services/JarvisMemoryEngine.ts",
+      "summary": "Baza de date SQLite FTS5 și memoria locală a intențiilor, istoricului și telemetriei de tokeni",
+      "lineCount": 643,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "DATA_DIR",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "MARVIN_DB_PATH",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_JARVIS_DB_PATH",
+          "line": 12
+        },
+        {
+          "kind": "interface",
+          "name": "CachedCommandMatch",
+          "line": 14
+        },
+        {
+          "kind": "interface",
+          "name": "CodeIndexHit",
+          "line": 24
+        },
+        {
+          "kind": "interface",
+          "name": "ConversationRow",
+          "line": 33
+        },
+        {
+          "kind": "interface",
+          "name": "MemoryTelemetryStats",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "STOP_WORDS",
+          "line": 55
+        },
+        {
+          "kind": "class",
+          "name": "JarvisMemoryEngine",
+          "line": 63
+        },
+        {
+          "kind": "const",
+          "name": "norm",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "now",
+          "line": 161
+        },
+        {
+          "kind": "const",
+          "name": "seeds",
+          "line": 162
+        },
+        {
+          "kind": "const",
+          "name": "insertStmt",
+          "line": 244
+        },
+        {
+          "kind": "const",
+          "name": "tx",
+          "line": 250
+        },
+        {
+          "kind": "const",
+          "name": "normInput",
+          "line": 272
+        },
+        {
+          "kind": "const",
+          "name": "exactRow",
+          "line": 284
+        },
+        {
+          "kind": "const",
+          "name": "norm",
+          "line": 314
+        },
+        {
+          "kind": "const",
+          "name": "keywords",
+          "line": 316
+        },
+        {
+          "kind": "const",
+          "name": "rows",
+          "line": 395
+        },
+        {
+          "kind": "const",
+          "name": "filesToIndex",
+          "line": 417
+        },
+        {
+          "kind": "const",
+          "name": "walkDir",
+          "line": 419
+        },
+        {
+          "kind": "const",
+          "name": "full",
+          "line": 425
+        },
+        {
+          "kind": "const",
+          "name": "extraFiles",
+          "line": 438
+        },
+        {
+          "kind": "const",
+          "name": "existingRows",
+          "line": 448
+        },
+        {
+          "kind": "const",
+          "name": "hashByPath",
+          "line": 449
+        },
+        {
+          "kind": "const",
+          "name": "tx",
+          "line": 455
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 458
+        },
+        {
+          "kind": "const",
+          "name": "relPath",
+          "line": 459
+        },
+        {
+          "kind": "const",
+          "name": "hash",
+          "line": 460
+        },
+        {
+          "kind": "const",
+          "name": "fnNames",
+          "line": 466
+        },
+        {
+          "kind": "const",
+          "name": "summary",
+          "line": 467
+        },
+        {
+          "kind": "const",
+          "name": "codeIndexer",
+          "line": 485
+        },
+        {
+          "kind": "const",
+          "name": "names",
+          "line": 495
+        },
+        {
+          "kind": "const",
+          "name": "patterns",
+          "line": 496
+        },
+        {
+          "kind": "const",
+          "name": "name",
+          "line": 508
+        },
+        {
+          "kind": "const",
+          "name": "firstLines",
+          "line": 519
+        },
+        {
+          "kind": "const",
+          "name": "keywords",
+          "line": 534
+        },
+        {
+          "kind": "const",
+          "name": "ftsTokens",
+          "line": 538
+        },
+        {
+          "kind": "const",
+          "name": "ftsQuery",
+          "line": 545
+        },
+        {
+          "kind": "const",
+          "name": "row",
+          "line": 548
+        },
+        {
+          "kind": "const",
+          "name": "absPath",
+          "line": 560
+        },
+        {
+          "kind": "const",
+          "name": "allLines",
+          "line": 563
+        },
+        {
+          "kind": "const",
+          "name": "lineLower",
+          "line": 570
+        },
+        {
+          "kind": "const",
+          "name": "halfWindow",
+          "line": 581
+        },
+        {
+          "kind": "const",
+          "name": "startLine",
+          "line": 582
+        },
+        {
+          "kind": "const",
+          "name": "endLine",
+          "line": 583
+        },
+        {
+          "kind": "const",
+          "name": "snippet",
+          "line": 584
+        },
+        {
+          "kind": "const",
+          "name": "statRow",
+          "line": 604
+        },
+        {
+          "kind": "const",
+          "name": "idxCount",
+          "line": 605
+        },
+        {
+          "kind": "const",
+          "name": "cacheCount",
+          "line": 606
+        },
+        {
+          "kind": "const",
+          "name": "localCacheHits",
+          "line": 608
+        },
+        {
+          "kind": "const",
+          "name": "geminiApiCalls",
+          "line": 609
+        },
+        {
+          "kind": "const",
+          "name": "geminiTokensUsed",
+          "line": 610
+        },
+        {
+          "kind": "const",
+          "name": "estimatedTokensSaved",
+          "line": 611
+        },
+        {
+          "kind": "const",
+          "name": "totalPotentialTokens",
+          "line": 613
+        },
+        {
+          "kind": "const",
+          "name": "savingsPercent",
+          "line": 614
+        }
+      ],
+      "hash": "4ccf8912f5f4f187f185aa07f3391451",
+      "sizeBytes": 21263
+    },
+    "backend/src/services/MediaService.ts": {
+      "relPath": "backend/src/services/MediaService.ts",
+      "summary": "Integrare cu motorul media go2rtc: înregistrare fluxuri RTSP și mapare WebRTC",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "StreamInfo",
+          "line": 6
+        },
+        {
+          "kind": "class",
+          "name": "MediaService",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "candidateDirs",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "exeCandidate",
+          "line": 56
+        },
+        {
+          "kind": "const",
+          "name": "configCandidate",
+          "line": 59
+        },
+        {
+          "kind": "const",
+          "name": "health",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "args",
+          "line": 97
+        },
+        {
+          "kind": "const",
+          "name": "child",
+          "line": 100
+        },
+        {
+          "kind": "const",
+          "name": "recheck",
+          "line": 110
+        },
+        {
+          "kind": "const",
+          "name": "socket",
+          "line": 135
+        },
+        {
+          "kind": "const",
+          "name": "isRunning",
+          "line": 157
+        },
+        {
+          "kind": "const",
+          "name": "candidateScripts",
+          "line": 170
+        },
+        {
+          "kind": "const",
+          "name": "child",
+          "line": 194
+        },
+        {
+          "kind": "const",
+          "name": "ok",
+          "line": 204
+        },
+        {
+          "kind": "const",
+          "name": "controller",
+          "line": 222
+        },
+        {
+          "kind": "const",
+          "name": "timeoutId",
+          "line": 223
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 224
+        },
+        {
+          "kind": "const",
+          "name": "streams",
+          "line": 229
+        },
+        {
+          "kind": "const",
+          "name": "normalizedName",
+          "line": 250
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 260
+        },
+        {
+          "kind": "const",
+          "name": "url",
+          "line": 264
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 265
+        },
+        {
+          "kind": "const",
+          "name": "aliasParams",
+          "line": 270
+        },
+        {
+          "kind": "const",
+          "name": "aliasUrl",
+          "line": 274
+        },
+        {
+          "kind": "const",
+          "name": "masked",
+          "line": 279
+        },
+        {
+          "kind": "const",
+          "name": "text",
+          "line": 283
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 300
+        },
+        {
+          "kind": "const",
+          "name": "putUrl",
+          "line": 301
+        },
+        {
+          "kind": "const",
+          "name": "normalizedName",
+          "line": 311
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 314
+        },
+        {
+          "kind": "const",
+          "name": "url",
+          "line": 315
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 316
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 328
+        },
+        {
+          "kind": "const",
+          "name": "fallback",
+          "line": 335
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 346
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 354
+        }
+      ],
+      "hash": "0190e779b7394696dca8ce7240bc41ae",
+      "sizeBytes": 11558
+    },
+    "backend/src/services/NetworkScannerService.ts": {
+      "relPath": "backend/src/services/NetworkScannerService.ts",
+      "summary": "Modul backend/src/services/NetworkScannerService.ts: definește execAsync, NetworkScannerService, prefix",
+      "lineCount": 211,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "execAsync",
+          "line": 7
+        },
+        {
+          "kind": "class",
+          "name": "NetworkScannerService",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "prefix",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "arpTable",
+          "line": 53
+        },
+        {
+          "kind": "const",
+          "name": "results",
+          "line": 55
+        },
+        {
+          "kind": "const",
+          "name": "ipsToScan",
+          "line": 56
+        },
+        {
+          "kind": "const",
+          "name": "total",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "BATCH_SIZE",
+          "line": 65
+        },
+        {
+          "kind": "const",
+          "name": "batch",
+          "line": 67
+        },
+        {
+          "kind": "const",
+          "name": "batchPromises",
+          "line": 68
+        },
+        {
+          "kind": "const",
+          "name": "openPorts",
+          "line": 69
+        },
+        {
+          "kind": "const",
+          "name": "mac",
+          "line": 73
+        },
+        {
+          "kind": "const",
+          "name": "classified",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "interfaces",
+          "line": 94
+        },
+        {
+          "kind": "const",
+          "name": "parts",
+          "line": 98
+        },
+        {
+          "kind": "const",
+          "name": "open",
+          "line": 107
+        },
+        {
+          "kind": "const",
+          "name": "socket",
+          "line": 112
+        },
+        {
+          "kind": "const",
+          "name": "map",
+          "line": 150
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 153
+        },
+        {
+          "kind": "const",
+          "name": "arpRegex",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "match",
+          "line": 156
+        },
+        {
+          "kind": "const",
+          "name": "ip",
+          "line": 158
+        },
+        {
+          "kind": "const",
+          "name": "mac",
+          "line": 159
+        }
+      ],
+      "hash": "943025ce1107f2fef738d744b4ab00c9",
+      "sizeBytes": 6232
+    },
+    "backend/src/services/VncProxyService.ts": {
+      "relPath": "backend/src/services/VncProxyService.ts",
+      "summary": "Punte websockify nativă Node.js pentru control la distanță noVNC pe portul RFB 5900",
+      "lineCount": 254,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "VncSessionInfo",
+          "line": 7
+        },
+        {
+          "kind": "class",
+          "name": "VncProxyService",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "first",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "start",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "socket",
+          "line": 67
+        },
+        {
+          "kind": "const",
+          "name": "finish",
+          "line": 70
+        },
+        {
+          "kind": "const",
+          "name": "clean",
+          "line": 94
+        },
+        {
+          "kind": "const",
+          "name": "rawUrl",
+          "line": 107
+        },
+        {
+          "kind": "const",
+          "name": "parsedUrl",
+          "line": 108
+        },
+        {
+          "kind": "const",
+          "name": "pcIdParam",
+          "line": 109
+        },
+        {
+          "kind": "const",
+          "name": "hostParam",
+          "line": 110
+        },
+        {
+          "kind": "const",
+          "name": "portParam",
+          "line": 111
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 115
+        },
+        {
+          "kind": "const",
+          "name": "matchingPc",
+          "line": 127
+        },
+        {
+          "kind": "const",
+          "name": "garagePc",
+          "line": 136
+        },
+        {
+          "kind": "const",
+          "name": "target",
+          "line": 145
+        },
+        {
+          "kind": "const",
+          "name": "sessionId",
+          "line": 146
+        },
+        {
+          "kind": "const",
+          "name": "sessionInfo",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "pendingWsChunks",
+          "line": 162
+        },
+        {
+          "kind": "const",
+          "name": "tcpSocket",
+          "line": 165
+        },
+        {
+          "kind": "const",
+          "name": "chunk",
+          "line": 177
+        }
+      ],
+      "hash": "60fce5807b4ee924b34001da2add112b",
+      "sizeBytes": 7686
+    },
+    "backend/src/services/WolService.ts": {
+      "relPath": "backend/src/services/WolService.ts",
+      "summary": "Serviciu transmisie pachete Magic Wake-on-LAN pe subneturile 192.168.1.255 și 192.168.8.255",
+      "lineCount": 126,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "execAsync",
+          "line": 8
+        },
+        {
+          "kind": "class",
+          "name": "WolService",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "cleanMac",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "macBuffer",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "magicPacket",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "client",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "deviceManager",
+          "line": 68
+        },
+        {
+          "kind": "const",
+          "name": "onRes",
+          "line": 72
+        },
+        {
+          "kind": "const",
+          "name": "start",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "probePorts",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "isPortOpen",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "s",
+          "line": 93
+        },
+        {
+          "kind": "const",
+          "name": "isWin",
+          "line": 117
+        },
+        {
+          "kind": "const",
+          "name": "cmd",
+          "line": 118
+        }
+      ],
+      "hash": "d617251d3bc3c1f920d0b0a00721b0a3",
+      "sizeBytes": 3963
+    },
+    "backend/src/types/index.ts": {
+      "relPath": "backend/src/types/index.ts",
+      "summary": "Modul backend/src/types/index.ts: definește LocationType, DeviceType, DeviceCategory",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "LocationType",
+          "line": 1
+        },
+        {
+          "kind": "type",
+          "name": "DeviceType",
+          "line": 2
+        },
+        {
+          "kind": "type",
+          "name": "DeviceCategory",
+          "line": 3
+        },
+        {
+          "kind": "interface",
+          "name": "TuyaCredentials",
+          "line": 5
+        },
+        {
+          "kind": "interface",
+          "name": "CameraCredentials",
+          "line": 11
+        },
+        {
+          "kind": "interface",
+          "name": "BridgeCredentials",
+          "line": 22
+        },
+        {
+          "kind": "interface",
+          "name": "DeviceState",
+          "line": 29
+        },
+        {
+          "kind": "interface",
+          "name": "Device",
+          "line": 46
+        },
+        {
+          "kind": "interface",
+          "name": "RemotePc",
+          "line": 65
+        },
+        {
+          "kind": "type",
+          "name": "PTZDirection",
+          "line": 83
+        },
+        {
+          "kind": "interface",
+          "name": "PTZCommand",
+          "line": 85
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationTrigger",
+          "line": 91
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationAction",
+          "line": 99
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationRule",
+          "line": 105
+        },
+        {
+          "kind": "interface",
+          "name": "ScanResult",
+          "line": 114
+        },
+        {
+          "kind": "interface",
+          "name": "BluramsBridgeStatus",
+          "line": 124
+        },
+        {
+          "kind": "interface",
+          "name": "SystemStatus",
+          "line": 142
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisTraceStep",
+          "line": 154
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisToolResult",
+          "line": 164
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisTokenUsage",
+          "line": 171
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisChatResponse",
+          "line": 184
+        }
+      ],
+      "hash": "3c959d98dec8621d1614b0d66264f16e",
+      "sizeBytes": 4640
+    },
+    "frontend/src/App.tsx": {
+      "relPath": "frontend/src/App.tsx",
+      "summary": "Panou principal MortyckHomeAssistent: layout cu bară HUD tactică, taburi de control, cameră WebRTC și consolă M.A.R.V.I.N.",
+      "lineCount": 631,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "App",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "loadData",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "ws",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "unsubscribe",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "matched",
+          "line": 123
+        },
+        {
+          "kind": "const",
+          "name": "statusInterval",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "stat",
+          "line": 149
+        },
+        {
+          "kind": "const",
+          "name": "remotePcs",
+          "line": 151
+        },
+        {
+          "kind": "const",
+          "name": "handleDeviceAdded",
+          "line": 162
+        },
+        {
+          "kind": "const",
+          "name": "filtered",
+          "line": 164
+        },
+        {
+          "kind": "const",
+          "name": "handleEditDevice",
+          "line": 170
+        },
+        {
+          "kind": "const",
+          "name": "handleDeleteDevice",
+          "line": 176
+        },
+        {
+          "kind": "const",
+          "name": "dev",
+          "line": 177
+        },
+        {
+          "kind": "const",
+          "name": "name",
+          "line": 178
+        },
+        {
+          "kind": "const",
+          "name": "handleCreatePc",
+          "line": 189
+        },
+        {
+          "kind": "const",
+          "name": "portNum",
+          "line": 194
+        },
+        {
+          "kind": "const",
+          "name": "pcId",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "created",
+          "line": 196
+        },
+        {
+          "kind": "const",
+          "name": "handleSelectDeviceForOnboard",
+          "line": 225
+        },
+        {
+          "kind": "const",
+          "name": "handleOpenModalFromJarvis",
+          "line": 231
+        },
+        {
+          "kind": "const",
+          "name": "locationDevices",
+          "line": 245
+        },
+        {
+          "kind": "const",
+          "name": "cameraDevices",
+          "line": 250
+        },
+        {
+          "kind": "const",
+          "name": "iotDevices",
+          "line": 251
+        },
+        {
+          "kind": "const",
+          "name": "locationPcs",
+          "line": 253
+        },
+        {
+          "kind": "const",
+          "name": "renderAddWorkstationForm",
+          "line": 256
+        }
+      ],
+      "hash": "15479dc0b3f1d24c294bf58a03f51696",
+      "sizeBytes": 24166
+    },
+    "frontend/src/components/AutomationsModal.tsx": {
+      "relPath": "frontend/src/components/AutomationsModal.tsx",
+      "summary": "Panou vizualizare și activare scenarii automatizate (Smart Rules)",
+      "lineCount": 247,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AutomationsModalProps",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "AutomationsModal",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "cameraDevices",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "lightDevices",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "handleToggle",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "handleDelete",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "handleCreateRule",
+          "line": 42
+        },
+        {
+          "kind": "const",
+          "name": "newRule",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "handleTestTrigger",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "triggerDev",
+          "line": 188
+        },
+        {
+          "kind": "const",
+          "name": "actionDev",
+          "line": 189
+        }
+      ],
+      "hash": "3394586a8afab71ad34b7d71a52babc3",
+      "sizeBytes": 9836
+    },
+    "frontend/src/components/DeviceOnboardingModal.tsx": {
+      "relPath": "frontend/src/components/DeviceOnboardingModal.tsx",
+      "summary": "Modal adăugare și descoperire dispozitive IoT (Tuya, Camere IP, Workstation-uri PC)",
+      "lineCount": 748,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "DeviceOnboardingModalProps",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "DeviceOnboardingModal",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "handleTestConnection",
+          "line": 118
+        },
+        {
+          "kind": "const",
+          "name": "isBridge",
+          "line": 122
+        },
+        {
+          "kind": "const",
+          "name": "effectiveIp",
+          "line": 123
+        },
+        {
+          "kind": "const",
+          "name": "partialDevice",
+          "line": 125
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 138
+        },
+        {
+          "kind": "const",
+          "name": "handleSubmit",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "isBridge",
+          "line": 151
+        },
+        {
+          "kind": "const",
+          "name": "cameraAuth",
+          "line": 152
+        },
+        {
+          "kind": "const",
+          "name": "cameraDefaultPath",
+          "line": 153
+        },
+        {
+          "kind": "const",
+          "name": "cameraCleanPath",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "effectiveRtspPort",
+          "line": 157
+        },
+        {
+          "kind": "const",
+          "name": "cameraRtspUrl",
+          "line": 158
+        },
+        {
+          "kind": "const",
+          "name": "newDevice",
+          "line": 162
+        },
+        {
+          "kind": "const",
+          "name": "saved",
+          "line": 190
+        }
+      ],
+      "hash": "05ef23e08f39b23dea8d2b9887b5d7dd",
+      "sizeBytes": 33115
+    },
+    "frontend/src/components/JarvisAssistantDrawer.tsx": {
+      "relPath": "frontend/src/components/JarvisAssistantDrawer.tsx",
+      "summary": "Sertar lateral secundar M.A.R.V.I.N. cu suport pentru istoric SQLite și comenzi vocale/text",
+      "lineCount": 468,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ChatMessage",
+          "line": 20
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisAssistantDrawerProps",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "QUICK_COMMANDS",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "JarvisAssistantDrawer",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "messagesEndRef",
+          "line": 79
+        },
+        {
+          "kind": "const",
+          "name": "recognitionRef",
+          "line": 80
+        },
+        {
+          "kind": "const",
+          "name": "loaded",
+          "line": 94
+        },
+        {
+          "kind": "const",
+          "name": "speakReply",
+          "line": 132
+        },
+        {
+          "kind": "const",
+          "name": "clean",
+          "line": 136
+        },
+        {
+          "kind": "const",
+          "name": "utter",
+          "line": 140
+        },
+        {
+          "kind": "const",
+          "name": "handleSend",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "promptText",
+          "line": 148
+        },
+        {
+          "kind": "const",
+          "name": "userMsg",
+          "line": 151
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 163
+        },
+        {
+          "kind": "const",
+          "name": "jarvisMsg",
+          "line": 182
+        },
+        {
+          "kind": "const",
+          "name": "toggleVoiceInput",
+          "line": 218
+        },
+        {
+          "kind": "const",
+          "name": "SpeechRec",
+          "line": 219
+        },
+        {
+          "kind": "const",
+          "name": "rec",
+          "line": 231
+        },
+        {
+          "kind": "const",
+          "name": "transcript",
+          "line": 240
+        }
+      ],
+      "hash": "b7faeaa19de576790a13381e0b8308a1",
+      "sizeBytes": 18447
+    },
+    "frontend/src/components/JarvisMainTerminal.tsx": {
+      "relPath": "frontend/src/components/JarvisMainTerminal.tsx",
+      "summary": "Consolă verticală M.A.R.V.I.N. HUD: istoric conversație, jurnal de execuție în timp real, telemetrie tokeni și rollback",
+      "lineCount": 635,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ChatMessage",
+          "line": 33
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisMainTerminalProps",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "TAG_BADGE_STYLES",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "JarvisMainTerminal",
+          "line": 67
+        },
+        {
+          "kind": "const",
+          "name": "consoleEndRef",
+          "line": 111
+        },
+        {
+          "kind": "const",
+          "name": "traceEndRef",
+          "line": 112
+        },
+        {
+          "kind": "const",
+          "name": "recognitionRef",
+          "line": 113
+        },
+        {
+          "kind": "const",
+          "name": "loaded",
+          "line": 125
+        },
+        {
+          "kind": "const",
+          "name": "ws",
+          "line": 156
+        },
+        {
+          "kind": "const",
+          "name": "unsub",
+          "line": 157
+        },
+        {
+          "kind": "const",
+          "name": "speakReply",
+          "line": 173
+        },
+        {
+          "kind": "const",
+          "name": "clean",
+          "line": 177
+        },
+        {
+          "kind": "const",
+          "name": "utter",
+          "line": 181
+        },
+        {
+          "kind": "const",
+          "name": "handleSend",
+          "line": 188
+        },
+        {
+          "kind": "const",
+          "name": "promptText",
+          "line": 189
+        },
+        {
+          "kind": "const",
+          "name": "userMsg",
+          "line": 192
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 204
+        },
+        {
+          "kind": "const",
+          "name": "existingIds",
+          "line": 220
+        },
+        {
+          "kind": "const",
+          "name": "merged",
+          "line": 221
+        },
+        {
+          "kind": "const",
+          "name": "jarvisMsg",
+          "line": 231
+        },
+        {
+          "kind": "const",
+          "name": "errStep",
+          "line": 254
+        },
+        {
+          "kind": "const",
+          "name": "handleRollback",
+          "line": 275
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 281
+        },
+        {
+          "kind": "const",
+          "name": "rollbackTrace",
+          "line": 283
+        },
+        {
+          "kind": "const",
+          "name": "toggleVoiceInput",
+          "line": 311
+        },
+        {
+          "kind": "const",
+          "name": "SpeechRec",
+          "line": 312
+        },
+        {
+          "kind": "const",
+          "name": "rec",
+          "line": 324
+        },
+        {
+          "kind": "const",
+          "name": "transcript",
+          "line": 333
+        }
+      ],
+      "hash": "8d8264aa99db4b42631e0c68cec770c9",
+      "sizeBytes": 24639
+    },
+    "frontend/src/components/MultiCameraWall.tsx": {
+      "relPath": "frontend/src/components/MultiCameraWall.tsx",
+      "summary": "Matrice video multiview pentru monitorizarea simultană a tuturor camerelor din atelier și curte",
+      "lineCount": 125,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "MultiCameraWallProps",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "MultiCameraWall",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "filteredCameras",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "getGridClass",
+          "line": 29
+        }
+      ],
+      "hash": "b31637d73bfcb521aa6fc5644db8f395",
+      "sizeBytes": 4307
+    },
+    "frontend/src/components/Navbar.tsx": {
+      "relPath": "frontend/src/components/Navbar.tsx",
+      "summary": "Bara de navigație superioară: logo Arc Reactor, comutator locație (Home/Garaj), taburi și starea nodului",
+      "lineCount": 277,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "NavbarProps",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "Navbar",
+          "line": 28
+        }
+      ],
+      "hash": "e078a59726c41147a74a55db19831b28",
+      "sizeBytes": 10695
+    },
+    "frontend/src/components/NetworkScannerModal.tsx": {
+      "relPath": "frontend/src/components/NetworkScannerModal.tsx",
+      "summary": "Modul frontend/src/components/NetworkScannerModal.tsx: definește NetworkScannerModalProps, NetworkScannerModal, handleStartScan",
+      "lineCount": 153,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "NetworkScannerModalProps",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "NetworkScannerModal",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "handleStartScan",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "pollTimer",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "data",
+          "line": 33
+        }
+      ],
+      "hash": "03daf37620b0bd0181a42628e92f3abc",
+      "sizeBytes": 6098
+    },
+    "frontend/src/components/RemotePcCard.tsx": {
+      "relPath": "frontend/src/components/RemotePcCard.tsx",
+      "summary": "Card tactică pentru stații de lucru remote: status ping, Wake-on-LAN și integrare noVNC modal",
+      "lineCount": 557,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "RemotePcCardProps",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "RemotePcCard",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "modalContainerRef",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "vncPort",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "cleanAnydesk",
+          "line": 62
+        },
+        {
+          "kind": "const",
+          "name": "buildNoVncIframeUrl",
+          "line": 64
+        },
+        {
+          "kind": "const",
+          "name": "params",
+          "line": 68
+        },
+        {
+          "kind": "const",
+          "name": "handleOpenWebControl",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "status",
+          "line": 87
+        },
+        {
+          "kind": "const",
+          "name": "handleToggleModalFullscreen",
+          "line": 93
+        },
+        {
+          "kind": "const",
+          "name": "handleWake",
+          "line": 108
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 112
+        },
+        {
+          "kind": "const",
+          "name": "handleRelayPulse",
+          "line": 131
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 134
+        },
+        {
+          "kind": "const",
+          "name": "handlePing",
+          "line": 144
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 147
+        },
+        {
+          "kind": "const",
+          "name": "handleCopyMac",
+          "line": 164
+        },
+        {
+          "kind": "const",
+          "name": "handleDelete",
+          "line": 170
+        },
+        {
+          "kind": "const",
+          "name": "handleSaveEdit",
+          "line": 181
+        },
+        {
+          "kind": "const",
+          "name": "portNum",
+          "line": 184
+        }
+      ],
+      "hash": "fdd9b7c20a556ebc21f299256b8c18a8",
+      "sizeBytes": 23647
+    },
+    "frontend/src/components/SystemSettingsModal.tsx": {
+      "relPath": "frontend/src/components/SystemSettingsModal.tsx",
+      "summary": "Modal configurare parametrii sistem: credențiale camere, chei API M.A.R.V.I.N. și setări rețea",
+      "lineCount": 380,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "SystemSettingsModalProps",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "SystemSettingsModal",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "handleSave",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "updates",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 95
+        },
+        {
+          "kind": "const",
+          "name": "handleReloadBridge",
+          "line": 110
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 113
+        },
+        {
+          "kind": "const",
+          "name": "refreshed",
+          "line": 114
+        }
+      ],
+      "hash": "29f3b2f5be125c5bfa686a366f7b2c41",
+      "sizeBytes": 16866
+    },
+    "frontend/src/components/TuyaDeviceCard.tsx": {
+      "relPath": "frontend/src/components/TuyaDeviceCard.tsx",
+      "summary": "Control comutatoare și prize inteligente Tuya (relee, iluminat atelier)",
+      "lineCount": 221,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "TuyaDeviceCardProps",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "COLOR_PRESETS",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "TuyaDeviceCard",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "isLight",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "isPlug",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "isPowerOn",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "handleTogglePower",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "handleBrightnessChange",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "val",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "handleColorTempChange",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "val",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "handleSelectColor",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "handleDeleteClick",
+          "line": 49
+        }
+      ],
+      "hash": "5b303e2290441f42074f278beb1fb531",
+      "sizeBytes": 8946
+    },
+    "frontend/src/components/WebRtcPlayer.tsx": {
+      "relPath": "frontend/src/components/WebRtcPlayer.tsx",
+      "summary": "Player video WebRTC de latență ultra-redusă conectat la go2rtc pentru camerele Wansview, CamHi și Blurams",
+      "lineCount": 472,
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "WebRtcPlayerProps",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "WebRtcPlayer",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "videoRef",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "containerRef",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "streamName",
+          "line": 47
+        },
+        {
+          "kind": "const",
+          "name": "isMotion",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "isBlurams",
+          "line": 50
+        },
+        {
+          "kind": "function",
+          "name": "initWebRtc",
+          "line": 57
+        },
+        {
+          "kind": "const",
+          "name": "pc",
+          "line": 63
+        },
+        {
+          "kind": "const",
+          "name": "offer",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "queryParams",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "backendRes",
+          "line": 109
+        },
+        {
+          "kind": "const",
+          "name": "auth",
+          "line": 117
+        },
+        {
+          "kind": "const",
+          "name": "defaultPath",
+          "line": 120
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 121
+        },
+        {
+          "kind": "const",
+          "name": "rtspUrl",
+          "line": 122
+        },
+        {
+          "kind": "const",
+          "name": "retryRes",
+          "line": 134
+        },
+        {
+          "kind": "const",
+          "name": "errText",
+          "line": 146
+        },
+        {
+          "kind": "const",
+          "name": "handlePtz",
+          "line": 176
+        },
+        {
+          "kind": "const",
+          "name": "handleSnapshot",
+          "line": 180
+        },
+        {
+          "kind": "const",
+          "name": "snapCanvas",
+          "line": 186
+        },
+        {
+          "kind": "const",
+          "name": "snapCtx",
+          "line": 189
+        },
+        {
+          "kind": "const",
+          "name": "dataUrl",
+          "line": 192
+        },
+        {
+          "kind": "const",
+          "name": "link",
+          "line": 193
+        },
+        {
+          "kind": "const",
+          "name": "link",
+          "line": 204
+        },
+        {
+          "kind": "const",
+          "name": "toggleFullscreen",
+          "line": 214
+        }
+      ],
+      "hash": "61b78ef231b85468bb1bf8604fa636bb",
+      "sizeBytes": 18642
+    },
+    "frontend/src/index.css": {
+      "relPath": "frontend/src/index.css",
+      "summary": "Fișier frontend/src/index.css (.css)",
+      "lineCount": 118,
+      "symbols": [],
+      "hash": "2702eb3be3a62c8657a1f5cfe92b80fa",
+      "sizeBytes": 2930
+    },
+    "frontend/src/main.tsx": {
+      "relPath": "frontend/src/main.tsx",
+      "summary": "Fișier frontend/src/main.tsx (.tsx)",
+      "lineCount": 12,
+      "symbols": [],
+      "hash": "447350bbf4f02593a0f022a9a4371800",
+      "sizeBytes": 237
+    },
+    "frontend/src/services/api.ts": {
+      "relPath": "frontend/src/services/api.ts",
+      "summary": "Modul frontend/src/services/api.ts: definește API_BASE, fetchSystemStatus, res",
+      "lineCount": 326,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "API_BASE",
+          "line": 12
+        },
+        {
+          "kind": "function",
+          "name": "fetchSystemStatus",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 15
+        },
+        {
+          "kind": "function",
+          "name": "fetchDevices",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 21
+        },
+        {
+          "kind": "function",
+          "name": "addDevice",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 27
+        },
+        {
+          "kind": "function",
+          "name": "updateDevice",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 37
+        },
+        {
+          "kind": "function",
+          "name": "deleteDevice",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 47
+        },
+        {
+          "kind": "function",
+          "name": "sendDeviceCommand",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 52
+        },
+        {
+          "kind": "function",
+          "name": "sendPtzCommand",
+          "line": 60
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 61
+        },
+        {
+          "kind": "function",
+          "name": "triggerCameraMotion",
+          "line": 69
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 70
+        },
+        {
+          "kind": "function",
+          "name": "testDeviceConnection",
+          "line": 78
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 79
+        },
+        {
+          "kind": "function",
+          "name": "fetchPcs",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 89
+        },
+        {
+          "kind": "function",
+          "name": "savePc",
+          "line": 94
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 95
+        },
+        {
+          "kind": "function",
+          "name": "updatePc",
+          "line": 104
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 105
+        },
+        {
+          "kind": "function",
+          "name": "deletePc",
+          "line": 114
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 115
+        },
+        {
+          "kind": "function",
+          "name": "wakePc",
+          "line": 119
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 120
+        },
+        {
+          "kind": "function",
+          "name": "triggerRelayPulse",
+          "line": 124
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 125
+        },
+        {
+          "kind": "function",
+          "name": "pingPc",
+          "line": 129
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 130
+        },
+        {
+          "kind": "function",
+          "name": "fetchPcVncStatus",
+          "line": 134
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 146
+        },
+        {
+          "kind": "function",
+          "name": "startNetworkScan",
+          "line": 152
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 153
+        },
+        {
+          "kind": "function",
+          "name": "fetchScanResults",
+          "line": 161
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 162
+        },
+        {
+          "kind": "function",
+          "name": "fetchAutomations",
+          "line": 167
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 168
+        },
+        {
+          "kind": "function",
+          "name": "saveAutomation",
+          "line": 173
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 174
+        },
+        {
+          "kind": "function",
+          "name": "toggleAutomation",
+          "line": 182
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 183
+        },
+        {
+          "kind": "function",
+          "name": "deleteAutomation",
+          "line": 187
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 188
+        },
+        {
+          "kind": "function",
+          "name": "fetchRooms",
+          "line": 192
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 193
+        },
+        {
+          "kind": "function",
+          "name": "sendJarvisCommand",
+          "line": 198
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 199
+        },
+        {
+          "kind": "const",
+          "name": "data",
+          "line": 204
+        },
+        {
+          "kind": "const",
+          "name": "sendMarvinCommand",
+          "line": 213
+        },
+        {
+          "kind": "function",
+          "name": "fetchJarvisMemoryHistory",
+          "line": 215
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 237
+        },
+        {
+          "kind": "const",
+          "name": "fetchMarvinMemoryHistory",
+          "line": 242
+        },
+        {
+          "kind": "function",
+          "name": "rollbackLastAiChange",
+          "line": 244
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 251
+        },
+        {
+          "kind": "const",
+          "name": "data",
+          "line": 252
+        },
+        {
+          "kind": "function",
+          "name": "fetchGitStatus",
+          "line": 259
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 269
+        },
+        {
+          "kind": "function",
+          "name": "fetchAiChangelog",
+          "line": 274
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 275
+        },
+        {
+          "kind": "function",
+          "name": "fetchMarvinTasks",
+          "line": 280
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 281
+        },
+        {
+          "kind": "function",
+          "name": "saveMarvinTasks",
+          "line": 286
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 287
+        },
+        {
+          "kind": "function",
+          "name": "fetchSystemSettings",
+          "line": 296
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 302
+        },
+        {
+          "kind": "function",
+          "name": "updateSystemSettings",
+          "line": 307
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 313
+        },
+        {
+          "kind": "function",
+          "name": "reloadBluramsBridge",
+          "line": 322
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 323
+        }
+      ],
+      "hash": "4aad3369102b61d1f52a8db05cb3d3e6",
+      "sizeBytes": 10230
+    },
+    "frontend/src/services/websocket.ts": {
+      "relPath": "frontend/src/services/websocket.ts",
+      "summary": "Modul frontend/src/services/websocket.ts: definește MessageHandler, WebSocketClient, protocol",
+      "lineCount": 64,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "MessageHandler",
+          "line": 1
+        },
+        {
+          "kind": "class",
+          "name": "WebSocketClient",
+          "line": 3
+        },
+        {
+          "kind": "const",
+          "name": "protocol",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "host",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "wsUrl",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "payload",
+          "line": 36
+        }
+      ],
+      "hash": "a81ba4c4db94f2a606013d2e7f3c8135",
+      "sizeBytes": 1649
+    },
+    "frontend/src/types/index.ts": {
+      "relPath": "frontend/src/types/index.ts",
+      "summary": "Modul frontend/src/types/index.ts: definește LocationType, DeviceType, DeviceCategory",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "LocationType",
+          "line": 1
+        },
+        {
+          "kind": "type",
+          "name": "DeviceType",
+          "line": 2
+        },
+        {
+          "kind": "type",
+          "name": "DeviceCategory",
+          "line": 3
+        },
+        {
+          "kind": "interface",
+          "name": "TuyaCredentials",
+          "line": 5
+        },
+        {
+          "kind": "interface",
+          "name": "CameraCredentials",
+          "line": 11
+        },
+        {
+          "kind": "interface",
+          "name": "BridgeCredentials",
+          "line": 21
+        },
+        {
+          "kind": "interface",
+          "name": "DeviceState",
+          "line": 28
+        },
+        {
+          "kind": "interface",
+          "name": "Device",
+          "line": 44
+        },
+        {
+          "kind": "interface",
+          "name": "RemotePc",
+          "line": 63
+        },
+        {
+          "kind": "type",
+          "name": "PTZDirection",
+          "line": 81
+        },
+        {
+          "kind": "interface",
+          "name": "PTZCommand",
+          "line": 83
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationTrigger",
+          "line": 89
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationAction",
+          "line": 97
+        },
+        {
+          "kind": "interface",
+          "name": "AutomationRule",
+          "line": 103
+        },
+        {
+          "kind": "interface",
+          "name": "ScanResult",
+          "line": 112
+        },
+        {
+          "kind": "interface",
+          "name": "BluramsBridgeStatus",
+          "line": 122
+        },
+        {
+          "kind": "interface",
+          "name": "SystemStatus",
+          "line": 140
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisTraceStep",
+          "line": 154
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisToolResult",
+          "line": 164
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisTokenUsage",
+          "line": 171
+        },
+        {
+          "kind": "interface",
+          "name": "JarvisChatResponse",
+          "line": 184
+        }
+      ],
+      "hash": "20e8b1620727a3060951a751f89d99f7",
+      "sizeBytes": 4637
+    },
+    "frontend/src/vite-env.d.ts": {
+      "relPath": "frontend/src/vite-env.d.ts",
+      "summary": "Modul frontend/src/vite-env.d.ts: definește content",
+      "lineCount": 8,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 4
+        }
+      ],
+      "hash": "6a4ca66d33b13b4e6b340ba925fc6fa9",
+      "sizeBytes": 134
+    },
+    "scripts/blurams_bridge.py": {
+      "relPath": "scripts/blurams_bridge.py",
+      "summary": "Punte RTSP H.264 și captură instantanee Blurams Cloud pentru camera Garage Workshop 2 (port 8556)",
+      "lineCount": 1075,
+      "symbols": [
+        {
+          "kind": "def",
+          "name": "load_dotenv",
+          "line": 85
+        },
+        {
+          "kind": "def",
+          "name": "blurams_web_encrypt",
+          "line": 128
+        },
+        {
+          "kind": "def",
+          "name": "blurams_web_decrypt",
+          "line": 143
+        },
+        {
+          "kind": "def",
+          "name": "probe_local_camera_stream",
+          "line": 167
+        },
+        {
+          "kind": "def",
+          "name": "check_camera_ping",
+          "line": 189
+        },
+        {
+          "kind": "def",
+          "name": "register_in_go2rtc",
+          "line": 199
+        },
+        {
+          "kind": "def",
+          "name": "extract_stream_url_from_obj",
+          "line": 216
+        },
+        {
+          "kind": "def",
+          "name": "extract_thumbnail_url_from_obj",
+          "line": 245
+        },
+        {
+          "kind": "def",
+          "name": "download_blurams_snapshot",
+          "line": 269
+        },
+        {
+          "kind": "def",
+          "name": "fetch_stream_with_cookie_or_token",
+          "line": 287
+        },
+        {
+          "kind": "def",
+          "name": "authenticate_and_fetch_blurams_stream",
+          "line": 442
+        },
+        {
+          "kind": "def",
+          "name": "terminate_active_ffmpeg_streams",
+          "line": 597
+        },
+        {
+          "kind": "def",
+          "name": "refresh_stream_state",
+          "line": 608
+        },
+        {
+          "kind": "def",
+          "name": "cloud_monitor_loop",
+          "line": 637
+        },
+        {
+          "kind": "def",
+          "name": "create_sdp",
+          "line": 653
+        },
+        {
+          "kind": "def",
+          "name": "rtp_packetize_nalu",
+          "line": 670
+        },
+        {
+          "kind": "def",
+          "name": "build_ffmpeg_stream_command",
+          "line": 716
+        },
+        {
+          "kind": "def",
+          "name": "handle_rtsp_client",
+          "line": 801
+        },
+        {
+          "kind": "class",
+          "name": "BridgeControlHandler",
+          "line": 949
+        },
+        {
+          "kind": "def",
+          "name": "log_message",
+          "line": 951
+        },
+        {
+          "kind": "def",
+          "name": "_send_json",
+          "line": 954
+        },
+        {
+          "kind": "def",
+          "name": "do_GET",
+          "line": 966
+        },
+        {
+          "kind": "def",
+          "name": "do_POST",
+          "line": 991
+        },
+        {
+          "kind": "def",
+          "name": "start_control_server",
+          "line": 1008
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 1017
+        }
+      ],
+      "hash": "aea393fcd8c151be6f49958b4a3bc37d",
+      "sizeBytes": 47175
+    },
+    "scripts/code_indexer.js": {
+      "relPath": "scripts/code_indexer.js",
+      "summary": "Indexator structural local pentru M.A.R.V.I.N.: generează data/project_index.json și sincronizează FTS5",
+      "lineCount": 311,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fs",
+          "line": 8
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "crypto",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "DATA_DIR",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_JSON_PATH",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "MARVIN_DB_PATH",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_DB_PATH",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "IGNORED_DIRS",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "IGNORED_FILES",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "INDEXED_EXTENSIONS",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "FILE_SUMMARIES",
+          "line": 39
+        },
+        {
+          "kind": "function",
+          "name": "ensureDir",
+          "line": 65
+        },
+        {
+          "kind": "function",
+          "name": "computeMd5",
+          "line": 71
+        },
+        {
+          "kind": "function",
+          "name": "extractSymbols",
+          "line": 75
+        },
+        {
+          "kind": "const",
+          "name": "symbols",
+          "line": 76
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "symbolRegex",
+          "line": 80
+        },
+        {
+          "kind": "const",
+          "name": "match",
+          "line": 82
+        },
+        {
+          "kind": "const",
+          "name": "pyRegex",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "match",
+          "line": 94
+        },
+        {
+          "kind": "function",
+          "name": "deriveSummary",
+          "line": 108
+        },
+        {
+          "kind": "const",
+          "name": "base",
+          "line": 113
+        },
+        {
+          "kind": "const",
+          "name": "ext",
+          "line": 114
+        },
+        {
+          "kind": "const",
+          "name": "topSymbols",
+          "line": 125
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 129
+        },
+        {
+          "kind": "function",
+          "name": "scanProjectFiles",
+          "line": 133
+        },
+        {
+          "kind": "const",
+          "name": "result",
+          "line": 134
+        },
+        {
+          "kind": "function",
+          "name": "walk",
+          "line": 136
+        },
+        {
+          "kind": "const",
+          "name": "entries",
+          "line": 138
+        },
+        {
+          "kind": "const",
+          "name": "name",
+          "line": 141
+        },
+        {
+          "kind": "const",
+          "name": "fullPath",
+          "line": 146
+        },
+        {
+          "kind": "const",
+          "name": "ext",
+          "line": 151
+        },
+        {
+          "kind": "const",
+          "name": "relPath",
+          "line": 153
+        },
+        {
+          "kind": "const",
+          "name": "rootFiles",
+          "line": 167
+        },
+        {
+          "kind": "const",
+          "name": "fp",
+          "line": 169
+        },
+        {
+          "kind": "function",
+          "name": "updateSqliteFts",
+          "line": 178
+        },
+        {
+          "kind": "const",
+          "name": "dbTargets",
+          "line": 191
+        },
+        {
+          "kind": "const",
+          "name": "db",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "selectStmt",
+          "line": 207
+        },
+        {
+          "kind": "const",
+          "name": "existing",
+          "line": 208
+        },
+        {
+          "kind": "const",
+          "name": "insertStmt",
+          "line": 213
+        },
+        {
+          "kind": "const",
+          "name": "deleteStmt",
+          "line": 217
+        },
+        {
+          "kind": "const",
+          "name": "tx",
+          "line": 219
+        },
+        {
+          "kind": "const",
+          "name": "symbolNames",
+          "line": 223
+        },
+        {
+          "kind": "function",
+          "name": "runCodeIndexer",
+          "line": 236
+        },
+        {
+          "kind": "const",
+          "name": "scanned",
+          "line": 239
+        },
+        {
+          "kind": "const",
+          "name": "filesIndex",
+          "line": 240
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 244
+        },
+        {
+          "kind": "const",
+          "name": "lines",
+          "line": 245
+        },
+        {
+          "kind": "const",
+          "name": "hash",
+          "line": 246
+        },
+        {
+          "kind": "const",
+          "name": "symbols",
+          "line": 247
+        },
+        {
+          "kind": "const",
+          "name": "summary",
+          "line": 248
+        },
+        {
+          "kind": "const",
+          "name": "projectIndex",
+          "line": 263
+        },
+        {
+          "kind": "const",
+          "name": "isWatch",
+          "line": 279
+        },
+        {
+          "kind": "const",
+          "name": "index",
+          "line": 280
+        },
+        {
+          "kind": "const",
+          "name": "watchDirs",
+          "line": 285
+        },
+        {
+          "kind": "const",
+          "name": "reindexed",
+          "line": 297
+        }
+      ],
+      "hash": "d3fcae59dac0ec2e6a9a7d0d0fa8e90e",
+      "sizeBytes": 12005
+    },
+    "scripts/marvin_git_tracker.js": {
+      "relPath": "scripts/marvin_git_tracker.js",
+      "summary": "Modul scripts/marvin_git_tracker.js: definește fs, path, ROOT_DIR",
+      "lineCount": 183,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fs",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 8
+        },
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "CHANGELOG_PATH",
+          "line": 12
+        },
+        {
+          "kind": "function",
+          "name": "getFormattedTimestamp",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "now",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "pad",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "y",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "m",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "d",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "h",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "min",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "s",
+          "line": 22
+        },
+        {
+          "kind": "function",
+          "name": "ensureChangelogHeader",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "header",
+          "line": 28
+        },
+        {
+          "kind": "function",
+          "name": "recordChangeAndCommit",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "timestamp",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "lineInfo",
+          "line": 44
+        },
+        {
+          "kind": "const",
+          "name": "cleanSummary",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "cleanReason",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "entry",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "commitMsg",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "remotes",
+          "line": 75
+        },
+        {
+          "kind": "function",
+          "name": "rollbackLastChange",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "timestamp",
+          "line": 97
+        },
+        {
+          "kind": "const",
+          "name": "logOut",
+          "line": 101
+        },
+        {
+          "kind": "const",
+          "name": "entry",
+          "line": 108
+        },
+        {
+          "kind": "function",
+          "name": "getGitStatus",
+          "line": 138
+        },
+        {
+          "kind": "const",
+          "name": "remoteOut",
+          "line": 151
+        },
+        {
+          "kind": "const",
+          "name": "statusOut",
+          "line": 158
+        }
+      ],
+      "hash": "e9d25d5584f93cc92624cdd7322e4465",
+      "sizeBytes": 5641
+    },
+    "scripts/mcp_mortyck_server.js": {
+      "relPath": "scripts/mcp_mortyck_server.js",
+      "summary": "Server MCP (Model Context Protocol) pentru integrarea nativă Antigravity cu MortyckHomeAssistent",
+      "lineCount": 298,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fs",
+          "line": 8
+        },
+        {
+          "kind": "const",
+          "name": "path",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "readline",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "ROOT_DIR",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "DATA_DIR",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_JSON_PATH",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "TASKS_PATH",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "CHANGELOG_PATH",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "DEVICES_PATH",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "TOOLS",
+          "line": 21
+        },
+        {
+          "kind": "function",
+          "name": "handleGetProjectIndex",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 108
+        },
+        {
+          "kind": "const",
+          "name": "ext",
+          "line": 109
+        },
+        {
+          "kind": "const",
+          "name": "filteredFiles",
+          "line": 112
+        },
+        {
+          "kind": "const",
+          "name": "compactFiles",
+          "line": 126
+        },
+        {
+          "kind": "function",
+          "name": "handleReadCodeSnippet",
+          "line": 143
+        },
+        {
+          "kind": "const",
+          "name": "fullPath",
+          "line": 145
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 154
+        },
+        {
+          "kind": "const",
+          "name": "allLines",
+          "line": 155
+        },
+        {
+          "kind": "const",
+          "name": "start",
+          "line": 156
+        },
+        {
+          "kind": "const",
+          "name": "end",
+          "line": 157
+        },
+        {
+          "kind": "const",
+          "name": "snippetLines",
+          "line": 159
+        },
+        {
+          "kind": "function",
+          "name": "handleGetDevicesSummary",
+          "line": 170
+        },
+        {
+          "kind": "const",
+          "name": "raw",
+          "line": 175
+        },
+        {
+          "kind": "const",
+          "name": "summary",
+          "line": 176
+        },
+        {
+          "kind": "function",
+          "name": "handleGetRecentChangelog",
+          "line": 191
+        },
+        {
+          "kind": "const",
+          "name": "limit",
+          "line": 192
+        },
+        {
+          "kind": "const",
+          "name": "gitStatus",
+          "line": 193
+        },
+        {
+          "kind": "const",
+          "name": "entries",
+          "line": 200
+        },
+        {
+          "kind": "const",
+          "name": "recentEntries",
+          "line": 201
+        },
+        {
+          "kind": "function",
+          "name": "handleGetMarvinTasks",
+          "line": 209
+        },
+        {
+          "kind": "function",
+          "name": "sendResponse",
+          "line": 220
+        },
+        {
+          "kind": "const",
+          "name": "res",
+          "line": 221
+        },
+        {
+          "kind": "const",
+          "name": "rl",
+          "line": 230
+        },
+        {
+          "kind": "const",
+          "name": "trimmed",
+          "line": 237
+        },
+        {
+          "kind": "const",
+          "name": "msg",
+          "line": 241
+        }
+      ],
+      "hash": "fee17eb90d8be13f1e345c1f102edfcf",
+      "sizeBytes": 8256
+    },
+    "docker/blurams-rtsp/bridge.py": {
+      "relPath": "docker/blurams-rtsp/bridge.py",
+      "summary": "Modul docker/blurams-rtsp/bridge.py: definește register_in_go2rtc, authenticate_blurams, get_live_stream_url",
+      "lineCount": 103,
+      "symbols": [
+        {
+          "kind": "def",
+          "name": "register_in_go2rtc",
+          "line": 20
+        },
+        {
+          "kind": "def",
+          "name": "authenticate_blurams",
+          "line": 33
+        },
+        {
+          "kind": "def",
+          "name": "get_live_stream_url",
+          "line": 58
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 73
+        }
+      ],
+      "hash": "33d4dba661bf8fc9c280430cc5ce216b",
+      "sizeBytes": 4304
+    },
+    "docker/docker-compose.yml": {
+      "relPath": "docker/docker-compose.yml",
+      "summary": "Fișier docker/docker-compose.yml (.yml)",
+      "lineCount": 62,
+      "symbols": [],
+      "hash": "a72706ded229bf4d6d864d9fe0d61b32",
+      "sizeBytes": 1494
+    },
+    "docker/go2rtc.yaml": {
+      "relPath": "docker/go2rtc.yaml",
+      "summary": "Configurația motorului de streaming go2rtc: mapări fluxuri RTSP/WebRTC pentru Wansview, CamHi și Blurams",
+      "lineCount": 34,
+      "symbols": [],
+      "hash": "38f78cff9d3098ad5d5f90ce355c8b13",
+      "sizeBytes": 854
+    },
+    "backend/data/automations.json": {
+      "relPath": "backend/data/automations.json",
+      "summary": "Fișier backend/data/automations.json (.json)",
+      "lineCount": 2,
+      "symbols": [],
+      "hash": "58e0494c51d30eb3494f7c9198986bb9",
+      "sizeBytes": 3
+    },
+    "backend/data/devices.json": {
+      "relPath": "backend/data/devices.json",
+      "summary": "Registrul stării dispozitivelor IoT și camerelor IP salvate în baza de date locală",
+      "lineCount": 83,
+      "symbols": [],
+      "hash": "fa80c42cdae7526406fa58e3746d8ed5",
+      "sizeBytes": 2200
+    },
+    "backend/data/pcs.json": {
+      "relPath": "backend/data/pcs.json",
+      "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
+      "lineCount": 35,
+      "symbols": [],
+      "hash": "b6e8a2f30c3f47e3893f50c526ad8cd3",
+      "sizeBytes": 983
+    },
+    "backend/data/settings.json": {
+      "relPath": "backend/data/settings.json",
+      "summary": "Fișier backend/data/settings.json (.json)",
+      "lineCount": 10,
+      "symbols": [],
+      "hash": "33727ba985e169dca5633d5be8a250fc",
+      "sizeBytes": 138
+    },
+    "START_ALL.bat": {
+      "relPath": "START_ALL.bat",
+      "summary": "Script Windows de pornire simultană a tuturor serviciilor (go2rtc, bridge, backend, frontend)",
+      "lineCount": 55,
+      "symbols": [],
+      "hash": "337cb032edee9abfb9527b35a447fbd3",
+      "sizeBytes": 2040
+    },
+    "STOP_ALL.bat": {
+      "relPath": "STOP_ALL.bat",
+      "summary": "Script Windows de oprire completă a serviciilor și eliberare porturi 3000, 4000, 8556",
+      "lineCount": 53,
+      "symbols": [],
+      "hash": "ba311b31fe2a19f47bd7ff7154e9e3ea",
+      "sizeBytes": 1872
+    },
+    "CHANGELOG_AI.md": {
+      "relPath": "CHANGELOG_AI.md",
+      "summary": "Jurnal permanent al tuturor modificărilor de cod operate de M.A.R.V.I.N. și Antigravity",
+      "lineCount": 20,
+      "symbols": [],
+      "hash": "e89b0b2afdddd05c040b791f555707f0",
+      "sizeBytes": 1479
+    },
+    "README.md": {
+      "relPath": "README.md",
+      "summary": "Fișier README.md (.md)",
+      "lineCount": 255,
+      "symbols": [],
+      "hash": "8890ccabb56d231e837d60cbd0a0fe4a",
+      "sizeBytes": 15670
+    }
+  }
+}

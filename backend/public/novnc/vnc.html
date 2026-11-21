@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>J.A.R.V.I.S. // noVNC Tactical Remote Desktop</title>
+  <style>
+    :root {
+      --bg-obsidian: #050A14;
+      --bg-panel: rgba(8, 19, 38, 0.92);
+      --cyan: #00F0FF;
+      --amber: #FF9E00;
+      --emerald: #10B981;
+      --crimson: #EF4444;
+      --text-main: #E2F1FF;
+      --text-dim: #7C99B8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-obsidian);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tactical HUD Toolbar */
+    .hud-toolbar {
+      height: 44px;
+      min-height: 44px;
+      background: linear-gradient(90deg, rgba(5, 10, 20, 0.98) 0%, rgba(10, 25, 48, 0.96) 50%, rgba(5, 10, 20, 0.98) 100%);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      gap: 8px;
+      z-index: 20;
+      user-select: none;
+    }
+
+    .hud-status-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
+      flex-shrink: 0;
+    }
+
+    .status-dot.connected {
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+    }
+
+    .status-dot.error {
+      background: var(--crimson);
+      box-shadow: 0 0 10px var(--crimson);
+    }
+
+    .status-text {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--cyan);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .desktop-badge {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .hud-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .hud-btn, .hud-select {
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 6px;
+      background: rgba(8, 19, 38, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--text-main);
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .hud-btn:hover, .hud-select:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.16);
+      color: #FFFFFF;
+    }
+
+    .hud-btn.active {
+      background: rgba(0, 240, 255, 0.25);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .hud-btn.warn {
+      border-color: rgba(255, 158, 0, 0.45);
+      color: var(--amber);
+    }
+
+    .hud-btn.warn:hover {
+      background: rgba(255, 158, 0, 0.2);
+      border-color: var(--amber);
+    }
+
+    /* Main VNC Canvas Container */
+    #vnc-screen {
+      flex: 1;
+      width: 100%;
+      height: calc(100% - 44px);
+      background: radial-gradient(circle at center, #081528 0%, #03070e 100%);
+      position: relative;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Overlay Modals (Password Auth / Clipboard / Reconnect) */
+    .hud-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(3, 7, 14, 0.84);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      padding: 16px;
+    }
+
+    .hud-overlay.visible {
+      display: flex;
+    }
+
+    .hud-modal {
+      width: 100%;
+      max-width: 400px;
+      background: var(--bg-panel);
+      border: 1px solid rgba(0, 240, 255, 0.45);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.18);
+    }
+
+    .hud-modal h3 {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hud-modal p {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .hud-input, .hud-textarea {
+      width: 100%;
+      background: #050A14;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #FFFFFF;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .hud-input:focus, .hud-textarea:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    }
+
+    .hud-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+
+    .hud-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .hud-btn-primary {
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 8px;
+      background: var(--cyan);
+      border: none;
+      color: #050A14;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .hud-btn-primary:hover {
+      background: #33F3FF;
+    }
+
+    @media (max-width: 640px) {
+      .hide-mobile {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top J.A.R.V.I.S. Tactical Micro-Toolbar -->
+  <div class="hud-toolbar">
+    <div class="hud-status-group">
+      <div id="status-dot" class="status-dot"></div>
+      <span id="status-text" class="status-text">INITIALIZING WEBSOCKIFY...</span>
+      <span id="desktop-name" class="desktop-badge">VNC // 5900</span>
+    </div>
+
+    <div class="hud-controls">
+      <select id="scale-select" class="hud-select" title="Viewport Scaling Mode">
+        <option value="scale">Scale to Fit</option>
+        <option value="remote">Remote Resize</option>
+        <option value="none">1:1 Native</option>
+      </select>
+
+      <button id="btn-view-only" class="hud-btn" type="button" title="Toggle View-Only Mode">
+        INTERACTIVE
+      </button>
+
+      <button id="btn-win" class="hud-btn hide-mobile" type="button" title="Send Windows Super Key">
+        WIN
+      </button>
+
+      <button id="btn-cad" class="hud-btn warn" type="button" title="Send Ctrl+Alt+Del to Remote PC">
+        CTRL+ALT+DEL
+      </button>
+
+      <button id="btn-clipboard" class="hud-btn" type="button" title="Clipboard Sync">
+        CLIPBOARD
+      </button>
+
+      <button id="btn-shot" class="hud-btn hide-mobile" type="button" title="Save Screen Snapshot">
+        SNAPSHOT
+      </button>
+
+      <button id="btn-reconnect" class="hud-btn" type="button" title="Reconnect VNC Session">
+        RECONNECT
+      </button>
+
+      <button id="btn-fullscreen" class="hud-btn" type="button" title="Toggle Fullscreen">
+        FULLSCREEN
+      </button>
+    </div>
+  </div>
+
+  <!-- Main noVNC Interactive Screen Container -->
+  <div id="vnc-screen">
+    <!-- VNC Password Authentication Overlay -->
+    <div id="auth-overlay" class="hud-overlay">
+      <form id="auth-form" class="hud-modal">
+        <h3>VNC Authentication Required</h3>
+        <p id="auth-subtitle">Enter the VNC password for workstation <strong id="auth-host-label">192.168.8.116:5900</strong>.</p>
+        <input
+          id="vnc-password-input"
+          type="password"
+          class="hud-input"
+          placeholder="VNC Password..."
+          autocomplete="current-password"
+        />
+        <label class="hud-checkbox-row">
+          <input id="save-password-chk" type="checkbox" checked />
+          <span>Remember VNC password in J.A.R.V.I.S. for instant auto-connect</span>
+        </label>
+        <div class="hud-modal-actions">
+          <button type="submit" class="hud-btn-primary">AUTHENTICATE &amp; CONNECT</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Clipboard Sync Overlay -->
+    <div id="clipboard-overlay" class="hud-overlay">
+      <div class="hud-modal">
+        <h3>Remote Clipboard Bridge</h3>
+        <p>Paste or edit text below to synchronize with the remote workstation clipboard:</p>
+        <textarea id="clipboard-text" class="hud-textarea" rows="5" placeholder="Remote clipboard text..."></textarea>
+        <div class="hud-modal-actions">
+          <button id="btn-close-clipboard" type="button" class="hud-btn">CLOSE</button>
+          <button id="btn-send-clipboard" type="button" class="hud-btn-primary">SEND TO PC</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import RFB from '/novnc/core/rfb.js';
+    import KeyTable from '/novnc/core/input/keysym.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const pcId = params.get('pcId') || 'pc-garage';
+    const host = params.get('host') || '192.168.8.116';
+    const port = params.get('port') || '5900';
+    const resizeMode = params.get('resize') || 'scale';
+    const viewOnlyInit = params.get('view_only') === 'true';
+    const urlPassword = params.get('password') || '';
+
+    const storageKey = `jarvis_vnc_pwd_${host}_${port}`;
+    let savedPassword = urlPassword || localStorage.getItem(storageKey) || '';
+
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    const desktopNameBadge = document.getElementById('desktop-name');
+    const scaleSelect = document.getElementById('scale-select');
+    const btnViewOnly = document.getElementById('btn-view-only');
+    const btnWin = document.getElementById('btn-win');
+    const btnCad = document.getElementById('btn-cad');
+    const btnClipboard = document.getElementById('btn-clipboard');
+    const btnShot = document.getElementById('btn-shot');
+    const btnReconnect = document.getElementById('btn-reconnect');
+    const btnFullscreen = document.getElementById('btn-fullscreen');
+    const screenEl = document.getElementById('vnc-screen');
+
+    const authOverlay = document.getElementById('auth-overlay');
+    const authForm = document.getElementById('auth-form');
+    const authHostLabel = document.getElementById('auth-host-label');
+    const passwordInput = document.getElementById('vnc-password-input');
+    const savePasswordChk = document.getElementById('save-password-chk');
+
+    const clipboardOverlay = document.getElementById('clipboard-overlay');
+    const clipboardText = document.getElementById('clipboard-text');
+    const btnCloseClipboard = document.getElementById('btn-close-clipboard');
+    const btnSendClipboard = document.getElementById('btn-send-clipboard');
+
+    authHostLabel.textContent = `${host}:${port}`;
+    desktopNameBadge.textContent = `${host}:${port}`;
+    scaleSelect.value = resizeMode === 'remote' ? 'remote' : (resizeMode === 'none' ? 'none' : 'scale');
+
+    // If embedded inside the J.A.R.V.I.S. modal, hide duplicate Scale & Fullscreen controls (handled by modal header)
+    if (params.get('embedded') === 'true') {
+      scaleSelect.style.display = 'none';
+      btnFullscreen.style.display = 'none';
+    }
+
+    let rfb = null;
+    let isViewOnly = viewOnlyInit;
+    let authAttemptedWithSaved = false;
+
+    function setStatus(state, message) {
+      statusDot.className = 'status-dot ' + (state === 'connected' ? 'connected' : state === 'error' ? 'error' : '');
+      statusText.textContent = message;
+    }
+
+    function applyScaling(mode) {
+      if (!rfb) return;
+      if (mode === 'scale') {
+        rfb.scaleViewport = true;
+        rfb.resizeSession = false;
+      } else if (mode === 'remote') {
+        rfb.scaleViewport = true;
+        rfb.resizeSession = true;
+      } else {
+        rfb.scaleViewport = false;
+        rfb.resizeSession = false;
+      }
+    }
+
+    function buildWebsockifyUrl() {
+      const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const q = new URLSearchParams({
+        pcId,
+        host,
+        port
+      });
+      return `${proto}//${window.location.host}/websockify?${q.toString()}`;
+    }
+
+    async function persistPasswordToBackend(pwd) {
+      try {
+        await fetch(`/api/pcs/${encodeURIComponent(pcId)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ vncPassword: pwd })
+        });
+      } catch {}
+    }
+
+    function connectVnc() {
+      authOverlay.classList.remove('visible');
+      if (rfb) {
+        try { rfb.disconnect(); } catch {}
+        rfb = null;
+      }
+
+      const wsUrl = buildWebsockifyUrl();
+      setStatus('connecting', `CONNECTING TO ${host}:${port}...`);
+
+      try {
+        rfb = new RFB(screenEl, wsUrl, {
+          credentials: savedPassword ? { password: savedPassword } : undefined
+        });
+
+        rfb.viewOnly = isViewOnly;
+        rfb.focusOnClick = true;
+        rfb.clipViewport = false;
+        rfb.qualityLevel = 6;
+        rfb.compressionLevel = 2;
+        rfb.background = 'radial-gradient(circle at center, #081528 0%, #03070e 100%)';
+        applyScaling(scaleSelect.value);
+
+        rfb.addEventListener('connect', () => {
+          authAttemptedWithSaved = false;
+          authOverlay.classList.remove('visible');
+          setStatus('connected', `RFB LIVE // ${host}:${port}`);
+          rfb.focus();
+        });
+
+        rfb.addEventListener('desktopname', (e) => {
+          if (e.detail && e.detail.name) {
+            desktopNameBadge.textContent = `${e.detail.name} (${host}:${port})`;
+          }
+        });
+
+        rfb.addEventListener('credentialsrequired', () => {
+          if (savedPassword && !authAttemptedWithSaved) {
+            authAttemptedWithSaved = true;
+            rfb.sendCredentials({ password: savedPassword });
+            return;
+          }
+          setStatus('connecting', 'VNC PASSWORD REQUIRED');
+          passwordInput.value = '';
+          authOverlay.classList.add('visible');
+          setTimeout(() => passwordInput.focus(), 50);
+        });
+
+        rfb.addEventListener('securityfailure', (e) => {
+          const reason = (e.detail && e.detail.reason) ? e.detail.reason : 'Authentication failed';
+          setStatus('error', `AUTH FAILED: ${reason}`);
+          savedPassword = '';
+          localStorage.removeItem(storageKey);
+          authOverlay.classList.add('visible');
+          setTimeout(() => passwordInput.focus(), 50);
+        });
+
+        rfb.addEventListener('clipboard', (e) => {
+          if (e.detail && e.detail.text) {
+            clipboardText.value = e.detail.text;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(e.detail.text).catch(() => {});
+            }
+          }
+        });
+
+        rfb.addEventListener('disconnect', (e) => {
+          const clean = e.detail && e.detail.clean;
+          setStatus(clean ? 'connecting' : 'error', clean ? 'DISCONNECTED' : `CONNECTION LOST (${host}:${port})`);
+        });
+      } catch (err) {
+        setStatus('error', `INIT ERROR: ${err.message || err}`);
+      }
+    }
+
+    authForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const pwd = passwordInput.value;
+      savedPassword = pwd;
+      if (savePasswordChk.checked) {
+        localStorage.setItem(storageKey, pwd);
+        persistPasswordToBackend(pwd);
+      }
+      authOverlay.classList.remove('visible');
+      if (rfb) {
+        try {
+          rfb.sendCredentials({ password: pwd });
+          setStatus('connecting', 'AUTHENTICATING...');
+          return;
+        } catch {}
+      }
+      connectVnc();
+    });
+
+    scaleSelect.addEventListener('change', () => {
+      applyScaling(scaleSelect.value);
+    });
+
+    btnViewOnly.addEventListener('click', () => {
+      isViewOnly = !isViewOnly;
+      if (rfb) rfb.viewOnly = isViewOnly;
+      btnViewOnly.textContent = isViewOnly ? 'VIEW ONLY' : 'INTERACTIVE';
+      btnViewOnly.classList.toggle('active', isViewOnly);
+    });
+
+    btnWin.addEventListener('click', () => {
+      if (rfb && !isViewOnly) {
+        rfb.sendKey(KeyTable.XK_Super_L, 'MetaLeft', true);
+        setTimeout(() => rfb.sendKey(KeyTable.XK_Super_L, 'MetaLeft', false), 80);
+        rfb.focus();
+      }
+    });
+
+    btnCad.addEventListener('click', () => {
+      if (rfb && !isViewOnly) {
+        rfb.sendCtrlAltDel();
+        rfb.focus();
+      }
+    });
+
+    btnClipboard.addEventListener('click', () => {
+      clipboardOverlay.classList.add('visible');
+      clipboardText.focus();
+    });
+
+    btnCloseClipboard.addEventListener('click', () => {
+      clipboardOverlay.classList.remove('visible');
+      if (rfb) rfb.focus();
+    });
+
+    btnSendClipboard.addEventListener('click', () => {
+      if (rfb && clipboardText.value) {
+        rfb.clipboardPasteFrom(clipboardText.value);
+      }
+      clipboardOverlay.classList.remove('visible');
+      if (rfb) rfb.focus();
+    });
+
+    btnShot.addEventListener('click', () => {
+      if (!rfb) return;
+      try {
+        const dataUrl = rfb.toDataURL();
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `vnc-${host}-${Date.now()}.png`;
+        a.click();
+      } catch {}
+    });
+
+    btnReconnect.addEventListener('click', () => {
+      authAttemptedWithSaved = false;
+      connectVnc();
+    });
+
+    btnFullscreen.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    if (params.get('autoconnect') !== 'false') {
+      connectVnc();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "go2rtcUrl": "http://127.0.0.1:1984",
+  "rooms": [
+    "Exterior",
+    "Workshop",
+    "Living Room",
+    "Office",
+    "Garage"
+  ]
+}

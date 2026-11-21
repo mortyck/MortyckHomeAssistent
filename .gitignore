@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Environment and sensitive keys
+.env
+.env.*
+!.env.example
+
+# Temporary files, logs, and backups
+logs/*.log
+*.log
+*.bak
+*.backup
+*.tmp
+*.tsbuildinfo
+__pycache__/
+*.pyc
+*.pyo
+
+# SQLite databases & locks (keep data directory tracked for JSON indexes & configs)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/*.sqlite
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
+
+# Explicitly track essential JSON datasets & AI memory
+!data/project_index.json
+!data/marvin_tasks.json
+!data/devices.json
+!data/pcs.json
+!data/settings.json
+!data/automations.json
+!CHANGELOG_AI.md
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini

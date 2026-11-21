@@ -1,0 +1,35 @@
+[
+  {
+    "id": "pc-home",
+    "name": "Home PC",
+    "location": "Home",
+    "ip": "192.168.1.80",
+    "mac": "18:99:F5:07:15:E5",
+    "broadcastAddress": "192.168.1.255",
+    "vncPort": 5900,
+    "vncPassword": "",
+    "anydeskId": "984 120 442",
+    "webViewerUrl": "/novnc/vnc.html?autoconnect=true&resize=scale&pcId=pc-home&host=192.168.1.80&port=5900",
+    "online": true,
+    "lastPingMs": 1,
+    "lastSeen": 1795299927066,
+    "vncPortOpen": true
+  },
+  {
+    "id": "pc-garage",
+    "name": "Garage PC",
+    "location": "Garage",
+    "ip": "192.168.8.116",
+    "mac": "D8:12:65:04:28:B5",
+    "broadcastAddress": "192.168.8.255",
+    "vncPort": 5900,
+    "vncPassword": "Mortyck",
+    "anydeskId": "542 819 003",
+    "webViewerUrl": "/novnc/vnc.html?autoconnect=true&resize=scale&pcId=pc-garage&host=192.168.8.116&port=5900",
+    "relayDeviceId": "garage-pc-power-relay",
+    "online": true,
+    "vncPortOpen": true,
+    "lastPingMs": 76,
+    "lastSeen": 1795300067207
+  }
+]
