@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
   "projectRootRel": ".",
-  "generatedAt": "2026-11-22T02:15:55.093Z",
+  "generatedAt": "2026-11-22T02:16:46.238Z",
   "totalFiles": 51,
   "files": {
     "backend/src/adapters/BaseDeviceAdapter.ts": {
@@ -6007,7 +6007,7 @@
       "summary": "Registrul stării dispozitivelor IoT și camerelor IP salvate în baza de date locală",
       "lineCount": 83,
       "symbols": [],
-      "hash": "52536fa4a6f90a004aacfff91491af43",
+      "hash": "b4445a122bac786a247c1af6c8020653",
       "sizeBytes": 2200
     },
     "backend/data/pcs.json": {
@@ -6015,7 +6015,7 @@
       "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
       "lineCount": 35,
       "symbols": [],
-      "hash": "475e8b29d09eeb14d9e64b295bc1491f",
+      "hash": "2a6a9c14535c69884900cad74f9b5b57",
       "sizeBytes": 982
     },
     "backend/data/settings.json": {
@@ -6053,10 +6053,10 @@
     "CHANGELOG_AI.md": {
       "relPath": "CHANGELOG_AI.md",
       "summary": "Jurnal permanent al tuturor modificărilor de cod operate de M.A.R.V.I.N. și Antigravity",
-      "lineCount": 46,
+      "lineCount": 58,
       "symbols": [],
-      "hash": "90e598c056d17ff3738f86a536b63319",
-      "sizeBytes": 3931
+      "hash": "ae693703b805846ad61d8d6be0bd3b77",
+      "sizeBytes": 5491
     },
     "README.md": {
       "relPath": "README.md",

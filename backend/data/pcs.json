@@ -11,8 +11,8 @@
     "anydeskId": "984 120 442",
     "webViewerUrl": "/novnc/vnc.html?autoconnect=true&resize=scale&pcId=pc-home&host=192.168.1.80&port=5900",
     "online": true,
-    "lastPingMs": 2,
-    "lastSeen": 1795313715591,
+    "lastPingMs": 1,
+    "lastSeen": 1795313795110,
     "vncPortOpen": true
   },
   {
@@ -29,7 +29,7 @@
     "relayDeviceId": "garage-pc-power-relay",
     "online": true,
     "vncPortOpen": true,
-    "lastPingMs": 79,
-    "lastSeen": 1795313775196
+    "lastPingMs": 77,
+    "lastSeen": 1795313795186
   }
 ]

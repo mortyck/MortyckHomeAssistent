@@ -44,7 +44,14 @@ Fiecare intrare este asociată cu un commit Git local (`git commit -m "MARVIN: <
 - **Fișier:** `scripts/blurams_bridge.py` (Liniile 459-465)
 - **Motiv:** Requested by user via M.A.R.V.I.N.
 
-### [2026-11-22 04:16:23] - MARVIN: Updated HUD layout in App.tsx via Antigravity MCP
-- **Actor:** Antigravity // MCP
-- **Fișier:** `frontend/src/App.tsx`
-- **Motiv:** Test completion via MCP tool
+### [2026-11-22 04:16:23] - MARVIN: Configure M.A.R.V.I.N. Antigravity MCP Queue & Zero-Cost Routing
+- **Actor:** Antigravity // MCP & M.A.R.V.I.N. CORE
+- **Fișiere afectate:**
+  - `frontend/src/components/JarvisMainTerminal.tsx` (Adăugat selector de rutare ANTIGRAVITY vs API FALLBACK în header, badge reactiv ANTIGRAVITY // 0 TOK, sincronizare istoric trace-uri din data/marvin_trace.log)
+  - `frontend/src/services/api.ts` (Actualizat sendJarvisCommand cu parametrul mode: antigravity | api_fallback, adăugată funcția fetchAiTraces)
+  - `backend/src/services/JarvisAiService.ts` (Implementat mod de rutare Antigravity implicit, funcție enqueueAntigravityTask care plasează sarcinile de cod în data/marvin_tasks.json cu 0 apeluri Google AI Studio, recordExternalTrace și getRecentTraces)
+  - `backend/src/routes/api.ts` (Rute noi /api/marvin/trace GET/POST pentru broadcast în timp real și /api/marvin/routing-mode)
+  - `scripts/mcp_mortyck_server.js` (Expuse uneltele MCP list_marvin_tasks, update_marvin_trace și complete_marvin_task cu auto-actualizare CHANGELOG_AI.md, Git commit și reindexare)
+  - `.agent/rules/marvin-bridge.md` (Reguli complete de operare între M.A.R.V.I.N. și Antigravity pentru economisirea totală a apelurilor Google AI Studio)
+  - `~/.gemini/config/mcp_config.json` (Înregistrat serverul MCP mortyck-marvin în Antigravity)
+- **Motiv:** Rutarea tuturor sarcinilor de modificare cod/fișiere prin abonamentul plătit Antigravity cu 0 apeluri Google AI Studio API și urmărire live în consola M.A.R.V.I.N. HUD.
