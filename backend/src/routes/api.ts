@@ -691,13 +691,53 @@ export function createApiRouter(broadcastWs: (event: string, data: any) => void)
     }
   });
 
+  router.get(['/ai/trace', '/marvin/trace'], (_req: Request, res: Response) => {
+    try {
+      const traces = jarvisAi.getRecentTraces(40);
+      res.json({ traces });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  router.post(['/ai/trace', '/marvin/trace'], (req: Request, res: Response) => {
+    try {
+      const { tag = 'INFO', message, filePath, lineRange } = req.body;
+      if (!message) {
+        return res.status(400).json({ error: 'Message is required for trace step.' });
+      }
+      const step = jarvisAi.recordExternalTrace(
+        tag,
+        message,
+        { filePath, lineRange },
+        broadcastWs
+      );
+      res.json({ success: true, step });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  router.get(['/ai/routing-mode', '/marvin/routing-mode'], (_req: Request, res: Response) => {
+    res.json({ mode: jarvisAi.getRoutingMode() });
+  });
+
+  router.post(['/ai/routing-mode', '/marvin/routing-mode'], (req: Request, res: Response) => {
+    const { mode } = req.body;
+    if (mode === 'antigravity' || mode === 'api_fallback') {
+      jarvisAi.setRoutingMode(mode);
+      return res.json({ success: true, mode });
+    }
+    res.status(400).json({ error: 'Invalid mode. Must be "antigravity" or "api_fallback".' });
+  });
+
   router.post(['/ai/chat', '/marvin/chat'], async (req: Request, res: Response) => {
     try {
-      const { message } = req.body;
+      const { message, mode } = req.body;
       if (!message) {
         return res.status(400).json({ error: 'Message is required' });
       }
-      const response = await jarvisAi.processCommand(message, broadcastWs);
+      const response = await jarvisAi.processCommand(message, broadcastWs, mode);
       res.json(response);
     } catch (err: any) {
       res.status(500).json({ error: `M.A.R.V.I.N. processing error: ${err.message}` });

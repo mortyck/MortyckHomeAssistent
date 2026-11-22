@@ -1,7 +1,23 @@
 {
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
-  "lastUpdated": "2026-11-22T00:18:00.000Z",
+  "lastUpdated": "2026-11-22T02:16:23.783Z",
   "activeTask": null,
-  "tasks": []
+  "tasks": [
+    {
+      "id": "task-1795313769926-6ti0",
+      "prompt": "modifica frontend/src/App.tsx pentru a ajusta stilul HUD",
+      "status": "completed",
+      "createdAt": "2026-11-22T02:16:09.926Z",
+      "targetFile": "CHANGELOG_AI.md",
+      "lineRange": "L1-L46",
+      "contextSnippet": "1: # M.A.R.V.I.N. & Antigravity - Permanent AI Changelog\n2: \n3: Acest fișier înregistrează automat fiecare modificare de cod, reconfigurare sau adăugare de fișiere efectuată de asistentul **M.A.R.V.I.N.** (*Mortyck Automated Reconnaissance & Virtual Infrastructure Node*) sau de agentul **Antigravity**.\n4: \n5: Fiecare intrare este asociată cu un commit Git local (`git commit -m \"MARVIN: <rezumat>\"`). Dacă este configurat un remote GitHub `origin`, modificările pot fi sincronizate în fundal.\n6: \n7: ---\n8: \n9: ### [2026-11-22 00:18:00] - MARVIN: Initialized permanent local memory, Git tracking, and Antigravity bridge\n10: - **Actor:** M.A.R.V.I.N. // CORE & Antigravity\n11: - **Fișiere afectate:**\n12:   - `data/project_index.json` (Nou: index structural pre-procesat al întregului codebase)\n13:   - `scripts/code_indexer.js` (Nou: indexator structural automat cu actualizare FTS5)\n14:   - `scripts/marvin_git_tracker.js` (Nou: modul git tracking, changelog automat și rollback)\n15:   - `scripts/mcp_mortyck_server.js` (Nou: server MCP pentru Antigravity)\n16:   - `.agent/rules/marvin-memory.md` (Nou: reguli de interacțiune chirurgicală 30-60 linii)\n17:   - `data/marvin_tasks.json` (Nou: coadă de sarcini asincronă cu urmărire live)\n18:   - `.gitignore` (Nou: reguli de excludere chei sensibile, baze de date binare și fișiere temporare)\n19: - **Motiv:** Implementarea sistemului de memorie permanentă, urmărire Git/GitHub, conversia numelui asistentului în M.A.R.V.I.N. și operare 100% portabilă cu căi relative.\n20: \n21: ### [2026-11-22 00:50:00] - MARVIN: Cross-platform Linux support\n22: - **Actor:** M.A.R.V.I.N. // CORE & Antigravity\n23: - **Fișiere afectate:**\n24:   - `backend/src/index.ts` (Adăugare detecție OS Windows/Linux, rezoluție binar go2rtc/python și servire directă frontend single-page dashboard pe port 4000)\n25:   - `backend/src/services/MediaService.ts` (Eliminare căi hardcodate, suport cross-platform Windows go2rtc.exe vs Linux ./go2rtc, venv/bin/python vs python3)\n26:   - `backend/src/services/NetworkScannerService.ts` (Suport parsare tabelă ARP atât pe Windows cât și pe Linux)\n27:   - `scripts/platform_detect.js` (Nou: modul centralizat de detecție runtime și rezoluție căi binare)\n28:   - `ecosystem.config.js` (Configurație PM2 multi-platformă adaptivă)\n29:   - `package.json` (Nou: scripturi root build & start pentru întregul proiect)\n30:   - `start_all.sh` & `stop_all.sh` (Nou: scripturi bash native pentru pornire și oprire curată pe Linux)\n31: - **Motiv:** Asigurarea funcționării native 100% cross-platform atât pe Windows cât și pe Linux.\n32: \n33: ### [2026-11-22 03:45:00] - MARVIN: Fix MARVIN tool loop and Blurams HD clean stream\n34: - **Actor:** M.A.R.V.I.N. // CORE & Antigravity\n35: - **Fișiere afectate:**\n36:   - `backend/src/services/JarvisAiService.ts` (Extins bucla de execuție unelte Gemini la 12 iterații; suport `editFile`/`patchFile`; rutare dual-model: `gemini-3.5-flash` pentru sarcini de modificare cod/fișiere și `gemini-3.5-flash-lite` + cache local SQLite pentru comenzi rapide smart-home; generare turn final de sinteză/rezumat în limba română dacă răspunsul text era gol)\n37:   - `scripts/blurams_bridge.py` (Stream nativ HD `quality=1`/`definition=hd` fără downscaling; eliminat complet overlay-ul sintetic HUD/cyan grid/telemetry clock din FFmpeg; stream curat passthrough `-c:v copy` sau `-crf 20`)\n38:   - `frontend/src/components/JarvisMainTerminal.tsx` (Actualizat badge status: `3.5 FLASH // DUAL ROUTE`)\n39:   - `frontend/src/components/WebRtcPlayer.tsx` (Verificat stream curat fără diagnostic overlay pe feed live)\n40: - **Motiv:** Rezolvarea întreruperii premature a buclei de modificare de fișiere pentru M.A.R.V.I.N. și afișarea unui stream live de calitate HD curată pentru camera Blurams din Garaj.\n41: \n42: ### [2026-11-22 03:56:44] - MARVIN: Edited scripts/blurams_bridge.py (L459-L465)\n43: - **Actor:** M.A.R.V.I.N. // CORE\n44: - **Fișier:** `scripts/blurams_bridge.py` (Liniile 459-465)\n45: - **Motiv:** Requested by user via M.A.R.V.I.N.\n46: ",
+      "completedAt": "2026-11-22T02:16:23.783Z",
+      "summary": "Updated HUD layout in App.tsx via Antigravity MCP",
+      "reply": "Updated HUD layout in App.tsx via Antigravity MCP",
+      "affectedFiles": [
+        "frontend/src/App.tsx"
+      ]
+    }
+  ]
 }

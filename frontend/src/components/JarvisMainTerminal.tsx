@@ -20,7 +20,8 @@ import {
 import {
   sendJarvisCommand,
   fetchJarvisMemoryHistory,
-  rollbackLastAiChange
+  rollbackLastAiChange,
+  fetchAiTraces
 } from '../services/api';
 import { WebSocketClient } from '../services/websocket';
 import {
@@ -71,13 +72,14 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
   onRefreshData
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [routingMode, setRoutingMode] = useState<'antigravity' | 'api_fallback'>('antigravity');
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'init-core',
       role: 'jarvis',
-      text: 'NUCLEUL M.A.R.V.I.N. (Mortyck Automated Reconnaissance & Virtual Infrastructure Node - models/gemini-3.5-flash-lite + SQLite FTS5 + Git tracking) ESTE ACTIV. Am acces complet de citire și scriere asupra fișierelor proiectului cu auto-commit, backup .bak și suport de rollback instant.',
+      text: 'NUCLEUL M.A.R.V.I.N. (Mortyck Automated Reconnaissance & Virtual Infrastructure Node - Antigravity MCP Queue + SQLite FTS5 + Git tracking) ESTE ACTIV. Modificările de cod sunt rutate direct prin abonamentul Antigravity cu 0 apeluri Google AI Studio API.',
       timestamp: new Date().toLocaleTimeString(),
-      provider: 'GEMINI 3.5 FLASH-LITE // FULL FS AGENT'
+      provider: 'ANTIGRAVITY MCP // 0 TOKENS'
     }
   ]);
   const [liveTraces, setLiveTraces] = useState<JarvisTraceStep[]>([
@@ -89,8 +91,8 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
     },
     {
       id: 'boot-2',
-      tag: 'GEMINI',
-      message: 'Connected to models/gemini-3.5-flash-lite with M.A.R.V.I.N. toolset',
+      tag: 'EXEC',
+      message: 'Antigravity MCP Queue active (data/marvin_tasks.json) // 0 Google API calls',
       timestamp: Date.now()
     }
   ]);
@@ -159,6 +161,23 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
         setLiveTraces((prev) => [...prev.slice(-35), data as JarvisTraceStep]);
       }
     });
+
+    // Load recent traces from data/marvin_trace.log via backend API
+    fetchAiTraces()
+      .then((data) => {
+        if (data.traces && Array.isArray(data.traces) && data.traces.length > 0) {
+          setLiveTraces((prev) => {
+            const existingIds = new Set(prev.map((s) => s.id));
+            const merged = [...prev];
+            for (const step of data.traces) {
+              if (!existingIds.has(step.id)) merged.push(step);
+            }
+            return merged.slice(-40);
+          });
+        }
+      })
+      .catch(() => {});
+
     return () => unsub();
   }, []);
 
@@ -201,7 +220,7 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
     setIsSending(true);
 
     try {
-      const res = await sendJarvisCommand(promptText);
+      const res = await sendJarvisCommand(promptText, routingMode);
 
       if (res.tokenUsage) {
         if (res.tokenUsage.localCacheHits !== undefined) {
@@ -386,8 +405,12 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
                 <h2 className="text-xs font-extrabold font-hud tracking-wider text-[#FFFFFF] truncate">
                   M.A.R.V.I.N. <span className="text-[#00F0FF]">// TACTICAL NODE</span>
                 </h2>
-                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 shrink-0">
-                  3.5 FLASH // DUAL ROUTE
+                <span className={`px-1.5 py-0.5 rounded text-[9px] font-mono font-bold border shrink-0 ${
+                  routingMode === 'antigravity'
+                    ? 'bg-[#00F0FF]/20 text-[#00F0FF] border-[#00F0FF]/50 shadow-[0_0_8px_rgba(0,240,255,0.3)]'
+                    : 'bg-[#FF9E00]/20 text-[#FF9E00] border-[#FF9E00]/50 shadow-[0_0_8px_rgba(255,158,0,0.3)]'
+                }`}>
+                  {routingMode === 'antigravity' ? 'ANTIGRAVITY // 0 TOK' : '3.5 FLASH // API'}
                 </span>
               </div>
               <p className="text-[10px] text-[#7C99B8] font-mono truncate">
@@ -434,6 +457,38 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
               className="w-8 h-8 rounded-lg bg-[#081529] border border-[#00F0FF]/25 text-[#00F0FF] hover:bg-[#00F0FF]/20 flex items-center justify-center cursor-pointer"
             >
               <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+
+        {/* Routing Mode Toggle (ANTIGRAVITY vs API FALLBACK) */}
+        <div className="flex items-center justify-between gap-1 mt-2 px-2 py-1 rounded bg-[#030712] border border-[#00F0FF]/25">
+          <div className="flex items-center space-x-1.5 text-[9px] font-mono font-bold tracking-wider">
+            <Zap size={11} className={routingMode === 'antigravity' ? 'text-[#00F0FF] animate-pulse' : 'text-[#FF9E00]'} />
+            <span className="text-[#7C99B8]">ROUTING:</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setRoutingMode('antigravity')}
+              title="Route code changes to local Antigravity MCP Queue (0 Google API calls, runs on Antigravity subscription)"
+              className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold transition cursor-pointer ${
+                routingMode === 'antigravity'
+                  ? 'bg-[#00F0FF]/25 border border-[#00F0FF] text-[#00F0FF] shadow-[0_0_8px_rgba(0,240,255,0.4)]'
+                  : 'text-[#7C99B8] hover:text-[#FFFFFF]'
+              }`}
+            >
+              ANTIGRAVITY
+            </button>
+            <button
+              onClick={() => setRoutingMode('api_fallback')}
+              title="Fallback to direct Google Gemini API (gemini-3.5-flash / flash-lite)"
+              className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold transition cursor-pointer ${
+                routingMode === 'api_fallback'
+                  ? 'bg-[#FF9E00]/25 border border-[#FF9E00] text-[#FF9E00] shadow-[0_0_8px_rgba(255,158,0,0.4)]'
+                  : 'text-[#7C99B8] hover:text-[#FFFFFF]'
+              }`}
+            >
+              API FALLBACK
             </button>
           </div>
         </div>

@@ -6,7 +6,8 @@ import {
   PTZCommand,
   RemotePc,
   JarvisChatResponse,
-  BluramsBridgeStatus
+  BluramsBridgeStatus,
+  JarvisTraceStep
 } from '../types';
 
 const API_BASE = '/api';
@@ -195,11 +196,14 @@ export async function fetchRooms(): Promise<string[]> {
 }
 
 // --- M.A.R.V.I.N. AI ASSISTANT & SQLITE MEMORY ENGINE ---
-export async function sendJarvisCommand(message: string): Promise<JarvisChatResponse> {
+export async function sendJarvisCommand(
+  message: string,
+  mode: 'antigravity' | 'api_fallback' = 'antigravity'
+): Promise<JarvisChatResponse> {
   const res = await fetch(`${API_BASE}/marvin/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message })
+    body: JSON.stringify({ message, mode })
   });
   const data = await res.json().catch(() => null);
   if (!res.ok) {
@@ -211,6 +215,12 @@ export async function sendJarvisCommand(message: string): Promise<JarvisChatResp
 }
 
 export const sendMarvinCommand = sendJarvisCommand;
+
+export async function fetchAiTraces(): Promise<{ traces: JarvisTraceStep[] }> {
+  const res = await fetch(`${API_BASE}/marvin/trace`);
+  if (!res.ok) return { traces: [] };
+  return res.json().catch(() => ({ traces: [] }));
+}
 
 export async function fetchJarvisMemoryHistory(): Promise<{
   history: Array<{

@@ -220,6 +220,7 @@ export class JarvisAiService {
   private mediaService: MediaService;
   private wolService: WolService;
   private memory: JarvisMemoryEngine;
+  private defaultRoutingMode: 'antigravity' | 'api_fallback' = 'antigravity';
 
   private constructor() {
     this.db = Database.getInstance();
@@ -242,6 +243,14 @@ export class JarvisAiService {
 
   public getMemoryEngine(): JarvisMemoryEngine {
     return this.memory;
+  }
+
+  public getRoutingMode(): 'antigravity' | 'api_fallback' {
+    return this.defaultRoutingMode;
+  }
+
+  public setRoutingMode(mode: 'antigravity' | 'api_fallback'): void {
+    this.defaultRoutingMode = mode;
   }
 
   public reloadEnvFromDisk(): void {
@@ -411,27 +420,33 @@ export class JarvisAiService {
     const geminiConfigured = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim());
     const geminiModel = this.resolveGeminiModel();
     const telemetry = this.memory.getTelemetryStats();
+    const routingMode = this.defaultRoutingMode;
 
-    const activeProvider = geminiConfigured
-      ? `Gemini (${geminiModel}) + SQLite RAG`
-      : 'SQLite FTS5 Local Engine (0-Token Mode)';
+    const activeProvider = routingMode === 'antigravity'
+      ? 'Antigravity MCP Queue (0 API calls)'
+      : geminiConfigured
+        ? `Gemini (${geminiModel}) + SQLite RAG`
+        : 'SQLite FTS5 Local Engine (0-Token Mode)';
 
     return {
       geminiConfigured,
       geminiModel,
       activeProvider,
+      routingMode,
       telemetry
     };
   }
 
   public async processCommand(
     userMessage: string,
-    broadcastWs: (event: string, data: any) => void
+    broadcastWs: (event: string, data: any) => void,
+    requestedMode?: 'antigravity' | 'api_fallback'
   ): Promise<JarvisChatResponse> {
     this.reloadEnvFromDisk();
     const msg = (userMessage || '').trim();
     const toolResults: JarvisToolResult[] = [];
     const executionLog: JarvisTraceStep[] = [];
+    const effectiveMode = requestedMode || this.defaultRoutingMode || 'antigravity';
 
     this.memory.saveConversationTurn('user', msg, 'USER', 0, false);
 
@@ -527,7 +542,11 @@ export class JarvisAiService {
       };
     }
 
-    // 3. ALL OTHER MESSAGES (Questions, Diagnostics, Full Project Code/Config Edits) -> GEMINI 3.5 FLASH-LITE + SQLITE FTS5 RAG
+    // 3. ALL OTHER MESSAGES (Questions, Diagnostics, Full Project Code/Config Edits)
+    const isCodeTask = this.isCodeModificationTask(msg);
+    const geminiKey = (process.env.GEMINI_API_KEY || '').trim();
+
+    // Check surgical RAG context
     this.pushTrace(
       executionLog,
       broadcastWs,
@@ -548,7 +567,19 @@ export class JarvisAiService {
       );
     }
 
-    const geminiKey = (process.env.GEMINI_API_KEY || '').trim();
+    // 4. ANTIGRAVITY MCP QUEUE (0 Google API calls):
+    // All code, configuration, or file modification tasks in ANTIGRAVITY mode are enqueued into data/marvin_tasks.json
+    if (effectiveMode === 'antigravity' && (isCodeTask || !geminiKey)) {
+      return this.enqueueAntigravityTask(
+        msg,
+        ragHit,
+        toolResults,
+        executionLog,
+        broadcastWs
+      );
+    }
+
+    // 5. API FALLBACK -> Direct Google Gemini API with surgical RAG
     if (geminiKey) {
       try {
         const geminiResult = await this.callGeminiWithSurgicalContext(
@@ -590,6 +621,142 @@ export class JarvisAiService {
       toolResults,
       executionLog
     };
+  }
+
+  public async enqueueAntigravityTask(
+    msg: string,
+    ragHit: any,
+    toolResults: JarvisToolResult[],
+    executionLog: JarvisTraceStep[],
+    broadcastWs: (event: string, data: any) => void
+  ): Promise<JarvisChatResponse> {
+    const taskId = `task-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+    const tasksPath = path.join(ROOT_DIR, 'data', 'marvin_tasks.json');
+    let taskData: any = {
+      version: '1.0.0',
+      assistant: 'M.A.R.V.I.N.',
+      lastUpdated: new Date().toISOString(),
+      activeTask: null,
+      tasks: []
+    };
+
+    if (fs.existsSync(tasksPath)) {
+      try {
+        taskData = JSON.parse(fs.readFileSync(tasksPath, 'utf8'));
+      } catch {}
+    }
+
+    const newTask = {
+      id: taskId,
+      prompt: msg,
+      status: 'pending',
+      createdAt: new Date().toISOString(),
+      targetFile: ragHit?.filePath || null,
+      lineRange: ragHit ? `L${ragHit.startLine}-L${ragHit.endLine}` : null,
+      contextSnippet: ragHit?.snippet || null
+    };
+
+    taskData.activeTask = newTask;
+    if (!taskData.tasks) taskData.tasks = [];
+    taskData.tasks.unshift(newTask);
+    taskData.lastUpdated = new Date().toISOString();
+
+    try {
+      fs.writeFileSync(tasksPath, JSON.stringify(taskData, null, 2), 'utf8');
+    } catch (err: any) {
+      console.warn(`[JarvisAI] Error writing marvin_tasks.json: ${err.message}`);
+    }
+
+    this.pushTrace(
+      executionLog,
+      broadcastWs,
+      'EXEC',
+      `Sarcina #${taskId} plasată în coada Antigravity MCP (status: pending)`
+    );
+
+    const stats = this.memory.getTelemetryStats();
+    const tokenUsage: JarvisTokenUsage = {
+      promptTokens: 0,
+      outputTokens: 0,
+      totalTokens: 0,
+      sessionTokens: stats.geminiTokensUsed,
+      estimatedCostUsd: Number(((stats.geminiTokensUsed / 1_000_000) * 0.1).toFixed(6)),
+      fastPath: true,
+      localCacheHits: stats.localCacheHits,
+      estimatedTokensSaved: stats.estimatedTokensSaved + 2500,
+      savingsPercent: stats.savingsPercent
+    };
+
+    const reply = `Sarcina de modificare a codului a fost plasată în coada Antigravity MCP [${taskId}]. Se execută prin abonamentul Antigravity (0 apeluri Google AI Studio). Urmăriți jurnalul live în consolă.`;
+    const providerLabel = 'Antigravity MCP Queue (0 Google API calls)';
+
+    this.memory.saveConversationTurn('jarvis', reply, providerLabel, 0, true, toolResults);
+
+    return {
+      reply,
+      provider: providerLabel,
+      toolResults,
+      executionLog,
+      tokenUsage
+    };
+  }
+
+  public recordExternalTrace(
+    tag: JarvisTraceStep['tag'],
+    message: string,
+    extra: { filePath?: string; lineRange?: string; backupFile?: string } = {},
+    broadcastWs?: (event: string, data: any) => void
+  ): JarvisTraceStep {
+    const step: JarvisTraceStep = {
+      id: `tr-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      tag,
+      message,
+      filePath: extra?.filePath,
+      lineRange: extra?.lineRange,
+      backupFile: extra?.backupFile,
+      timestamp: Date.now()
+    };
+    if (broadcastWs) {
+      broadcastWs('marvin_trace', step);
+      broadcastWs('jarvis_trace', step);
+    }
+    try {
+      const traceLine = `[${new Date(step.timestamp).toISOString()}] [${step.tag}] ${step.message}${extra?.filePath ? ` (${extra.filePath})` : ''}\n`;
+      fs.appendFileSync(path.join(ROOT_DIR, 'data', 'marvin_trace.log'), traceLine, 'utf8');
+    } catch {}
+    return step;
+  }
+
+  public getRecentTraces(limit: number = 40): JarvisTraceStep[] {
+    const traceFile = path.join(ROOT_DIR, 'data', 'marvin_trace.log');
+    if (!fs.existsSync(traceFile)) return [];
+    try {
+      const content = fs.readFileSync(traceFile, 'utf8');
+      const lines = content.trim().split(/\r?\n/).filter(Boolean);
+      const recent = lines.slice(-limit);
+      return recent.map((l, idx) => {
+        const match = l.match(/^\[(.*?)\]\s*\[(.*?)\]\s*(.*)$/);
+        if (match) {
+          const rawTag = match[2].toUpperCase();
+          const validTags = new Set(['SCAN', 'RAG', 'LIST', 'READ', 'EDIT', 'WRITE', 'BACKUP', 'DELETE', 'RESTART', 'GEMINI', 'CACHE', 'EXEC', 'ERROR']);
+          const tag = (validTags.has(rawTag) ? rawTag : 'EXEC') as JarvisTraceStep['tag'];
+          return {
+            id: `file-tr-${Date.now()}-${idx}`,
+            timestamp: new Date(match[1]).getTime() || Date.now(),
+            tag,
+            message: match[3]
+          };
+        }
+        return {
+          id: `file-tr-${Date.now()}-${idx}`,
+          timestamp: Date.now(),
+          tag: 'EXEC',
+          message: l
+        };
+      });
+    } catch {
+      return [];
+    }
   }
 
   private async executeCachedIntent(

@@ -43,3 +43,8 @@ Fiecare intrare este asociată cu un commit Git local (`git commit -m "MARVIN: <
 - **Actor:** M.A.R.V.I.N. // CORE
 - **Fișier:** `scripts/blurams_bridge.py` (Liniile 459-465)
 - **Motiv:** Requested by user via M.A.R.V.I.N.
+
+### [2026-11-22 04:16:23] - MARVIN: Updated HUD layout in App.tsx via Antigravity MCP
+- **Actor:** Antigravity // MCP
+- **Fișier:** `frontend/src/App.tsx`
+- **Motiv:** Test completion via MCP tool
