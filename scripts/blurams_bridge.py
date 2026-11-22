@@ -365,11 +365,12 @@ def fetch_stream_with_cookie_or_token(device_id: str, cookie_str: str, token_str
     except Exception as e:
         logging.debug(f"/api/deviceListByDeviceId probe note: {e}")
 
-    # 2. Query /api/device/html5ForMultiScreen to check player session & extract live stream token
+    # 2. Query /api/device/html5ForMultiScreen to check player session & extract live stream token (HD Stream request)
     try:
         h5_url = (
             f"https://client.blurams.com/api/device/html5ForMultiScreen?"
             f"deviceId={blurams_dev_id}&shareId=&limitTime=0&deviceAddSource=&modelId={blurams_model_id}"
+            f"&quality=1&streamType=1&definition=hd"
         )
         h5_req = urllib.request.Request(h5_url, headers=headers, method='GET')
         with urllib.request.urlopen(h5_req, timeout=8) as resp:
@@ -386,7 +387,7 @@ def fetch_stream_with_cookie_or_token(device_id: str, cookie_str: str, token_str
     except Exception as e:
         logging.debug(f"html5ForMultiScreen probe note: {e}")
 
-    # 3. Query candidate live stream endpoints with AES-encrypted & raw payloads
+    # 3. Query candidate live stream endpoints with AES-encrypted & raw payloads (HD quality=1 / streamType=1)
     candidate_endpoints = [
         "/api/device/live",
         "/api/stream/live",
@@ -406,7 +407,9 @@ def fetch_stream_with_cookie_or_token(device_id: str, cookie_str: str, token_str
         "cloudDid": blurams_cloud_did,
         "modelId": blurams_model_id,
         "channel": 0,
-        "streamType": 0,
+        "streamType": 1,
+        "quality": 1,
+        "definition": "hd",
         "protocol": "hls"
     }
     enc_body = json.dumps({"__reqJSONStr": blurams_web_encrypt(payload_obj)}).encode('utf-8')
@@ -714,7 +717,7 @@ def rtp_packetize_nalu(nalu: bytes, seq: int, timestamp: int, ssrc: int = 0x1800
 
 
 def build_ffmpeg_stream_command(live_url: str | None) -> list:
-    """Build FFmpeg command to transcode real live stream (or tactical HUD diagnostic feed) to H.264."""
+    """Build FFmpeg command to stream clean HD H.264 video to go2rtc without synthetic overlays or downscaling."""
     if live_url:
         input_args = ["-hide_banner", "-loglevel", "warning"]
         if live_url.startswith("rtsp://"):
@@ -723,76 +726,35 @@ def build_ffmpeg_stream_command(live_url: str | None) -> list:
         return [
             "ffmpeg", *input_args,
             "-an",
-            "-c:v", "libx264", "-profile:v", "baseline", "-level", "3.1",
-            "-pix_fmt", "yuv420p",
-            "-preset", "ultrafast", "-tune", "zerolatency",
-            "-g", "30", "-keyint_min", "15",
+            "-c:v", "copy",
+            "-bsf:v", "dump_extra,h264_mp4toannexb",
             "-f", "h264", "-"
         ]
 
-    with state_lock:
-        device_id = bridge_state["deviceId"]
-        camera_ip = bridge_state["cameraIp"]
-        mode = bridge_state["streamMode"]
-        ping_ok = bridge_state["cameraPingReachable"]
-        email = bridge_state["email"]
-
-    ping_text = f"HOST {camera_ip} ONLINE (TAILSCALE TUNNEL)" if ping_ok else f"HOST {camera_ip} UNREACHABLE"
-    if mode == "cloud_session_verified":
-        auth_line = "CLOUD AUTH\\: ACTIVE // BLURAMS CLOUD VERIFIED (ONLINE)"
-        status_color = "#00F0FF"
-    elif mode == "awaiting_credentials" or not email:
-        auth_line = "CLOUD AUTH\\: AWAITING BLURAMS_EMAIL IN SETTINGS / .ENV"
-        status_color = "#FF9E00"
-    else:
-        auth_line = f"CLOUD AUTH\\: VERIFYING ACCOUNT ({email[:18]})"
-        status_color = "#00F0FF"
-
-    font_file = "C\\:/Windows/Fonts/arial.ttf" if os.name == 'nt' else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     snapshot_file = ROOT_DIR / "data" / "blurams_snapshot.jpg"
     has_snapshot = snapshot_file.is_file() and snapshot_file.stat().st_size > 1000
 
     if has_snapshot:
         clean_snap = str(snapshot_file).replace('\\', '/')
-        snap_filter = (
-            "scale=640:360:force_original_aspect_ratio=decrease,pad=640:360:(ow-iw)/2:(oh-ih)/2,"
-            "drawgrid=w=40:h=40:t=1:c=#00F0FF@0.05,"
-            "drawbox=x=10:y=10:w=620:h=340:color=#00F0FF@0.30:t=1,"
-            f"drawtext=fontfile='{font_file}':text='J.A.R.V.I.S. // OPTICAL FEED 03 - BLURAMS A31':fontcolor=#00F0FF:fontsize=15:x=20:y=24,"
-            f"drawtext=fontfile='{font_file}':text='DEVICE ID\\: {device_id}':fontcolor=#E2F1FF:fontsize=12:x=20:y=46,"
-            f"drawtext=fontfile='{font_file}':text='STATUS\\: LIVE CLOUD OPTICAL FEED':fontcolor=#10B981:fontsize=12:x=20:y=68,"
-            f"drawtext=fontfile='{font_file}':text='TELEMETRY CLOCK\\: %{{localtime\\:%Y-%m-%d %H\\\\\\:%M\\\\\\:%S}}':fontcolor=#00F0FF:fontsize=13:x=20:y=330"
-        )
+        # Stream clean native camera snapshot without any synthetic grid or text overlays in full HD quality
         return [
             "ffmpeg", "-hide_banner", "-loglevel", "error",
-            "-loop", "1", "-re", "-framerate", "10",
+            "-loop", "1", "-re", "-framerate", "15",
             "-i", clean_snap,
-            "-vf", snap_filter,
-            "-c:v", "libx264", "-profile:v", "baseline", "-level", "3.1",
+            "-c:v", "libx264", "-crf", "20",
+            "-preset", "veryfast", "-tune", "zerolatency",
             "-pix_fmt", "yuv420p",
-            "-preset", "ultrafast", "-tune", "zerolatency",
-            "-g", "20", "-keyint_min", "10",
+            "-g", "30", "-keyint_min", "15",
             "-f", "h264", "-"
         ]
 
-    drawtext_filter = (
-        "color=c=#050A14:s=640x360:r=15,"
-        "drawgrid=w=40:h=40:t=1:c=#00F0FF@0.07,"
-        "drawbox=x=20:y=20:w=600:h=320:color=#00F0FF@0.35:t=2,"
-        f"drawtext=fontfile='{font_file}':text='J.A.R.V.I.S. // OPTICAL FEED 03 - BLURAMS A31':fontcolor=#00F0FF:fontsize=17:x=(w-text_w)/2:y=52,"
-        f"drawtext=fontfile='{font_file}':text='DEVICE ID\\: {device_id}':fontcolor=#E2F1FF:fontsize=13:x=(w-text_w)/2:y=105,"
-        f"drawtext=fontfile='{font_file}':text='{ping_text}':fontcolor=#10B981:fontsize=13:x=(w-text_w)/2:y=135,"
-        f"drawtext=fontfile='{font_file}':text='{auth_line}':fontcolor={status_color}:fontsize=13:x=(w-text_w)/2:y=175,"
-        f"drawtext=fontfile='{font_file}':text='OPEN SETTINGS (GEAR ICON) TO LINK BLURAMS CLOUD / HLS STREAM':fontcolor=#94A3B8:fontsize=11:x=(w-text_w)/2:y=215,"
-        f"drawtext=fontfile='{font_file}':text='TELEMETRY CLOCK\\: %{{localtime\\:%Y-%m-%d %H\\\\\\:%M\\\\\\:%S}}':fontcolor=#00F0FF:fontsize=15:x=(w-text_w)/2:y=275"
-    )
-
+    # Clean fallback solid canvas (1280x720) without HUD overlays
     return [
         "ffmpeg", "-hide_banner", "-loglevel", "error",
-        "-re", "-f", "lavfi", "-i", drawtext_filter,
-        "-c:v", "libx264", "-profile:v", "baseline", "-level", "3.1",
+        "-re", "-f", "lavfi", "-i", "color=c=#050A14:s=1280x720:r=15",
+        "-c:v", "libx264", "-crf", "20",
+        "-preset", "veryfast", "-tune", "zerolatency",
         "-pix_fmt", "yuv420p",
-        "-preset", "ultrafast", "-tune", "zerolatency",
         "-g", "30", "-keyint_min", "15",
         "-f", "h264", "-"
     ]

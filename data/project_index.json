@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
   "projectRootRel": ".",
-  "generatedAt": "2026-11-21T22:51:09.455Z",
+  "generatedAt": "2026-11-22T01:47:47.985Z",
   "totalFiles": 51,
   "files": {
     "backend/src/adapters/BaseDeviceAdapter.ts": {
@@ -1549,7 +1549,7 @@
     "backend/src/services/JarvisAiService.ts": {
       "relPath": "backend/src/services/JarvisAiService.ts",
       "summary": "Motorul central M.A.R.V.I.N. AI: rutare rapidă 0-token, interacțiune Gemini Flash-Lite și execuție unelte",
-      "lineCount": 1495,
+      "lineCount": 1569,
       "symbols": [
         {
           "kind": "const",
@@ -1584,756 +1584,796 @@
         {
           "kind": "class",
           "name": "JarvisAiService",
-          "line": 190
+          "line": 216
         },
         {
           "kind": "const",
           "name": "lines",
-          "line": 225
+          "line": 251
         },
         {
           "kind": "const",
           "name": "trimmed",
-          "line": 227
+          "line": 253
         },
         {
           "kind": "const",
           "name": "idx",
-          "line": 229
+          "line": 255
         },
         {
           "kind": "const",
           "name": "k",
-          "line": 230
+          "line": 256
         },
         {
           "kind": "const",
           "name": "v",
-          "line": 231
+          "line": 257
+        },
+        {
+          "kind": "const",
+          "name": "codeModel",
+          "line": 267
         },
         {
           "kind": "const",
           "name": "raw",
-          "line": 240
+          "line": 273
         },
         {
           "kind": "const",
-          "name": "rawMsg",
-          "line": 248
-        },
-        {
-          "kind": "const",
-          "name": "jsonStart",
-          "line": 250
-        },
-        {
-          "kind": "const",
-          "name": "parsed",
-          "line": 252
-        },
-        {
-          "kind": "const",
-          "name": "code",
-          "line": 254
-        },
-        {
-          "kind": "const",
-          "name": "cleaned",
-          "line": 268
-        },
-        {
-          "kind": "const",
-          "name": "fullPath",
-          "line": 272
-        },
-        {
-          "kind": "const",
-          "name": "normalizedRoot",
-          "line": 276
-        },
-        {
-          "kind": "const",
-          "name": "relPath",
+          "name": "codeKeywords",
           "line": 281
         },
         {
           "kind": "const",
-          "name": "segments",
-          "line": 282
+          "name": "lower",
+          "line": 288
         },
         {
           "kind": "const",
-          "name": "step",
+          "name": "rawMsg",
+          "line": 293
+        },
+        {
+          "kind": "const",
+          "name": "jsonStart",
+          "line": 295
+        },
+        {
+          "kind": "const",
+          "name": "parsed",
+          "line": 297
+        },
+        {
+          "kind": "const",
+          "name": "code",
           "line": 299
         },
         {
           "kind": "const",
-          "name": "traceLine",
-          "line": 312
-        },
-        {
-          "kind": "const",
-          "name": "baseName",
-          "line": 324
-        },
-        {
-          "kind": "const",
-          "name": "stamp",
-          "line": 325
-        },
-        {
-          "kind": "const",
-          "name": "backupName",
-          "line": 326
-        },
-        {
-          "kind": "const",
-          "name": "backupPath",
-          "line": 327
-        },
-        {
-          "kind": "const",
-          "name": "stat",
-          "line": 343
-        },
-        {
-          "kind": "const",
-          "name": "devEntries",
-          "line": 354
-        },
-        {
-          "kind": "const",
-          "name": "st",
-          "line": 355
-        },
-        {
-          "kind": "const",
-          "name": "pcEntries",
-          "line": 358
-        },
-        {
-          "kind": "const",
-          "name": "geminiConfigured",
-          "line": 366
-        },
-        {
-          "kind": "const",
-          "name": "geminiModel",
-          "line": 367
-        },
-        {
-          "kind": "const",
-          "name": "telemetry",
-          "line": 368
-        },
-        {
-          "kind": "const",
-          "name": "activeProvider",
-          "line": 370
-        },
-        {
-          "kind": "const",
-          "name": "msg",
-          "line": 387
-        },
-        {
-          "kind": "const",
-          "name": "toolResults",
-          "line": 388
-        },
-        {
-          "kind": "const",
-          "name": "executionLog",
-          "line": 389
-        },
-        {
-          "kind": "const",
-          "name": "cachedMatch",
-          "line": 394
-        },
-        {
-          "kind": "const",
-          "name": "execOut",
-          "line": 402
-        },
-        {
-          "kind": "const",
-          "name": "stats",
-          "line": 408
-        },
-        {
-          "kind": "const",
-          "name": "tokenUsage",
-          "line": 409
-        },
-        {
-          "kind": "const",
-          "name": "providerLabel",
-          "line": 421
-        },
-        {
-          "kind": "const",
-          "name": "fastPathResult",
-          "line": 435
-        },
-        {
-          "kind": "const",
-          "name": "stats",
-          "line": 452
-        },
-        {
-          "kind": "const",
-          "name": "tokenUsage",
-          "line": 453
-        },
-        {
-          "kind": "const",
-          "name": "providerLabel",
-          "line": 465
-        },
-        {
-          "kind": "const",
-          "name": "ragHit",
-          "line": 492
-        },
-        {
-          "kind": "const",
-          "name": "geminiKey",
-          "line": 506
-        },
-        {
-          "kind": "const",
-          "name": "geminiResult",
-          "line": 509
-        },
-        {
-          "kind": "const",
-          "name": "cleanGoogleErr",
-          "line": 527
-        },
-        {
-          "kind": "const",
-          "name": "errReply",
-          "line": 530
-        },
-        {
-          "kind": "const",
-          "name": "noKeyReply",
-          "line": 540
-        },
-        {
-          "kind": "const",
-          "name": "devices",
-          "line": 557
-        },
-        {
-          "kind": "const",
-          "name": "pcs",
-          "line": 558
-        },
-        {
-          "kind": "const",
-          "name": "camCount",
-          "line": 601
-        },
-        {
-          "kind": "const",
-          "name": "iotCount",
-          "line": 602
-        },
-        {
-          "kind": "const",
-          "name": "onlinePcs",
-          "line": 603
-        },
-        {
-          "kind": "const",
-          "name": "fileKey",
-          "line": 640
+          "name": "cleaned",
+          "line": 313
         },
         {
           "kind": "const",
           "name": "fullPath",
-          "line": 641
+          "line": 317
         },
         {
           "kind": "const",
-          "name": "content",
-          "line": 643
+          "name": "normalizedRoot",
+          "line": 321
         },
         {
           "kind": "const",
-          "name": "modelName",
-          "line": 666
+          "name": "relPath",
+          "line": 326
         },
         {
           "kind": "const",
-          "name": "ai",
-          "line": 667
+          "name": "segments",
+          "line": 327
         },
         {
           "kind": "const",
-          "name": "oneLineDevices",
-          "line": 668
+          "name": "step",
+          "line": 344
         },
         {
           "kind": "const",
-          "name": "promptParts",
-          "line": 670
+          "name": "traceLine",
+          "line": 357
         },
         {
           "kind": "const",
-          "name": "hasBluramsCreds",
-          "line": 677
+          "name": "baseName",
+          "line": 369
         },
         {
           "kind": "const",
-          "name": "hasDirectUrl",
-          "line": 678
-        },
-        {
-          "kind": "const",
-          "name": "systemInstruction",
-          "line": 697
-        },
-        {
-          "kind": "const",
-          "name": "msg",
-          "line": 733
-        },
-        {
-          "kind": "const",
-          "name": "usage",
-          "line": 752
-        },
-        {
-          "kind": "const",
-          "name": "fnCalls",
-          "line": 760
-        },
-        {
-          "kind": "const",
-          "name": "toolOutputsForNextTurn",
-          "line": 765
-        },
-        {
-          "kind": "const",
-          "name": "args",
-          "line": 769
-        },
-        {
-          "kind": "const",
-          "name": "fnName",
-          "line": 770
-        },
-        {
-          "kind": "const",
-          "name": "toolOutput",
-          "line": 771
-        },
-        {
-          "kind": "const",
-          "name": "totalTokens",
-          "line": 797
-        },
-        {
-          "kind": "const",
-          "name": "stats",
-          "line": 799
-        },
-        {
-          "kind": "const",
-          "name": "estimatedCostUsd",
-          "line": 800
-        },
-        {
-          "kind": "const",
-          "name": "textReply",
-          "line": 802
-        },
-        {
-          "kind": "const",
-          "name": "devices",
-          "line": 835
-        },
-        {
-          "kind": "const",
-          "name": "pcs",
-          "line": 836
-        },
-        {
-          "kind": "const",
-          "name": "dirArg",
-          "line": 841
-        },
-        {
-          "kind": "const",
-          "name": "entries",
-          "line": 846
-        },
-        {
-          "kind": "const",
-          "name": "rawPath",
-          "line": 872
-        },
-        {
-          "kind": "const",
-          "name": "allLines",
-          "line": 877
-        },
-        {
-          "kind": "const",
-          "name": "startLine",
-          "line": 878
-        },
-        {
-          "kind": "const",
-          "name": "endLine",
-          "line": 879
-        },
-        {
-          "kind": "const",
-          "name": "numberedSlice",
-          "line": 883
-        },
-        {
-          "kind": "const",
-          "name": "rawPath",
-          "line": 909
-        },
-        {
-          "kind": "const",
-          "name": "targetContent",
-          "line": 910
-        },
-        {
-          "kind": "const",
-          "name": "replacementContent",
-          "line": 911
-        },
-        {
-          "kind": "const",
-          "name": "original",
-          "line": 917
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 940
-        },
-        {
-          "kind": "const",
-          "name": "prefixLines",
-          "line": 948
-        },
-        {
-          "kind": "const",
-          "name": "replacedLineCount",
-          "line": 949
-        },
-        {
-          "kind": "const",
-          "name": "startLine",
-          "line": 950
-        },
-        {
-          "kind": "const",
-          "name": "endLine",
-          "line": 951
-        },
-        {
-          "kind": "const",
-          "name": "updatedContent",
-          "line": 953
-        },
-        {
-          "kind": "const",
-          "name": "marvinGitTracker",
-          "line": 962
-        },
-        {
-          "kind": "const",
-          "name": "rawPath",
-          "line": 1001
-        },
-        {
-          "kind": "const",
-          "name": "content",
-          "line": 1002
-        },
-        {
-          "kind": "const",
-          "name": "dir",
-          "line": 1005
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 1010
-        },
-        {
-          "kind": "const",
-          "name": "lineCount",
-          "line": 1019
-        },
-        {
-          "kind": "const",
-          "name": "marvinGitTracker",
-          "line": 1023
-        },
-        {
-          "kind": "const",
-          "name": "rawPath",
-          "line": 1062
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 1067
-        },
-        {
-          "kind": "const",
-          "name": "marvinGitTracker",
-          "line": 1078
-        },
-        {
-          "kind": "const",
-          "name": "targetService",
-          "line": 1107
-        },
-        {
-          "kind": "const",
-          "name": "indexedCount",
-          "line": 1109
-        },
-        {
-          "kind": "const",
-          "name": "rawId",
-          "line": 1137
-        },
-        {
-          "kind": "const",
-          "name": "power",
-          "line": 1138
-        },
-        {
-          "kind": "const",
-          "name": "brightness",
-          "line": 1139
-        },
-        {
-          "kind": "const",
-          "name": "cmdPayload",
-          "line": 1140
-        },
-        {
-          "kind": "const",
-          "name": "targets",
-          "line": 1143
-        },
-        {
-          "kind": "const",
-          "name": "effectiveTargets",
-          "line": 1153
-        },
-        {
-          "kind": "const",
-          "name": "rawId",
-          "line": 1174
-        },
-        {
-          "kind": "const",
-          "name": "target",
-          "line": 1175
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 1179
-        },
-        {
-          "kind": "const",
-          "name": "rawPc",
-          "line": 1201
-        },
-        {
-          "kind": "const",
-          "name": "targetPc",
-          "line": 1202
-        },
-        {
-          "kind": "const",
-          "name": "bcast",
-          "line": 1210
-        },
-        {
-          "kind": "const",
-          "name": "file",
-          "line": 1231
-        },
-        {
-          "kind": "const",
-          "name": "key",
-          "line": 1232
-        },
-        {
-          "kind": "const",
-          "name": "value",
-          "line": 1233
-        },
-        {
-          "kind": "const",
-          "name": "envPath",
-          "line": 1237
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 1238
-        },
-        {
-          "kind": "const",
-          "name": "lineRegex",
-          "line": 1246
-        },
-        {
-          "kind": "const",
-          "name": "settingsPath",
-          "line": 1273
-        },
-        {
-          "kind": "const",
-          "name": "backup",
-          "line": 1274
-        },
-        {
-          "kind": "const",
-          "name": "lower",
-          "line": 1310
-        },
-        {
-          "kind": "const",
-          "name": "devices",
-          "line": 1321
-        },
-        {
-          "kind": "const",
-          "name": "pcs",
-          "line": 1322
-        },
-        {
-          "kind": "const",
-          "name": "camCount",
-          "line": 1325
-        },
-        {
-          "kind": "const",
-          "name": "iotCount",
-          "line": 1326
-        },
-        {
-          "kind": "const",
-          "name": "onlinePcs",
-          "line": 1327
-        },
-        {
-          "kind": "const",
-          "name": "envAssignMatch",
-          "line": 1340
-        },
-        {
-          "kind": "const",
-          "name": "envKey",
-          "line": 1344
-        },
-        {
-          "kind": "const",
-          "name": "envVal",
-          "line": 1345
+          "name": "stamp",
+          "line": 370
         },
         {
           "kind": "const",
           "name": "backupName",
-          "line": 1346
+          "line": 371
         },
         {
           "kind": "const",
-          "name": "lineRegex",
-          "line": 1355
+          "name": "backupPath",
+          "line": 372
         },
         {
           "kind": "const",
-          "name": "targetPc",
-          "line": 1388
+          "name": "stat",
+          "line": 388
         },
         {
           "kind": "const",
-          "name": "bcast",
-          "line": 1398
+          "name": "devEntries",
+          "line": 399
         },
         {
           "kind": "const",
-          "name": "toggleMatch",
-          "line": 1420
+          "name": "st",
+          "line": 400
         },
         {
           "kind": "const",
-          "name": "verb",
-          "line": 1422
+          "name": "pcEntries",
+          "line": 403
         },
         {
           "kind": "const",
-          "name": "targetStr",
-          "line": 1423
+          "name": "geminiConfigured",
+          "line": 411
         },
         {
           "kind": "const",
-          "name": "desiredPower",
-          "line": 1424
+          "name": "geminiModel",
+          "line": 412
         },
         {
           "kind": "const",
-          "name": "iotDevs",
-          "line": 1425
+          "name": "telemetry",
+          "line": 413
         },
         {
           "kind": "const",
-          "name": "matchedDevs",
-          "line": 1426
+          "name": "activeProvider",
+          "line": 415
         },
         {
           "kind": "const",
-          "name": "targets",
-          "line": 1433
+          "name": "msg",
+          "line": 432
         },
         {
           "kind": "const",
-          "name": "names",
-          "line": 1455
+          "name": "toolResults",
+          "line": 433
         },
         {
           "kind": "const",
-          "name": "delMatch",
-          "line": 1462
+          "name": "executionLog",
+          "line": 434
         },
         {
           "kind": "const",
-          "name": "targetName",
-          "line": 1464
+          "name": "cachedMatch",
+          "line": 439
         },
         {
           "kind": "const",
-          "name": "targetDev",
-          "line": 1465
+          "name": "execOut",
+          "line": 447
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 453
+        },
+        {
+          "kind": "const",
+          "name": "tokenUsage",
+          "line": 454
+        },
+        {
+          "kind": "const",
+          "name": "providerLabel",
+          "line": 466
+        },
+        {
+          "kind": "const",
+          "name": "fastPathResult",
+          "line": 480
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 497
+        },
+        {
+          "kind": "const",
+          "name": "tokenUsage",
+          "line": 498
+        },
+        {
+          "kind": "const",
+          "name": "providerLabel",
+          "line": 510
+        },
+        {
+          "kind": "const",
+          "name": "ragHit",
+          "line": 537
+        },
+        {
+          "kind": "const",
+          "name": "geminiKey",
+          "line": 551
+        },
+        {
+          "kind": "const",
+          "name": "geminiResult",
+          "line": 554
+        },
+        {
+          "kind": "const",
+          "name": "cleanGoogleErr",
+          "line": 572
+        },
+        {
+          "kind": "const",
+          "name": "errReply",
+          "line": 575
+        },
+        {
+          "kind": "const",
+          "name": "noKeyReply",
+          "line": 585
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 602
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 603
+        },
+        {
+          "kind": "const",
+          "name": "camCount",
+          "line": 646
+        },
+        {
+          "kind": "const",
+          "name": "iotCount",
+          "line": 647
+        },
+        {
+          "kind": "const",
+          "name": "onlinePcs",
+          "line": 648
+        },
+        {
+          "kind": "const",
+          "name": "fileKey",
+          "line": 685
+        },
+        {
+          "kind": "const",
+          "name": "fullPath",
+          "line": 686
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 688
+        },
+        {
+          "kind": "const",
+          "name": "isCodeTask",
+          "line": 712
+        },
+        {
+          "kind": "const",
+          "name": "modelName",
+          "line": 713
+        },
+        {
+          "kind": "const",
+          "name": "ai",
+          "line": 714
+        },
+        {
+          "kind": "const",
+          "name": "oneLineDevices",
+          "line": 715
+        },
+        {
+          "kind": "const",
+          "name": "promptParts",
+          "line": 717
+        },
+        {
+          "kind": "const",
+          "name": "hasBluramsCreds",
+          "line": 724
+        },
+        {
+          "kind": "const",
+          "name": "hasDirectUrl",
+          "line": 725
+        },
+        {
+          "kind": "const",
+          "name": "systemInstruction",
+          "line": 744
+        },
+        {
+          "kind": "const",
+          "name": "MAX_ROUNDS",
+          "line": 757
+        },
+        {
+          "kind": "const",
+          "name": "msg",
+          "line": 781
+        },
+        {
+          "kind": "const",
+          "name": "usage",
+          "line": 800
+        },
+        {
+          "kind": "const",
+          "name": "fnCalls",
+          "line": 808
+        },
+        {
+          "kind": "const",
+          "name": "toolOutputsForNextTurn",
+          "line": 814
+        },
+        {
+          "kind": "const",
+          "name": "args",
+          "line": 817
+        },
+        {
+          "kind": "const",
+          "name": "fnName",
+          "line": 818
+        },
+        {
+          "kind": "const",
+          "name": "toolOutput",
+          "line": 819
+        },
+        {
+          "kind": "const",
+          "name": "summaryPrompt",
+          "line": 847
+        },
+        {
+          "kind": "const",
+          "name": "summaryResponse",
+          "line": 848
+        },
+        {
+          "kind": "const",
+          "name": "sUsage",
+          "line": 859
+        },
+        {
+          "kind": "const",
+          "name": "totalTokens",
+          "line": 868
+        },
+        {
+          "kind": "const",
+          "name": "stats",
+          "line": 870
+        },
+        {
+          "kind": "const",
+          "name": "estimatedCostUsd",
+          "line": 871
+        },
+        {
+          "kind": "const",
+          "name": "textReply",
+          "line": 873
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 906
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 907
+        },
+        {
+          "kind": "const",
+          "name": "dirArg",
+          "line": 912
+        },
+        {
+          "kind": "const",
+          "name": "entries",
+          "line": 917
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 943
+        },
+        {
+          "kind": "const",
+          "name": "allLines",
+          "line": 948
+        },
+        {
+          "kind": "const",
+          "name": "startLine",
+          "line": 949
+        },
+        {
+          "kind": "const",
+          "name": "endLine",
+          "line": 950
+        },
+        {
+          "kind": "const",
+          "name": "numberedSlice",
+          "line": 954
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 980
+        },
+        {
+          "kind": "const",
+          "name": "targetContent",
+          "line": 984
+        },
+        {
+          "kind": "const",
+          "name": "replacementContent",
+          "line": 985
+        },
+        {
+          "kind": "const",
+          "name": "original",
+          "line": 991
         },
         {
           "kind": "const",
           "name": "backup",
-          "line": 1469
+          "line": 1014
+        },
+        {
+          "kind": "const",
+          "name": "prefixLines",
+          "line": 1022
+        },
+        {
+          "kind": "const",
+          "name": "replacedLineCount",
+          "line": 1023
+        },
+        {
+          "kind": "const",
+          "name": "startLine",
+          "line": 1024
+        },
+        {
+          "kind": "const",
+          "name": "endLine",
+          "line": 1025
+        },
+        {
+          "kind": "const",
+          "name": "updatedContent",
+          "line": 1027
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 1036
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 1075
+        },
+        {
+          "kind": "const",
+          "name": "content",
+          "line": 1076
+        },
+        {
+          "kind": "const",
+          "name": "dir",
+          "line": 1079
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1084
+        },
+        {
+          "kind": "const",
+          "name": "lineCount",
+          "line": 1093
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 1097
+        },
+        {
+          "kind": "const",
+          "name": "rawPath",
+          "line": 1136
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1141
+        },
+        {
+          "kind": "const",
+          "name": "marvinGitTracker",
+          "line": 1152
+        },
+        {
+          "kind": "const",
+          "name": "targetService",
+          "line": 1181
+        },
+        {
+          "kind": "const",
+          "name": "indexedCount",
+          "line": 1183
+        },
+        {
+          "kind": "const",
+          "name": "rawId",
+          "line": 1211
+        },
+        {
+          "kind": "const",
+          "name": "power",
+          "line": 1212
+        },
+        {
+          "kind": "const",
+          "name": "brightness",
+          "line": 1213
+        },
+        {
+          "kind": "const",
+          "name": "cmdPayload",
+          "line": 1214
+        },
+        {
+          "kind": "const",
+          "name": "targets",
+          "line": 1217
+        },
+        {
+          "kind": "const",
+          "name": "effectiveTargets",
+          "line": 1227
+        },
+        {
+          "kind": "const",
+          "name": "rawId",
+          "line": 1248
+        },
+        {
+          "kind": "const",
+          "name": "target",
+          "line": 1249
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1253
+        },
+        {
+          "kind": "const",
+          "name": "rawPc",
+          "line": 1275
+        },
+        {
+          "kind": "const",
+          "name": "targetPc",
+          "line": 1276
+        },
+        {
+          "kind": "const",
+          "name": "bcast",
+          "line": 1284
+        },
+        {
+          "kind": "const",
+          "name": "file",
+          "line": 1305
+        },
+        {
+          "kind": "const",
+          "name": "key",
+          "line": 1306
+        },
+        {
+          "kind": "const",
+          "name": "value",
+          "line": 1307
+        },
+        {
+          "kind": "const",
+          "name": "envPath",
+          "line": 1311
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1312
+        },
+        {
+          "kind": "const",
+          "name": "lineRegex",
+          "line": 1320
+        },
+        {
+          "kind": "const",
+          "name": "settingsPath",
+          "line": 1347
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1348
+        },
+        {
+          "kind": "const",
+          "name": "lower",
+          "line": 1384
+        },
+        {
+          "kind": "const",
+          "name": "devices",
+          "line": 1395
+        },
+        {
+          "kind": "const",
+          "name": "pcs",
+          "line": 1396
+        },
+        {
+          "kind": "const",
+          "name": "camCount",
+          "line": 1399
+        },
+        {
+          "kind": "const",
+          "name": "iotCount",
+          "line": 1400
+        },
+        {
+          "kind": "const",
+          "name": "onlinePcs",
+          "line": 1401
+        },
+        {
+          "kind": "const",
+          "name": "envAssignMatch",
+          "line": 1414
+        },
+        {
+          "kind": "const",
+          "name": "envKey",
+          "line": 1418
+        },
+        {
+          "kind": "const",
+          "name": "envVal",
+          "line": 1419
+        },
+        {
+          "kind": "const",
+          "name": "backupName",
+          "line": 1420
+        },
+        {
+          "kind": "const",
+          "name": "lineRegex",
+          "line": 1429
+        },
+        {
+          "kind": "const",
+          "name": "targetPc",
+          "line": 1462
+        },
+        {
+          "kind": "const",
+          "name": "bcast",
+          "line": 1472
+        },
+        {
+          "kind": "const",
+          "name": "toggleMatch",
+          "line": 1494
+        },
+        {
+          "kind": "const",
+          "name": "verb",
+          "line": 1496
+        },
+        {
+          "kind": "const",
+          "name": "targetStr",
+          "line": 1497
+        },
+        {
+          "kind": "const",
+          "name": "desiredPower",
+          "line": 1498
+        },
+        {
+          "kind": "const",
+          "name": "iotDevs",
+          "line": 1499
+        },
+        {
+          "kind": "const",
+          "name": "matchedDevs",
+          "line": 1500
+        },
+        {
+          "kind": "const",
+          "name": "targets",
+          "line": 1507
+        },
+        {
+          "kind": "const",
+          "name": "names",
+          "line": 1529
+        },
+        {
+          "kind": "const",
+          "name": "delMatch",
+          "line": 1536
+        },
+        {
+          "kind": "const",
+          "name": "targetName",
+          "line": 1538
+        },
+        {
+          "kind": "const",
+          "name": "targetDev",
+          "line": 1539
+        },
+        {
+          "kind": "const",
+          "name": "backup",
+          "line": 1543
         }
       ],
-      "hash": "6fa157499f4193c1b53ab0053a9ed006",
-      "sizeBytes": 52653
+      "hash": "0f3cf6ad977ee3bb8e565d86514125c7",
+      "sizeBytes": 56431
     },
     "backend/src/services/JarvisMemoryEngine.ts": {
       "relPath": "backend/src/services/JarvisMemoryEngine.ts",
@@ -3826,8 +3866,8 @@
           "line": 333
         }
       ],
-      "hash": "8d8264aa99db4b42631e0c68cec770c9",
-      "sizeBytes": 24639
+      "hash": "703e8f12e6916253fa92043e326c6074",
+      "sizeBytes": 24648
     },
     "frontend/src/components/MultiCameraWall.tsx": {
       "relPath": "frontend/src/components/MultiCameraWall.tsx",
@@ -4847,7 +4887,7 @@
     "scripts/blurams_bridge.py": {
       "relPath": "scripts/blurams_bridge.py",
       "summary": "Punte RTSP H.264 și captură instantanee Blurams Cloud pentru camera Garage Workshop 2 (port 8556)",
-      "lineCount": 1075,
+      "lineCount": 1037,
       "symbols": [
         {
           "kind": "def",
@@ -4902,81 +4942,81 @@
         {
           "kind": "def",
           "name": "authenticate_and_fetch_blurams_stream",
-          "line": 442
+          "line": 445
         },
         {
           "kind": "def",
           "name": "terminate_active_ffmpeg_streams",
-          "line": 597
+          "line": 600
         },
         {
           "kind": "def",
           "name": "refresh_stream_state",
-          "line": 608
+          "line": 611
         },
         {
           "kind": "def",
           "name": "cloud_monitor_loop",
-          "line": 637
+          "line": 640
         },
         {
           "kind": "def",
           "name": "create_sdp",
-          "line": 653
+          "line": 656
         },
         {
           "kind": "def",
           "name": "rtp_packetize_nalu",
-          "line": 670
+          "line": 673
         },
         {
           "kind": "def",
           "name": "build_ffmpeg_stream_command",
-          "line": 716
+          "line": 719
         },
         {
           "kind": "def",
           "name": "handle_rtsp_client",
-          "line": 801
+          "line": 763
         },
         {
           "kind": "class",
           "name": "BridgeControlHandler",
-          "line": 949
+          "line": 911
         },
         {
           "kind": "def",
           "name": "log_message",
-          "line": 951
+          "line": 913
         },
         {
           "kind": "def",
           "name": "_send_json",
-          "line": 954
+          "line": 916
         },
         {
           "kind": "def",
           "name": "do_GET",
-          "line": 966
+          "line": 928
         },
         {
           "kind": "def",
           "name": "do_POST",
-          "line": 991
+          "line": 953
         },
         {
           "kind": "def",
           "name": "start_control_server",
-          "line": 1008
+          "line": 970
         },
         {
           "kind": "def",
           "name": "main",
-          "line": 1017
+          "line": 979
         }
       ],
-      "hash": "aea393fcd8c151be6f49958b4a3bc37d",
-      "sizeBytes": 47175
+      "hash": "8426cfad1758cd4d3c32bc98e576d55e",
+      "sizeBytes": 44569
     },
     "scripts/code_indexer.js": {
       "relPath": "scripts/code_indexer.js",
@@ -5762,7 +5802,7 @@
       "summary": "Registrul stării dispozitivelor IoT și camerelor IP salvate în baza de date locală",
       "lineCount": 83,
       "symbols": [],
-      "hash": "cc1802702a405375df78540c5c17eeaf",
+      "hash": "526d6781b36f4f3660987207721cf96e",
       "sizeBytes": 2200
     },
     "backend/data/pcs.json": {
@@ -5770,8 +5810,8 @@
       "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
       "lineCount": 35,
       "symbols": [],
-      "hash": "1a160a0bd46af51b36b57284677be658",
-      "sizeBytes": 983
+      "hash": "6c71e91537e6061b38b46a51c2bbfc18",
+      "sizeBytes": 982
     },
     "backend/data/settings.json": {
       "relPath": "backend/data/settings.json",
@@ -5808,10 +5848,10 @@
     "CHANGELOG_AI.md": {
       "relPath": "CHANGELOG_AI.md",
       "summary": "Jurnal permanent al tuturor modificărilor de cod operate de M.A.R.V.I.N. și Antigravity",
-      "lineCount": 32,
+      "lineCount": 41,
       "symbols": [],
-      "hash": "3b6d81f2542e3f162c1f323bf7ad58b9",
-      "sizeBytes": 2524
+      "hash": "a4adaf8fedaba1a111dbb9649ea8f328",
+      "sizeBytes": 3706
     },
     "README.md": {
       "relPath": "README.md",

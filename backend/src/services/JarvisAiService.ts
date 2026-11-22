@@ -93,6 +93,32 @@ const GEMINI_TOOLS: FunctionDeclaration[] = [
     }
   },
   {
+    name: 'editFile',
+    description: 'Editează un fișier existent din proiect prin înlocuirea unei secțiuni exacte (targetContent -> replacementContent) sau suprascriere completă (content).',
+    parameters: {
+      type: Type.OBJECT,
+      properties: {
+        filePath: {
+          type: Type.STRING,
+          description: 'Calea relativă a fișierului în proiect'
+        },
+        targetContent: {
+          type: Type.STRING,
+          description: 'Textul existent exact ce trebuie înlocuit'
+        },
+        replacementContent: {
+          type: Type.STRING,
+          description: 'Noul text care înlocuiește targetContent'
+        },
+        content: {
+          type: Type.STRING,
+          description: 'Alternativ: conținutul integral pentru suprascriere directă'
+        }
+      },
+      required: ['filePath']
+    }
+  },
+  {
     name: 'writeFile',
     description: 'Creează sau suprascrie complet un fișier în proiectul MortyckHomeAssistent (creează automat backup .bak dacă fișierul există).',
     parameters: {
@@ -236,12 +262,31 @@ export class JarvisAiService {
     } catch {}
   }
 
-  public resolveGeminiModel(): string {
+  public resolveGeminiModel(isCodeTask: boolean = false): string {
+    if (isCodeTask) {
+      const codeModel = (process.env.GEMINI_CODE_MODEL || 'gemini-3.5-flash').trim().replace(/^models\//, '');
+      if (codeModel === 'gemini-2.5-flash') {
+        return 'gemini-3.5-flash';
+      }
+      return codeModel;
+    }
     const raw = (process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite').trim().replace(/^models\//, '');
     if (!raw || raw === 'gemini-2.5-flash-lite') {
       return 'gemini-3.5-flash-lite';
     }
     return raw;
+  }
+
+  public isCodeModificationTask(msg: string): boolean {
+    const codeKeywords = [
+      'modific', 'schimb', 'adaug', 'sterg', 'șterg', 'corecteaz', 'repar',
+      'edit', 'patch', 'write', 'create', 'update', 'refactor', 'fix',
+      'code', 'script', 'fisier', 'fișier', 'component', 'functie', 'funcție',
+      'css', 'html', 'tsx', 'ts', 'js', 'py', 'json', 'yaml', 'yml',
+      'scrie', 'rescrie', 'adauga', 'adaugă', 'redenumeste', 'redenumi'
+    ];
+    const lower = msg.toLowerCase();
+    return codeKeywords.some((kw) => lower.includes(kw));
   }
 
   private extractGoogleApiErrorMessage(err: any): string {
@@ -653,7 +698,8 @@ export class JarvisAiService {
   }
 
   /**
-   * Call Gemini (`models/gemini-3.5-flash-lite`) with Surgical SQLite FTS5 RAG Context & Multi-Step File/Device Tool Execution
+   * Call Gemini with Surgical SQLite FTS5 RAG Context & Multi-Step File/Device Tool Execution
+   * Uses models/gemini-3.5-flash for code modifications and models/gemini-3.5-flash-lite for general queries.
    */
   private async callGeminiWithSurgicalContext(
     userMessage: string,
@@ -663,7 +709,8 @@ export class JarvisAiService {
     executionLog: JarvisTraceStep[],
     broadcastWs: (event: string, data: any) => void
   ): Promise<JarvisChatResponse> {
-    const modelName = this.resolveGeminiModel();
+    const isCodeTask = this.isCodeModificationTask(userMessage);
+    const modelName = this.resolveGeminiModel(isCodeTask);
     const ai = new GoogleGenAI({ apiKey });
     const oneLineDevices = this.buildMinifiedDeviceTable();
 
@@ -696,8 +743,8 @@ export class JarvisAiService {
 
     const systemInstruction =
       'Ești M.A.R.V.I.N. (Mortyck Automated Reconnaissance & Virtual Infrastructure Node), inginerul AI autonom și asistentul tactic personal al lui Mortyck în MortyckHomeAssistent. ' +
-      'Operezi cu căi relative și ai acces complet de citire și scriere asupra fișierelor proiectului prin uneltele: listFiles, readFile, patchFile, writeFile, deleteFile, restartServer, precum și controlul dispozitivelor prin toggleDevice, deleteDevice, wakePC, editConfig. ' +
-      'Când utilizatorul îți cere să inspectezi sau să modifici codul/interfața/configurația, consultă mai întâi indexul structural (data/project_index.json) sau snippet-ul RAG_FILE, citește doar blocul exact de 30-60 linii necesar, apoi aplică modificarea chirurgicală cu patchFile sau writeFile. ' +
+      'Operezi cu căi relative și ai acces complet de citire și scriere asupra fișierelor proiectului prin uneltele: listFiles, readFile, patchFile, editFile, writeFile, deleteFile, restartServer, precum și controlul dispozitivelor prin toggleDevice, deleteDevice, wakePC, editConfig. ' +
+      'Când utilizatorul îți cere să inspectezi sau să modifici codul/interfața/configurația, consultă mai întâi indexul structural (data/project_index.json) sau snippet-ul RAG_FILE, citește doar blocul exact de 30-60 linii necesar, apoi aplică modificarea chirurgicală cu patchFile, editFile sau writeFile. ' +
       'Orice modificare este înregistrată automat în CHANGELOG_AI.md și salvată într-un commit Git local. ' +
       'Răspunde în Română, concis, tehnic și sigur de sine (1-3 propoziții în stilul tactic M.A.R.V.I.N.), confirmând exact acțiunile și fișierele operate.';
 
@@ -706,13 +753,14 @@ export class JarvisAiService {
     let finalReplyText = '';
     let rollingPrompt = promptParts.join('\n');
 
-    // Up to 3 tool-execution rounds so Gemini can readFile -> patchFile -> confirm completion
-    for (let round = 1; round <= 3; round++) {
+    // Up to 12 tool-execution rounds so M.A.R.V.I.N. can listFiles -> readFile -> patchFile -> verify -> confirm
+    const MAX_ROUNDS = 12;
+    for (let round = 1; round <= MAX_ROUNDS; round++) {
       this.pushTrace(
         executionLog,
         broadcastWs,
         'GEMINI',
-        `Invoking models/${modelName} (step ${round})...`
+        `Invoking models/${modelName} (step ${round}/${MAX_ROUNDS}${isCodeTask ? ' • CODE_ENGINE' : ''})...`
       );
 
       let response;
@@ -722,7 +770,7 @@ export class JarvisAiService {
           contents: rollingPrompt,
           config: {
             systemInstruction,
-            maxOutputTokens: 650,
+            maxOutputTokens: 1024,
             temperature: 0.2,
             tools: [{ functionDeclarations: GEMINI_TOOLS }]
           }
@@ -737,7 +785,7 @@ export class JarvisAiService {
               contents: rollingPrompt,
               config: {
                 systemInstruction,
-                maxOutputTokens: 650,
+                maxOutputTokens: 1024,
                 temperature: 0.2
               }
             });
@@ -759,11 +807,11 @@ export class JarvisAiService {
 
       const fnCalls = response.functionCalls || [];
       if (fnCalls.length === 0) {
+        // Model reached final turn without requesting more tool executions
         break;
       }
 
       const toolOutputsForNextTurn: string[] = [];
-      let needsFollowUpTurn = false;
 
       for (const call of fnCalls) {
         const args = (call.args || {}) as Record<string, any>;
@@ -778,19 +826,42 @@ export class JarvisAiService {
         if (toolOutput) {
           toolOutputsForNextTurn.push(`TOOL_RESULT[${fnName}]:\n${toolOutput}`);
         }
-        if (fnName === 'readFile' || fnName === 'listFiles') {
-          needsFollowUpTurn = true;
-        }
       }
 
-      if (!needsFollowUpTurn && finalReplyText) {
-        break;
-      }
-
-      if (toolOutputsForNextTurn.length > 0 && round < 3) {
-        rollingPrompt += `\n\n${toolOutputsForNextTurn.join('\n\n')}\n\nContinuă execuția cererii utilizatorului și confirmă rezultatul final în Română.`;
+      if (toolOutputsForNextTurn.length > 0 && round < MAX_ROUNDS) {
+        rollingPrompt += `\n\n${toolOutputsForNextTurn.join('\n\n')}\n\nContinuă execuția cererii utilizatorului (folosind unelte suplimentare precum patchFile, editFile sau writeFile dacă sunt necesare) sau confirmă finalizarea completă printr-un răspuns explicativ detaliat în Română.`;
       } else {
         break;
+      }
+    }
+
+    // If model finished executing tool calls but left an empty text response, run one final text-generation turn to summarize changes
+    if (!finalReplyText && toolResults.length > 0) {
+      try {
+        this.pushTrace(
+          executionLog,
+          broadcastWs,
+          'GEMINI',
+          `Generating final change summary turn via models/${modelName}...`
+        );
+        const summaryPrompt = `${rollingPrompt}\n\nToate uneltele și modificările de fișiere au fost executate cu succes. Te rog să prezinți acum un rezumat final complet în limba Română (1-3 propoziții tehnice în stilul M.A.R.V.I.N.) care descrie exact ce modificări ai efectuat în sistem/cod.`;
+        const summaryResponse = await ai.models.generateContent({
+          model: modelName,
+          contents: summaryPrompt,
+          config: {
+            systemInstruction,
+            maxOutputTokens: 500,
+            temperature: 0.2
+          }
+        });
+        if (summaryResponse.text && summaryResponse.text.trim()) {
+          finalReplyText = summaryResponse.text.trim();
+          const sUsage = summaryResponse.usageMetadata;
+          totalPromptTokens += sUsage?.promptTokenCount || 0;
+          totalOutputTokens += sUsage?.candidatesTokenCount || 0;
+        }
+      } catch (sumErr: any) {
+        console.warn('[JarvisAiService] Final summary generation note:', sumErr.message);
       }
     }
 
@@ -904,11 +975,14 @@ export class JarvisAiService {
       }
     }
 
-    if (fnName === 'patchFile') {
+    if (fnName === 'patchFile' || fnName === 'editFile' || fnName === 'modifyFile') {
       try {
         const rawPath = String(args.filePath || '').trim();
-        const targetContent = String(args.targetContent || '');
-        const replacementContent = String(args.replacementContent ?? '');
+        if (!args.targetContent && !args.target && !args.oldContent && args.content !== undefined) {
+          return await this.executeGeminiFunctionCall('writeFile', { filePath: rawPath, content: args.content }, toolResults, executionLog, broadcastWs);
+        }
+        const targetContent = String(args.targetContent || args.target || args.oldContent || '');
+        const replacementContent = String(args.replacementContent ?? args.replacement ?? args.newContent ?? '');
         const { fullPath, relPath } = this.resolveSafeProjectPath(rawPath);
 
         if (!fs.existsSync(fullPath)) {

@@ -29,3 +29,12 @@ Fiecare intrare este asociată cu un commit Git local (`git commit -m "MARVIN: <
   - `package.json` (Nou: scripturi root build & start pentru întregul proiect)
   - `start_all.sh` & `stop_all.sh` (Nou: scripturi bash native pentru pornire și oprire curată pe Linux)
 - **Motiv:** Asigurarea funcționării native 100% cross-platform atât pe Windows cât și pe Linux.
+
+### [2026-11-22 03:45:00] - MARVIN: Fix MARVIN tool loop and Blurams HD clean stream
+- **Actor:** M.A.R.V.I.N. // CORE & Antigravity
+- **Fișiere afectate:**
+  - `backend/src/services/JarvisAiService.ts` (Extins bucla de execuție unelte Gemini la 12 iterații; suport `editFile`/`patchFile`; rutare dual-model: `gemini-3.5-flash` pentru sarcini de modificare cod/fișiere și `gemini-3.5-flash-lite` + cache local SQLite pentru comenzi rapide smart-home; generare turn final de sinteză/rezumat în limba română dacă răspunsul text era gol)
+  - `scripts/blurams_bridge.py` (Stream nativ HD `quality=1`/`definition=hd` fără downscaling; eliminat complet overlay-ul sintetic HUD/cyan grid/telemetry clock din FFmpeg; stream curat passthrough `-c:v copy` sau `-crf 20`)
+  - `frontend/src/components/JarvisMainTerminal.tsx` (Actualizat badge status: `3.5 FLASH // DUAL ROUTE`)
+  - `frontend/src/components/WebRtcPlayer.tsx` (Verificat stream curat fără diagnostic overlay pe feed live)
+- **Motiv:** Rezolvarea întreruperii premature a buclei de modificare de fișiere pentru M.A.R.V.I.N. și afișarea unui stream live de calitate HD curată pentru camera Blurams din Garaj.

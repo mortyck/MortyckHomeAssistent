@@ -387,7 +387,7 @@ export const JarvisMainTerminal: React.FC<JarvisMainTerminalProps> = ({
                   M.A.R.V.I.N. <span className="text-[#00F0FF]">// TACTICAL NODE</span>
                 </h2>
                 <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 shrink-0">
-                  3.5 FLASH-LITE
+                  3.5 FLASH // DUAL ROUTE
                 </span>
               </div>
               <p className="text-[10px] text-[#7C99B8] font-mono truncate">
