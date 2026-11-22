@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "assistant": "M.A.R.V.I.N.",
   "projectRootRel": ".",
-  "generatedAt": "2026-11-22T01:47:47.985Z",
+  "generatedAt": "2026-11-22T01:56:44.495Z",
   "totalFiles": 51,
   "files": {
     "backend/src/adapters/BaseDeviceAdapter.ts": {
@@ -4887,7 +4887,7 @@
     "scripts/blurams_bridge.py": {
       "relPath": "scripts/blurams_bridge.py",
       "summary": "Punte RTSP H.264 și captură instantanee Blurams Cloud pentru camera Garage Workshop 2 (port 8556)",
-      "lineCount": 1037,
+      "lineCount": 1040,
       "symbols": [
         {
           "kind": "def",
@@ -4947,76 +4947,76 @@
         {
           "kind": "def",
           "name": "terminate_active_ffmpeg_streams",
-          "line": 600
+          "line": 603
         },
         {
           "kind": "def",
           "name": "refresh_stream_state",
-          "line": 611
+          "line": 614
         },
         {
           "kind": "def",
           "name": "cloud_monitor_loop",
-          "line": 640
+          "line": 643
         },
         {
           "kind": "def",
           "name": "create_sdp",
-          "line": 656
+          "line": 659
         },
         {
           "kind": "def",
           "name": "rtp_packetize_nalu",
-          "line": 673
+          "line": 676
         },
         {
           "kind": "def",
           "name": "build_ffmpeg_stream_command",
-          "line": 719
+          "line": 722
         },
         {
           "kind": "def",
           "name": "handle_rtsp_client",
-          "line": 763
+          "line": 766
         },
         {
           "kind": "class",
           "name": "BridgeControlHandler",
-          "line": 911
+          "line": 914
         },
         {
           "kind": "def",
           "name": "log_message",
-          "line": 913
-        },
-        {
-          "kind": "def",
-          "name": "_send_json",
           "line": 916
         },
         {
           "kind": "def",
+          "name": "_send_json",
+          "line": 919
+        },
+        {
+          "kind": "def",
           "name": "do_GET",
-          "line": 928
+          "line": 931
         },
         {
           "kind": "def",
           "name": "do_POST",
-          "line": 953
+          "line": 956
         },
         {
           "kind": "def",
           "name": "start_control_server",
-          "line": 970
+          "line": 973
         },
         {
           "kind": "def",
           "name": "main",
-          "line": 979
+          "line": 982
         }
       ],
-      "hash": "8426cfad1758cd4d3c32bc98e576d55e",
-      "sizeBytes": 44569
+      "hash": "2e743115a15a0322ab9fa7d614823846",
+      "sizeBytes": 44775
     },
     "scripts/code_indexer.js": {
       "relPath": "scripts/code_indexer.js",
@@ -5802,7 +5802,7 @@
       "summary": "Registrul stării dispozitivelor IoT și camerelor IP salvate în baza de date locală",
       "lineCount": 83,
       "symbols": [],
-      "hash": "526d6781b36f4f3660987207721cf96e",
+      "hash": "52536fa4a6f90a004aacfff91491af43",
       "sizeBytes": 2200
     },
     "backend/data/pcs.json": {
@@ -5810,7 +5810,7 @@
       "summary": "Registrul stațiilor de lucru remote (IP, MAC Wake-on-LAN, port VNC)",
       "lineCount": 35,
       "symbols": [],
-      "hash": "6c71e91537e6061b38b46a51c2bbfc18",
+      "hash": "f6127467073966f3fe06bad60400d847",
       "sizeBytes": 982
     },
     "backend/data/settings.json": {

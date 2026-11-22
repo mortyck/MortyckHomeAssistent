@@ -12,7 +12,7 @@
     "webViewerUrl": "/novnc/vnc.html?autoconnect=true&resize=scale&pcId=pc-home&host=192.168.1.80&port=5900",
     "online": true,
     "lastPingMs": 1,
-    "lastSeen": 1795311807418,
+    "lastSeen": 1795312555167,
     "vncPortOpen": true
   },
   {
@@ -29,7 +29,7 @@
     "relayDeviceId": "garage-pc-power-relay",
     "online": true,
     "vncPortOpen": true,
-    "lastPingMs": 89,
-    "lastSeen": 1795311987578
+    "lastPingMs": 84,
+    "lastSeen": 1795312595257
   }
 ]

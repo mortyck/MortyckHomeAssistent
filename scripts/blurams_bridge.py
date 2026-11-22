@@ -458,7 +458,10 @@ def authenticate_and_fetch_blurams_stream() -> tuple[str | None, str, str | None
 
     # 1. Check if a direct stream URL (HLS .m3u8 / HTTP-FLV / RTSP) is configured
     if direct_url and direct_url not in ('', 'none'):
-        logging.info(f"Using configured direct stream URL: {direct_url[:60]}...")
+        logging.info(f"Using configured direct stream URL (HD priority): {direct_url[:60]}...")
+        # Force HD/high-res parameters if URL contains definition tags
+        if 'sd' in direct_url:
+            direct_url = direct_url.replace('sd', 'hd').replace('quality=0', 'quality=1')
         return direct_url, "direct_url", None
 
     # 2. Check if BLURAMS_COOKIE or BLURAMS_TOKEN is configured (bypasses CAPTCHA on client.blurams.com)
